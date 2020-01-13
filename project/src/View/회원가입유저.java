@@ -53,3 +53,16 @@ public class 회원가입유저 {
 		frame.getContentPane().add(lblNewLabel);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
