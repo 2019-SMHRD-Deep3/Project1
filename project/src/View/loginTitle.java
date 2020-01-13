@@ -8,14 +8,16 @@ import java.awt.CardLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
 import javax.swing.JPasswordField;
+import javax.swing.SpringLayout;
 
 public class loginTitle {
 
 	private JFrame frame;
 	private JPasswordField passwordField;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -47,6 +49,14 @@ public class loginTitle {
 		frame.setBounds(600, 200, 600, 610);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+//		
+//		frame = new JFrame();
+//		frame.setResizable(false);
+//		frame.setBounds(600, 200, 600, 610);
+		SpringLayout springLayout = new SpringLayout();
+//		frame.getContentPane().setLayout(springLayout);
+//		String imgPath = this.getClass().getResource(".").getPath()+"..//..//img//aa.png";
+//		System.out.println(imgPath);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(160, 375, 250, 70);
@@ -95,5 +105,13 @@ public class loginTitle {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(190, 210, 240, 70);
 		frame.getContentPane().add(passwordField);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(0, 0, 584, 571);
+		frame.getContentPane().add(lblNewLabel_3);
+		String imgPath = this.getClass().getResource(".").getPath()+"..//..//img//aa.png";
+		System.out.println(imgPath);
+		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
+		
 	}
 }

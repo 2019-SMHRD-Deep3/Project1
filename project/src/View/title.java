@@ -65,5 +65,12 @@ public class title {
 		panel_1.setBounds(120, 50, 360, 320);
 		frame.getContentPane().add(panel_1);
 		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(0, 0, 584, 571);
+		frame.getContentPane().add(lblNewLabel_3);
+		String imgPath = this.getClass().getResource(".").getPath()+"..//..//img//aa.png";
+		System.out.println(imgPath);
+		lblNewLabel_3.setIcon(new ImageIcon(imgPath));
+		
 	}
 }
