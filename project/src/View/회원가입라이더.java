@@ -13,30 +13,11 @@ public class 회원가입라이더 {
 	private JFrame frame;
 	private final JLabel lblNewLabel = new JLabel("");
 
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					회원가입라이더 window = new 회원가입라이더();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public 회원가입라이더() {
 		initialize();
+		frame.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
