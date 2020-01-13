@@ -47,7 +47,9 @@ public class 회원가입사장 {
 		springLayout.putConstraint(SpringLayout.SOUTH, lblNewLabel, 584, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel, 893, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().setLayout(springLayout);
-		lblNewLabel.setIcon(new ImageIcon("C:\\\uC774\uBBF8\uC9C0\\aa.png"));
+		String imgPath = this.getClass().getResource(".").getPath()+"..//..//img//aa.png";
+		System.out.println(imgPath);
+		lblNewLabel.setIcon(new ImageIcon(imgPath));
 		frame.getContentPane().add(lblNewLabel);
 	}
 }
