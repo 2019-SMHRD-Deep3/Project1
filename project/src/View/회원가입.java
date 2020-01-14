@@ -159,7 +159,7 @@ public class 회원가입 {
 		lblNewLabel_1.setBounds(23, 30, 173, 46);
 		panel_6.add(lblNewLabel_1);
 		
-		JButton User = new JButton("\uAC1C\uC778\uC0AC\uC6A9\uC790");
+		JButton User = new JButton("\uAC1C\uC778\uC0AC\uC6A9");
 		User.setBackground(new Color(255, 255, 255));
 		User.setFont(new Font("굴림", Font.BOLD, 25));
 		User.setBounds(202, 203, 229, 67);
