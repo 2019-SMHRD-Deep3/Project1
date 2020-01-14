@@ -1,36 +1,36 @@
 package View;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SpringLayout;
-import javax.swing.JLabel;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
-import javax.swing.JButton;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JTextField;
-import java.awt.CardLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import Model.UserModel;
 
 public class 회원가입 {
 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField user_id;
+	private JTextField user_pw;
+	private JTextField user_name;
+	private JTextField user_address;
+	private JTextField user_number;
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
@@ -260,12 +260,45 @@ public class 회원가입 {
 		lblId.setBounds(0, -1, 119, 42);
 		panel_7.add(lblId);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(120, 1, 269, 41);
-		panel_7.add(textField_2);
+		user_id = new JTextField();
+		user_id.setColumns(10);
+		user_id.setBounds(120, 1, 269, 41);
+		panel_7.add(user_id);
 		
 		JButton button_1 = new JButton("\uAC00\uC785\uC2E0\uCCAD");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// 회원가입 기능
+				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
+				String infoId = user_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
+				String infoPw = user_pw.getText();
+				String infoName = user_name.getText();
+				String infoAddress = user_address.getText();
+				int infoNumber = Integer.parseInt(user_number.getText());  
+				  
+				
+				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
+				UserModel m = new UserModel(infoId, infoPw, infoName, infoAddress, infoNumber);
+				
+//				
+//				// Controller 에게 회원가입 요청
+//				boolean result = service.memberJoin(m);
+//				if(result) {
+//					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+//					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+//					frame.dispose();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+//				}else {
+//					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+//				}
+				
+				
+			}
+		});
 		button_1.setFont(new Font("굴림", Font.BOLD, 15));
 		button_1.setBounds(140, 548, 132, 48);
 		UserJoin.add(button_1);
@@ -309,10 +342,10 @@ public class 회원가입 {
 		lblPw_2.setBounds(0, -1, 119, 42);
 		panel_8.add(lblPw_2);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(120, 1, 269, 41);
-		panel_8.add(textField_3);
+		user_pw = new JTextField();
+		user_pw.setColumns(10);
+		user_pw.setBounds(120, 1, 269, 41);
+		panel_8.add(user_pw);
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setLayout(null);
@@ -326,10 +359,10 @@ public class 회원가입 {
 		lblPw_1.setBounds(0, -1, 119, 42);
 		panel_9.add(lblPw_1);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(120, 1, 269, 41);
-		panel_9.add(textField_4);
+		user_name = new JTextField();
+		user_name.setColumns(10);
+		user_name.setBounds(120, 1, 269, 41);
+		panel_9.add(user_name);
 		
 		JPanel panel_10 = new JPanel();
 		panel_10.setLayout(null);
@@ -343,10 +376,10 @@ public class 회원가입 {
 		label_4.setBounds(0, -1, 119, 42);
 		panel_10.add(label_4);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(120, 1, 269, 41);
-		panel_10.add(textField_5);
+		user_address = new JTextField();
+		user_address.setColumns(10);
+		user_address.setBounds(120, 1, 269, 41);
+		panel_10.add(user_address);
 		
 		JButton btnNewButton_1 = new JButton("\uC911\uBCF5\uD655\uC778");
 		btnNewButton_1.setBounds(373, 224, 115, 32);
@@ -364,10 +397,10 @@ public class 회원가입 {
 		label_3.setBounds(0, -1, 119, 42);
 		panel_11.add(label_3);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(120, 1, 269, 41);
-		panel_11.add(textField_6);
+		user_number = new JTextField();
+		user_number.setColumns(10);
+		user_number.setBounds(120, 1, 269, 41);
+		panel_11.add(user_number);
 		
 		
 		
