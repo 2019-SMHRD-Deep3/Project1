@@ -25,7 +25,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO MEMBER VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO USER2 VALUES (?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());
@@ -49,17 +49,6 @@ public class MemberDAO {
 		}
 		return rows;
 	}
-	
-	//////////////////
-	
-	
-
-	
-	
-	
-		
-		
-		
 		
 	
 }

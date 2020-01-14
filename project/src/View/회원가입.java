@@ -20,8 +20,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Model.UserModel;
+import controller.MemberManagementService;
 
 public class 회원가입 {
+	MemberManagementService service = new MemberManagementService();
 
 	private JFrame frame;
 	private JTextField textField;
@@ -285,16 +287,16 @@ public class 회원가입 {
 				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
 				UserModel m = new UserModel(infoId, infoPw, infoName, infoAddress, infoNumber);
 				
-//				
-//				// Controller 에게 회원가입 요청
-//				boolean result = service.memberJoin(m);
-//				if(result) {
-//					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
-//					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-//					frame.dispose();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
-//				}else {
-//					JOptionPane.showMessageDialog(frame, "회원가입 실패");
-//				}
+				
+				// Controller 에게 회원가입 요청
+				boolean result = service.memberJoin(m);
+				if(result) {
+					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+					frame.dispose();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+				}else {
+					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+				}
 				
 				
 			}
