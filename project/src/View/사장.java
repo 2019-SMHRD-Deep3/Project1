@@ -14,31 +14,18 @@ import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FlowLayout;
 
 public class 사장 {
 
 	private JFrame frame;
-	private final JLabel lblNewLabel = new JLabel("");
-	private final JLabel label = new JLabel("\uC0AC\uC7A5\uC6A9 \uD68C\uC6D0\uAC00\uC785");
-	private final JPanel panel_1 = new JPanel();
-	private final JPanel panel_2 = new JPanel();
-	private final JLabel lblNewLabel_1 = new JLabel("\uAC00\uAC8C\uC774\uB984");
-	private JTextField 가게이름;
-	private final JButton btnNewButton_1 = new JButton("\uD68C\uC6D0\uAC00\uC785 \uC2E0\uCCAD");
-	private final JLabel lblNewLabel_2 = new JLabel("ID");
-	private final JTextField ID = new JTextField();
-	private final JPanel panel_3 = new JPanel();
-	private final JLabel lblPw = new JLabel("PW");
-	private final JTextField PW = new JTextField();
-	private final JPanel panel_4 = new JPanel();
-	private final JLabel label_2 = new JLabel("\uC804\uD654\uBC88\uD638");
-	private final JTextField 전화번호 = new JTextField();
-	private final JPanel panel_5 = new JPanel();
-	private final JLabel label_3 = new JLabel("\uC8FC\uC18C");
-	private final JTextField 주소 = new JTextField();
-	private final JPanel panel_6 = new JPanel();
-	private final JLabel label_4 = new JLabel("\uC0AC\uC5C5\uC790\uBC88\uD638");
-	private final JTextField 사업자번호 = new JTextField();
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
 
 	
 	public static void main(String[] args) {
@@ -65,101 +52,155 @@ public class 사장 {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		ID.setHorizontalAlignment(SwingConstants.CENTER);
-		ID.setColumns(10);
 		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(600, 200, 382, 506);
-		String imgPath = this.getClass().getResource(".").getPath()+"..//..//img//a1.png";
-		System.out.println(imgPath);
+		frame.setBounds(600, 200, 382, 600);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(224, 255, 255));
-		panel.setBounds(96, 25, 177, 41);
+		panel.setBackground(new Color(102, 204, 255));
+		panel.setBounds(0, 0, 366, 561);
 		frame.getContentPane().add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		label.setBackground(Color.WHITE);
-		label.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.setLayout(null);
 		
-		panel.add(label, BorderLayout.CENTER);
-		panel_1.setBackground(new Color(224, 255, 255));
-		panel_1.setBounds(29, 107, 296, 34);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 366, 72);
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel.add(panel_1);
+		panel_1.setLayout(null);
 		
-		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel label = new JLabel("  \uC0AC\uC7A5 \uD68C\uC6D0\uAC00\uC785");
+		label.setFont(new Font("HY수평선B", Font.PLAIN, 25));
+		label.setBounds(12, 22, 218, 29);
+		panel_1.add(label);
 		
-		panel_1.add(lblNewLabel_1);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(204, 255, 255));
+		panel_2.setBounds(27, 103, 307, 38);
+		panel.add(panel_2);
+		panel_2.setLayout(null);
 		
-		가게이름 = new JTextField();
-		가게이름.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_1.add(가게이름);
-		가게이름.setColumns(10);
-		panel_2.setBackground(new Color(224, 255, 255));
-		panel_2.setBounds(29, 151, 296, 34);
+		JLabel lblNewLabel = new JLabel("\uAC00\uAC8C\uC774\uB984");
+		lblNewLabel.setBackground(new Color(102, 153, 255));
+		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 13));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 0, 98, 38);
+		panel_2.add(lblNewLabel);
 		
-		frame.getContentPane().add(panel_2);
-		panel_2.setLayout(new GridLayout(1, 0, 0, 0));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setBounds(97, 0, 210, 38);
+		panel_2.add(textField);
+		textField.setColumns(10);
 		
-		panel_2.add(lblNewLabel_2);
+		JPanel panel_4 = new JPanel();
+		panel_4.setLayout(null);
+		panel_4.setBackground(new Color(204, 255, 255));
+		panel_4.setBounds(27, 151, 307, 38);
+		panel.add(panel_4);
 		
-		panel_2.add(ID);
-		btnNewButton_1.setBounds(108, 397, 141, 53);
+		JLabel lblId = new JLabel("ID");
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
+		lblId.setFont(new Font("굴림", Font.BOLD, 13));
+		lblId.setBackground(new Color(102, 153, 255));
+		lblId.setBounds(0, 0, 98, 38);
+		panel_4.add(lblId);
 		
-		frame.getContentPane().add(btnNewButton_1);
-		panel_3.setBackground(new Color(224, 255, 255));
-		panel_3.setBounds(29, 195, 296, 34);
+		textField_1 = new JTextField();
+		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_1.setColumns(10);
+		textField_1.setBounds(97, 0, 210, 38);
+		panel_4.add(textField_1);
 		
-		frame.getContentPane().add(panel_3);
-		panel_3.setLayout(new GridLayout(1, 0, 0, 0));
+		JPanel panel_6 = new JPanel();
+		panel_6.setLayout(null);
+		panel_6.setBackground(new Color(204, 255, 255));
+		panel_6.setBounds(221, 199, 113, 23);
+		panel.add(panel_6);
+		
+		JButton btnNewButton_1 = new JButton("ID \uC911\uBCF5\uD655\uC778");
+		btnNewButton_1.setBounds(0, 0, 113, 23);
+		panel_6.add(btnNewButton_1);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setLayout(null);
+		panel_7.setBackground(new Color(204, 255, 255));
+		panel_7.setBounds(27, 232, 307, 38);
+		panel.add(panel_7);
+		
+		JLabel lblPw = new JLabel("PW");
 		lblPw.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPw.setFont(new Font("굴림", Font.BOLD, 13));
+		lblPw.setBackground(new Color(102, 153, 255));
+		lblPw.setBounds(0, 0, 98, 38);
+		panel_7.add(lblPw);
 		
-		panel_3.add(lblPw);
-		PW.setHorizontalAlignment(SwingConstants.CENTER);
-		PW.setColumns(10);
+		textField_2 = new JTextField();
+		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_2.setColumns(10);
+		textField_2.setBounds(97, 0, 210, 38);
+		panel_7.add(textField_2);
 		
-		panel_3.add(PW);
-		panel_4.setBackground(new Color(224, 255, 255));
-		panel_4.setBounds(29, 239, 296, 34);
+		JPanel panel_9 = new JPanel();
+		panel_9.setLayout(null);
+		panel_9.setBackground(new Color(204, 255, 255));
+		panel_9.setBounds(27, 280, 307, 38);
+		panel.add(panel_9);
 		
-		frame.getContentPane().add(panel_4);
-		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
+		JLabel label_2 = new JLabel("\uC804\uD654\uBC88\uD638");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setFont(new Font("굴림", Font.BOLD, 13));
+		label_2.setBackground(new Color(102, 153, 255));
+		label_2.setBounds(0, 0, 98, 38);
+		panel_9.add(label_2);
 		
-		panel_4.add(label_2);
-		전화번호.setHorizontalAlignment(SwingConstants.CENTER);
-		전화번호.setColumns(10);
+		textField_3 = new JTextField();
+		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_3.setColumns(10);
+		textField_3.setBounds(97, 0, 210, 38);
+		panel_9.add(textField_3);
 		
-		panel_4.add(전화번호);
-		panel_5.setBackground(new Color(224, 255, 255));
-		panel_5.setBounds(29, 283, 296, 34);
+		JPanel panel_11 = new JPanel();
+		panel_11.setLayout(null);
+		panel_11.setBackground(new Color(204, 255, 255));
+		panel_11.setBounds(27, 328, 307, 38);
+		panel.add(panel_11);
 		
-		frame.getContentPane().add(panel_5);
-		panel_5.setLayout(new GridLayout(1, 0, 0, 0));
+		JLabel label_3 = new JLabel("\uC8FC\uC18C");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setFont(new Font("굴림", Font.BOLD, 13));
+		label_3.setBackground(new Color(102, 153, 255));
+		label_3.setBounds(0, 0, 98, 38);
+		panel_11.add(label_3);
 		
-		panel_5.add(label_3);
-		주소.setHorizontalAlignment(SwingConstants.CENTER);
-		주소.setColumns(10);
+		textField_4 = new JTextField();
+		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_4.setColumns(10);
+		textField_4.setBounds(97, 0, 210, 38);
+		panel_11.add(textField_4);
 		
-		panel_5.add(주소);
-		panel_6.setBackground(new Color(224, 255, 255));
-		panel_6.setBounds(29, 327, 296, 34);
+		JPanel panel_13 = new JPanel();
+		panel_13.setLayout(null);
+		panel_13.setBackground(new Color(204, 255, 255));
+		panel_13.setBounds(27, 414, 307, 38);
+		panel.add(panel_13);
 		
-		frame.getContentPane().add(panel_6);
-		panel_6.setLayout(new GridLayout(1, 0, 0, 0));
+		JLabel label_4 = new JLabel("\uC0AC\uC5C5\uC790\uBC88\uD638");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setFont(new Font("굴림", Font.BOLD, 13));
+		label_4.setBackground(new Color(102, 153, 255));
+		label_4.setBounds(0, 0, 98, 38);
+		panel_13.add(label_4);
 		
-		panel_6.add(label_4);
-		사업자번호.setHorizontalAlignment(SwingConstants.CENTER);
-		사업자번호.setColumns(10);
+		textField_5 = new JTextField();
+		textField_5.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_5.setColumns(10);
+		textField_5.setBounds(97, 0, 210, 38);
+		panel_13.add(textField_5);
 		
-		panel_6.add(사업자번호);
-		lblNewLabel.setBounds(0, -55, 594, 584);
-		lblNewLabel.setIcon(new ImageIcon(imgPath));
-		frame.getContentPane().add(lblNewLabel);
+		JButton btnNewButton = new JButton("\uAC00\uC785 \uC2E0\uCCAD");
+		btnNewButton.setFont(new Font("굴림", Font.BOLD, 16));
+		btnNewButton.setBounds(214, 462, 120, 38);
+		panel.add(btnNewButton);
 	}
 }
 

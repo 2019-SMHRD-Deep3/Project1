@@ -62,6 +62,7 @@ public class 회원가입라이더2 {
 	 */
 	public 회원가입라이더2() {
 		initialize();
+		frame.setVisible(true);  //창을 보여줘라
 	}
 
 	/**

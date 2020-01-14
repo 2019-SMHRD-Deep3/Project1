@@ -58,6 +58,7 @@ public class 회원가입유저 {
 	 */
 	public 회원가입유저() {
 		initialize();
+		frame.setVisible(true);  //창을 보여줘라
 	}
 
 	/**
