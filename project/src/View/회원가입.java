@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -16,6 +17,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
 public class 회원가입 {
 
@@ -23,6 +27,21 @@ public class 회원가입 {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_12;
+	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
+	private JTextField textField_16;
+	private JTextField textField_17;
+	private JTextField textField_18;
+	private JTextField textField_19;
 	
 
 	
@@ -44,7 +63,6 @@ public class 회원가입 {
 	 */
 	public 회원가입() {
 		initialize();
-		frame.setVisible(true);  //창을 보여줘라
 	}
 
 	/**
@@ -64,11 +82,12 @@ public class 회원가입 {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
+		JPanel panel_1 =new JPanel();
 		panel_1.setBounds(371, 0, 634, 632);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(new CardLayout(0, 0));
 		
+		// main 창
 		JPanel main = new JPanel();
 		main.setBackground(new Color(153, 204, 255));
 		panel_1.add(main, "name_82546225747300");
@@ -112,7 +131,8 @@ public class 회원가입 {
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
 		btnNewButton.setBounds(140, 438, 132, 48);
 		main.add(btnNewButton);
-		
+		 
+		// 로그인 , 회원가입 창 
 		JPanel LoJo = new JPanel();
 		LoJo.setLayout(null);
 		LoJo.setBackground(new Color(153, 204, 255));
@@ -159,54 +179,111 @@ public class 회원가입 {
 		lblNewLabel_1.setBounds(23, 30, 173, 46);
 		panel_6.add(lblNewLabel_1);
 		
-		JButton User = new JButton("\uAC1C\uC778\uC0AC\uC6A9");
+		// User 회원가입 창
+		JPanel UserJoin = new JPanel();
+		UserJoin.setLayout(null);
+		UserJoin.setBackground(new Color(153, 204, 255));
+		panel_1.add(UserJoin, "name_90424023594900");
+		
+		JButton User = new JButton("\uAC1C\uC778\uC0AC\uC6A9\uC790");
+		User.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				panel_1.removeAll();
+				panel_1.add(UserJoin);
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+			}
+			
+		});
 		User.setBackground(new Color(255, 255, 255));
 		User.setFont(new Font("굴림", Font.BOLD, 25));
 		User.setBounds(202, 203, 229, 67);
 		LoJo.add(User);
 		
 		JButton ShopKeeper = new JButton("\uC0AC\uC7A5\uB2D8");
+		ShopKeeper.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		// 사장 회원가입 창
+		JPanel ShopKeeperJoin = new JPanel();
+		ShopKeeperJoin.setLayout(null);
+		ShopKeeperJoin.setBackground(new Color(153, 204, 255));
+		panel_1.add(ShopKeeperJoin, "name_96234007755100");
+		
+		ShopKeeper.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(ShopKeeperJoin);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
 		ShopKeeper.setFont(new Font("굴림", Font.BOLD, 25));
 		ShopKeeper.setBackground(new Color(255, 255, 255));
 		ShopKeeper.setBounds(202, 288, 229, 67);
 		LoJo.add(ShopKeeper);
 		
+		JPanel RiderJoin = new JPanel();
+		RiderJoin.setLayout(null);
+		RiderJoin.setBackground(new Color(153, 204, 255));
+		panel_1.add(RiderJoin, "name_96138525806700");
+		
 		JButton Rider = new JButton("\uB77C\uC774\uB354");
+		Rider.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(RiderJoin);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
 		Rider.setFont(new Font("굴림", Font.BOLD, 25));
 		Rider.setBackground(new Color(255, 255, 255));
 		Rider.setBounds(202, 381, 229, 67);
 		LoJo.add(Rider);
 		
-		JPanel UserJoin = new JPanel();
-		UserJoin.setLayout(null);
-		UserJoin.setBackground(new Color(153, 204, 255));
-		panel_1.add(UserJoin, "name_90424023594900");
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setLayout(null);
 		panel_7.setBackground(new Color(204, 255, 255));
-		panel_7.setBounds(111, 280, 389, 43);
+		panel_7.setBounds(107, 175, 389, 39);
 		UserJoin.add(panel_7);
 		
-		JLabel label = new JLabel("ID");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("굴림", Font.BOLD, 16));
-		label.setBounds(0, -1, 119, 42);
-		panel_7.add(label);
+		JLabel lblId = new JLabel("ID");
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
+		lblId.setFont(new Font("굴림", Font.BOLD, 16));
+		lblId.setBounds(0, -1, 119, 42);
+		panel_7.add(lblId);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(120, 1, 269, 41);
 		panel_7.add(textField_2);
 		
-		JButton button_1 = new JButton("\uB85C\uADF8\uC778");
+		JButton button_1 = new JButton("\uAC00\uC785\uC2E0\uCCAD");
 		button_1.setFont(new Font("굴림", Font.BOLD, 15));
-		button_1.setBounds(140, 438, 132, 48);
+		button_1.setBounds(140, 548, 132, 48);
 		UserJoin.add(button_1);
 		
-		JButton button_2 = new JButton("\uD68C\uC6D0\uAC00\uC785");
+		JButton button_2 = new JButton("\uCDE8\uC18C");
+		button_2.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(LoJo);
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+			}
+		});
 		button_2.setFont(new Font("굴림", Font.BOLD, 15));
-		button_2.setBounds(346, 438, 132, 48);
+		button_2.setBounds(346, 548, 132, 48);
 		UserJoin.add(button_2);
 		
 		JPanel panel_4 = new JPanel();
@@ -215,12 +292,385 @@ public class 회원가입 {
 		panel_4.setBounds(0, 34, 634, 99);
 		UserJoin.add(panel_4);
 		
-		JLabel label_1 = new JLabel("\uD68C\uC6D0\uAC00\uC785");
+		JLabel label_1 = new JLabel("\uAC1C\uC778\uC0AC\uC6A9\uC790 \uD68C\uC6D0\uAC00\uC785");
 		label_1.setFont(new Font("HY수평선B", Font.BOLD, 35));
-		label_1.setBounds(23, 30, 173, 46);
+		label_1.setBounds(23, 30, 388, 46);
 		panel_4.add(label_1);
 		
-		JPanel panel_5 = new JPanel();
-		panel_1.add(panel_5, "name_79986487518000");
+		JPanel panel_8 = new JPanel();
+		panel_8.setLayout(null);
+		panel_8.setBackground(new Color(204, 255, 255));
+		panel_8.setBounds(107, 266, 389, 39);
+		UserJoin.add(panel_8);
+		
+		JLabel lblPw_2 = new JLabel("PW");
+		lblPw_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPw_2.setFont(new Font("굴림", Font.BOLD, 16));
+		lblPw_2.setBounds(0, -1, 119, 42);
+		panel_8.add(lblPw_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(120, 1, 269, 41);
+		panel_8.add(textField_3);
+		
+		JPanel panel_9 = new JPanel();
+		panel_9.setLayout(null);
+		panel_9.setBackground(new Color(204, 255, 255));
+		panel_9.setBounds(107, 315, 389, 39);
+		UserJoin.add(panel_9);
+		
+		JLabel lblPw_1 = new JLabel("\uC774\uB984");
+		lblPw_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPw_1.setFont(new Font("굴림", Font.BOLD, 16));
+		lblPw_1.setBounds(0, -1, 119, 42);
+		panel_9.add(lblPw_1);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(120, 1, 269, 41);
+		panel_9.add(textField_4);
+		
+		JPanel panel_10 = new JPanel();
+		panel_10.setLayout(null);
+		panel_10.setBackground(new Color(204, 255, 255));
+		panel_10.setBounds(107, 367, 389, 39);
+		UserJoin.add(panel_10);
+		
+		JLabel label_4 = new JLabel("\uC8FC\uC18C");
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setFont(new Font("굴림", Font.BOLD, 16));
+		label_4.setBounds(0, -1, 119, 42);
+		panel_10.add(label_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(120, 1, 269, 41);
+		panel_10.add(textField_5);
+		
+		JButton btnNewButton_1 = new JButton("\uC911\uBCF5\uD655\uC778");
+		btnNewButton_1.setBounds(373, 224, 115, 32);
+		UserJoin.add(btnNewButton_1);
+		
+		JPanel panel_11 = new JPanel();
+		panel_11.setLayout(null);
+		panel_11.setBackground(new Color(204, 255, 255));
+		panel_11.setBounds(107, 416, 389, 39);
+		UserJoin.add(panel_11);
+		
+		JLabel label_3 = new JLabel("\uC804\uD654\uBC88\uD638");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setFont(new Font("굴림", Font.BOLD, 16));
+		label_3.setBounds(0, -1, 119, 42);
+		panel_11.add(label_3);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(120, 1, 269, 41);
+		panel_11.add(textField_6);
+		
+		
+		
+		JPanel panel_21 = new JPanel();
+		panel_21.setLayout(null);
+		panel_21.setBackground(new Color(204, 255, 255));
+		panel_21.setBounds(107, 157, 389, 39);
+		ShopKeeperJoin.add(panel_21);
+		
+		JLabel label_13 = new JLabel("ID");
+		label_13.setHorizontalAlignment(SwingConstants.CENTER);
+		label_13.setFont(new Font("굴림", Font.BOLD, 16));
+		label_13.setBounds(0, -1, 119, 42);
+		panel_21.add(label_13);
+		
+		textField_14 = new JTextField();
+		textField_14.setColumns(10);
+		textField_14.setBounds(120, 1, 269, 41);
+		panel_21.add(textField_14);
+		
+		JButton button_6 = new JButton("\uAC00\uC785\uC2E0\uCCAD");
+		button_6.setFont(new Font("굴림", Font.BOLD, 15));
+		button_6.setBounds(140, 548, 132, 48);
+		ShopKeeperJoin.add(button_6);
+		
+		JButton button_7 = new JButton("\uCDE8\uC18C");
+		button_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(LoJo);
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+			}
+		});
+		button_7.setFont(new Font("굴림", Font.BOLD, 15));
+		button_7.setBounds(346, 548, 132, 48);
+		ShopKeeperJoin.add(button_7);
+		
+		JPanel panel_22 = new JPanel();
+		panel_22.setLayout(null);
+		panel_22.setBackground(Color.WHITE);
+		panel_22.setBounds(0, 34, 634, 99);
+		ShopKeeperJoin.add(panel_22);
+		
+		JLabel label_14 = new JLabel("\uC0AC\uC7A5\uC6A9 \uD68C\uC6D0\uAC00\uC785");
+		label_14.setFont(new Font("HY수평선B", Font.BOLD, 35));
+		label_14.setBounds(23, 30, 388, 46);
+		panel_22.add(label_14);
+		
+		JPanel panel_23 = new JPanel();
+		panel_23.setLayout(null);
+		panel_23.setBackground(new Color(204, 255, 255));
+		panel_23.setBounds(107, 248, 389, 39);
+		ShopKeeperJoin.add(panel_23);
+		
+		JLabel lblPw_3 = new JLabel("PW");
+		lblPw_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPw_3.setFont(new Font("굴림", Font.BOLD, 16));
+		lblPw_3.setBounds(0, -1, 119, 42);
+		panel_23.add(lblPw_3);
+		
+		textField_15 = new JTextField();
+		textField_15.setColumns(10);
+		textField_15.setBounds(120, 1, 269, 41);
+		panel_23.add(textField_15);
+		
+		JPanel panel_24 = new JPanel();
+		panel_24.setLayout(null);
+		panel_24.setBackground(new Color(204, 255, 255));
+		panel_24.setBounds(107, 297, 389, 39);
+		ShopKeeperJoin.add(panel_24);
+		
+		JLabel label_16 = new JLabel("\uAC00\uAC8C\uC774\uB984");
+		label_16.setHorizontalAlignment(SwingConstants.CENTER);
+		label_16.setFont(new Font("굴림", Font.BOLD, 16));
+		label_16.setBounds(0, -1, 119, 42);
+		panel_24.add(label_16);
+		
+		textField_16 = new JTextField();
+		textField_16.setColumns(10);
+		textField_16.setBounds(120, 1, 269, 41);
+		panel_24.add(textField_16);
+		
+		JPanel panel_25 = new JPanel();
+		panel_25.setLayout(null);
+		panel_25.setBackground(new Color(204, 255, 255));
+		panel_25.setBounds(107, 349, 389, 39);
+		ShopKeeperJoin.add(panel_25);
+		
+		JLabel label_17 = new JLabel("\uC8FC\uC18C");
+		label_17.setHorizontalAlignment(SwingConstants.CENTER);
+		label_17.setFont(new Font("굴림", Font.BOLD, 16));
+		label_17.setBounds(0, -1, 119, 42);
+		panel_25.add(label_17);
+		
+		textField_17 = new JTextField();
+		textField_17.setColumns(10);
+		textField_17.setBounds(120, 1, 269, 41);
+		panel_25.add(textField_17);
+		
+		JButton button_8 = new JButton("\uC911\uBCF5\uD655\uC778");
+		button_8.setBounds(372, 206, 115, 32);
+		ShopKeeperJoin.add(button_8);
+		
+		JPanel panel_26 = new JPanel();
+		panel_26.setLayout(null);
+		panel_26.setBackground(new Color(204, 255, 255));
+		panel_26.setBounds(107, 398, 389, 39);
+		ShopKeeperJoin.add(panel_26);
+		
+		JLabel label_18 = new JLabel("\uC0AC\uC5C5\uC790\uBC88\uD638");
+		label_18.setHorizontalAlignment(SwingConstants.CENTER);
+		label_18.setFont(new Font("굴림", Font.BOLD, 16));
+		label_18.setBounds(0, -1, 119, 42);
+		panel_26.add(label_18);
+		
+		textField_18 = new JTextField();
+		textField_18.setColumns(10);
+		textField_18.setBounds(120, 1, 269, 41);
+		panel_26.add(textField_18);
+		
+		JPanel panel_27 = new JPanel();
+		panel_27.setLayout(null);
+		panel_27.setBackground(new Color(204, 255, 255));
+		panel_27.setBounds(107, 447, 389, 39);
+		ShopKeeperJoin.add(panel_27);
+		
+		JLabel label_19 = new JLabel("\uAC00\uAC8C\uBC88\uD638");
+		label_19.setHorizontalAlignment(SwingConstants.CENTER);
+		label_19.setFont(new Font("굴림", Font.BOLD, 16));
+		label_19.setBounds(0, -1, 119, 42);
+		panel_27.add(label_19);
+		
+		textField_19 = new JTextField();
+		textField_19.setColumns(10);
+		textField_19.setBounds(120, 1, 269, 41);
+		panel_27.add(textField_19);
+		
+		JPanel panel_14 = new JPanel();
+		panel_14.setLayout(null);
+		panel_14.setBackground(new Color(204, 255, 255));
+		panel_14.setBounds(107, 157, 389, 39);
+		RiderJoin.add(panel_14);
+		
+		JLabel label_6 = new JLabel("ID");
+		label_6.setHorizontalAlignment(SwingConstants.CENTER);
+		label_6.setFont(new Font("굴림", Font.BOLD, 16));
+		label_6.setBounds(0, -1, 119, 42);
+		panel_14.add(label_6);
+		
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(120, 1, 269, 41);
+		panel_14.add(textField_8);
+		
+		JButton button_3 = new JButton("\uAC00\uC785\uC2E0\uCCAD");
+		button_3.setFont(new Font("굴림", Font.BOLD, 15));
+		button_3.setBounds(140, 548, 132, 48);
+		RiderJoin.add(button_3);
+		
+		JButton button_4 = new JButton("\uCDE8\uC18C");
+		button_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(LoJo);
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+			}
+		});
+		button_4.setFont(new Font("굴림", Font.BOLD, 15));
+		button_4.setBounds(346, 548, 132, 48);
+		RiderJoin.add(button_4);
+		
+		JPanel panel_15 = new JPanel();
+		panel_15.setLayout(null);
+		panel_15.setBackground(Color.WHITE);
+		panel_15.setBounds(0, 34, 634, 99);
+		RiderJoin.add(panel_15);
+		
+		JLabel label_7 = new JLabel("\uB77C\uC774\uB354 \uD68C\uC6D0\uAC00\uC785");
+		label_7.setFont(new Font("HY수평선B", Font.BOLD, 35));
+		label_7.setBounds(23, 30, 388, 46);
+		panel_15.add(label_7);
+		
+		JPanel panel_16 = new JPanel();
+		panel_16.setLayout(null);
+		panel_16.setBackground(new Color(204, 255, 255));
+		panel_16.setBounds(107, 248, 389, 39);
+		RiderJoin.add(panel_16);
+		
+		JLabel lblPw_4 = new JLabel("PW");
+		lblPw_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPw_4.setFont(new Font("굴림", Font.BOLD, 16));
+		lblPw_4.setBounds(0, -1, 119, 42);
+		panel_16.add(lblPw_4);
+		
+		textField_9 = new JTextField();
+		textField_9.setColumns(10);
+		textField_9.setBounds(120, 1, 269, 41);
+		panel_16.add(textField_9);
+		
+		JPanel panel_17 = new JPanel();
+		panel_17.setLayout(null);
+		panel_17.setBackground(new Color(204, 255, 255));
+		panel_17.setBounds(107, 297, 389, 39);
+		RiderJoin.add(panel_17);
+		
+		JLabel label_9 = new JLabel("\uC774\uB984");
+		label_9.setHorizontalAlignment(SwingConstants.CENTER);
+		label_9.setFont(new Font("굴림", Font.BOLD, 16));
+		label_9.setBounds(0, -1, 119, 42);
+		panel_17.add(label_9);
+		
+		textField_10 = new JTextField();
+		textField_10.setColumns(10);
+		textField_10.setBounds(120, 1, 269, 41);
+		panel_17.add(textField_10);
+		
+		JPanel panel_18 = new JPanel();
+		panel_18.setLayout(null);
+		panel_18.setBackground(new Color(204, 255, 255));
+		panel_18.setBounds(107, 349, 389, 39);
+		RiderJoin.add(panel_18);
+		
+		JLabel label_10 = new JLabel("\uC6B4\uC1A1\uC218\uB2E8");
+		label_10.setHorizontalAlignment(SwingConstants.CENTER);
+		label_10.setFont(new Font("굴림", Font.BOLD, 16));
+		label_10.setBounds(0, -1, 119, 42);
+		panel_18.add(label_10);
+		
+	
+		JRadioButton 오토바이 = new JRadioButton("\uC624\uD1A0\uBC14\uC774");
+		오토바이.setBackground(Color.WHITE);
+		오토바이.setBounds(121, -1, 138, 23);
+		panel_18.add(오토바이);
+		
+		JRadioButton 자전거 = new JRadioButton("\uC790\uC804\uAC70");
+		자전거.setBackground(Color.WHITE);
+		자전거.setBounds(121, 18, 138, 23);
+		panel_18.add(자전거);
+		
+		JRadioButton 차량 = new JRadioButton("\uCC28\uB7C9");
+		차량.setBackground(Color.WHITE);
+		차량.setBounds(257, -1, 132, 23);
+		panel_18.add(차량);
+		
+		JRadioButton 기타 = new JRadioButton("\uAE30\uD0C0");
+		기타.setBackground(Color.WHITE);
+		기타.setBounds(257, 18, 132, 23);
+		panel_18.add(기타);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(오토바이);
+		group.add(자전거);
+		group.add(차량);
+		group.add(기타);
+		
+		
+		
+		JButton button_5 = new JButton("\uC911\uBCF5\uD655\uC778");
+		button_5.setBounds(376, 206, 115, 32);
+		RiderJoin.add(button_5);
+		
+		JPanel panel_19 = new JPanel();
+		panel_19.setLayout(null);
+		panel_19.setBackground(new Color(204, 255, 255));
+		panel_19.setBounds(107, 398, 389, 39);
+		RiderJoin.add(panel_19);
+		
+		JLabel label_11 = new JLabel("\uC9C0\uC5ED");
+		label_11.setHorizontalAlignment(SwingConstants.CENTER);
+		label_11.setFont(new Font("굴림", Font.BOLD, 16));
+		label_11.setBounds(0, -1, 119, 42);
+		panel_19.add(label_11);
+		
+		textField_12 = new JTextField();
+		textField_12.setColumns(10);
+		textField_12.setBounds(120, 1, 269, 41);
+		panel_19.add(textField_12);
+		
+		JPanel panel_20 = new JPanel();
+		panel_20.setLayout(null);
+		panel_20.setBackground(new Color(204, 255, 255));
+		panel_20.setBounds(107, 447, 389, 39);
+		RiderJoin.add(panel_20);
+		
+		JLabel label_12 = new JLabel("\uC18C\uC18D\uD68C\uC0AC");
+		label_12.setHorizontalAlignment(SwingConstants.CENTER);
+		label_12.setFont(new Font("굴림", Font.BOLD, 16));
+		label_12.setBounds(0, -1, 119, 42);
+		panel_20.add(label_12);
+		
+		textField_13 = new JTextField();
+		textField_13.setColumns(10);
+		textField_13.setBounds(120, 1, 269, 41);
+		panel_20.add(textField_13);
 	}
 }
