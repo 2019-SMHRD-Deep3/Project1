@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 public class MemberDAO {
 
@@ -130,4 +130,55 @@ public class MemberDAO {
 		}
 		return rows;
 	}
+	
+	
+	
+	
+	// 로그인
+	// 일반유저
+	public UserModel selectOne(UserModel m) {
+		UserModel loginUser = null;
+		
+		try { // try ~ catch 예외처리 
+			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+			
+			conn = DriverManager.getConnection(url,user, password); 
+			String sql = "SELECT * FROM USER2 " +
+						"WHERE USER_ID = ? AND PW = ?"; 
+			psmt = conn.prepareStatement(sql);  
+			psmt.setString(1, m.getID());
+			psmt.setString(2, m.getPW());
+			rs = psmt.executeQuery();  // 실행
+			
+			if(rs.next()) {  // rs.next()  -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+				// 해당 ID와 PW를 가진 사람이 존재
+				String id = rs.getString("USER_ID");
+				String pw = rs.getString("PW");
+				loginUser = new UserModel(id, pw);  // 객체를 생성해주기 
+	
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally { 
+			try {
+				if(rs != null) rs.close();
+				if(psmt !=null) psmt.close();
+				if(conn!= null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			} 
+		}
+		
+		return loginUser;
+	}
+	
 }

@@ -39,5 +39,9 @@ public class MemberManagementService {
 		}
 	}
 
-
+	//·Î±×ÀÎ
+	public UserModel userLogin(UserModel m) {
+		UserModel loginUser = dao.selectOne(m);
+		return loginUser;
+	}
 }

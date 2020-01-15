@@ -21,8 +21,8 @@ import javax.swing.SwingConstants;
 
 import Model.RiderModel;
 import Model.ShopkeeperModel;
-import controller.MemberManagementService;
 import Model.UserModel;
+import controller.MemberManagementService;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
@@ -81,8 +81,6 @@ public class 회원가입 {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(400, 150, 1011, 661);
-		String imgPath = this.getClass().getResource(".").getPath()+"..//..//img//aa.png";
-		System.out.println(imgPath);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -137,6 +135,34 @@ public class 회원가입 {
 		panel_3.add(textField_1);
 		
 		JButton btnNewButton = new JButton("\uB85C\uADF8\uC778");
+		btnNewButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				// 로그인 기능
+				// id, pw 를 컴포넌트에서 가져오기
+				String infoId = user_id.getText();
+				String infoPw = user_pw.getText();
+				// Member 객체 생성
+				UserModel m = new UserModel(infoId, infoPw);
+				// 로그인 요청하기
+				UserModel loginUser = service.userLogin(m);
+				if(loginUser==null) {
+					JOptionPane.showMessageDialog(frame, "로그인 실패");
+				}else {
+					JOptionPane.showMessageDialog(frame, "로그인 성공");
+					
+//					MMMain main = new MMMain(loginUser);   // 메인 창 생성
+					frame.dispose();              // 로그인 창 닫기
+					
+				}
+				
+				
+				
+			}
+					
+
+		});
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
 		btnNewButton.setBounds(140, 438, 132, 48);
 		main.add(btnNewButton);
@@ -300,7 +326,10 @@ public class 회원가입 {
 				if(result) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					frame.dispose();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					panel_1.removeAll();
+					panel_1.add(main);
+					panel_1.repaint();
+					panel_1.revalidate();
 				}else {
 					JOptionPane.showMessageDialog(frame, "회원가입 실패");
 				}
@@ -451,7 +480,10 @@ public class 회원가입 {
 				if(result) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					frame.dispose();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					panel_1.removeAll();
+					panel_1.add(main);
+					panel_1.repaint();
+					panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
 				}else {
 					JOptionPane.showMessageDialog(frame, "회원가입 실패");
 				}
@@ -630,7 +662,10 @@ public class 회원가입 {
 				if(result) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					frame.dispose();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					panel_1.removeAll();
+					panel_1.add(main);
+					panel_1.repaint();
+					panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
 				}else {
 					JOptionPane.showMessageDialog(frame, "회원가입 실패");
 				}
