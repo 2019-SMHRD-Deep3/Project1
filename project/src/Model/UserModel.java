@@ -22,6 +22,11 @@ public class UserModel extends Model{
 		
 	}
 	
+	// 중복 확인
+	public UserModel(String ID) {
+		super(ID);
+	}
+
 	// Getter 
 	public String getUSERNAME() {
 		return USERNAME;

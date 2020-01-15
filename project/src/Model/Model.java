@@ -13,6 +13,12 @@ public class Model {
 		this.PW = PW;
 	}
 	
+	// 중복 확인
+	public Model(String ID) {
+		super();
+		this.ID = ID;
+	}
+
 	// getter
 	public String getID() {
 		return ID;
