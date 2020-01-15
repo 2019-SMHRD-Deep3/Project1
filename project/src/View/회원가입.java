@@ -178,6 +178,10 @@ public class 회원가입 {
 		panel_1.add(LoJo, "name_83535195314200");
 		
 		JButton button = new JButton("\uD68C\uC6D0\uAC00\uC785");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
