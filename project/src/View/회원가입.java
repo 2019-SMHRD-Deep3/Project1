@@ -21,8 +21,8 @@ import javax.swing.SwingConstants;
 
 import Model.RiderModel;
 import Model.ShopkeeperModel;
-import Model.UserModel;
 import controller.MemberManagementService;
+import Model.UserModel;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
