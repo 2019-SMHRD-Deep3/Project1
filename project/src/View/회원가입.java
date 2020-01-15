@@ -565,6 +565,10 @@ public class 회원가입 {
 		panel_14.add(textField_8);
 		
 		JButton button_3 = new JButton("\uAC00\uC785\uC2E0\uCCAD");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		button_3.setFont(new Font("굴림", Font.BOLD, 15));
 		button_3.setBounds(140, 548, 132, 48);
 		RiderJoin.add(button_3);

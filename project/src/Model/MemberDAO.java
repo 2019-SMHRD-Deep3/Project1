@@ -33,7 +33,11 @@ public class MemberDAO {
 			psmt.setString(4, m.getADDRESS());
 			psmt.setInt(5, m.getPHONE());
 			rows = psmt.executeUpdate();
-			
+			if(rows==0) {
+				System.out.println("sql문이 잘못되었습니다.");
+			}else {
+				
+			}
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace(); //오류문구 출력
