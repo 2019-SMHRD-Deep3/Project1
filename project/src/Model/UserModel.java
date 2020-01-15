@@ -16,6 +16,12 @@ public class UserModel extends Model{
 		this.PHONE = PHONE;
 	}
 	
+	// ·Î±×ÀÎ
+	public UserModel(String ID, String PW) {
+		super(ID, PW);
+		
+	}
+	
 	// Getter 
 	public String getUSERNAME() {
 		return USERNAME;
