@@ -10,8 +10,8 @@ public class RiderModel extends Model {
 	private String LOC;
 	private String COMPANY;
 	private int PHONE;
-
 	
+
 	// 회원가입
 	public RiderModel(String ID, String PW, String RIDERNAME, String TRANSPORTATION, String LOC,
 			String COMPANY, int PHONE) {
