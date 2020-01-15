@@ -15,19 +15,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-
-import controller.MemberManagementService;
-
+import Model.Model;
 import Model.RiderModel;
 import Model.ShopkeeperModel;
-
 import Model.UserModel;
 import controller.MemberManagementService;
-import javax.swing.JPasswordField;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
@@ -142,15 +139,14 @@ public class 회원가입 {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				// 로그인 기능
 				// id, pw 를 컴포넌트에서 가져오기
 				String infoId = textField.getText();
 				String infoPw = passwordField.getText();
 				// Member 객체 생성
-				UserModel m = new UserModel(infoId, infoPw);
+				Model m = new UserModel(infoId, infoPw);
 				// 로그인 요청하기
-				UserModel loginUser = service.userLogin(m);
+				Model loginUser = service.userLogin(m);
 				if(loginUser==null) {
 					JOptionPane.showMessageDialog(frame, "로그인 실패");
 				}else {
@@ -424,6 +420,25 @@ public class 회원가입 {
 		panel_10.add(user_address);
 		
 		JButton btnNewButton_1 = new JButton("\uC911\uBCF5\uD655\uC778");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// 일반 유저 중복 확인
+				String ID = user_id.getText();
+				
+				Model m = new UserModel(ID);
+				
+				boolean result = service.idCheck(m);
+				if(result) {
+					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+					JOptionPane.showMessageDialog(frame, "존재하지 않는 아이디입니다.");
+					
+				}else {
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
+				}
+				
+				
+			}
+		});
 		btnNewButton_1.setBounds(373, 224, 115, 32);
 		UserJoin.add(btnNewButton_1);
 		
@@ -582,6 +597,24 @@ public class 회원가입 {
 		panel_25.add(shopkeeper_address);
 		
 		JButton button_8 = new JButton("\uC911\uBCF5\uD655\uC778");
+		button_8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// 사장 중복 확인
+				String ID = shopkeeper_id.getText();
+				
+				Model m = new UserModel(ID);
+				
+				boolean result = service.idCheck(m);
+				if(result) {
+					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+					JOptionPane.showMessageDialog(frame, "존재하지 않는 아이디입니다.");
+					
+				}else {
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
+				}
+			}
+		});
 		button_8.setBounds(372, 206, 115, 32);
 		ShopKeeperJoin.add(button_8);
 		
@@ -783,6 +816,24 @@ public class 회원가입 {
 		
 		
 		JButton button_5 = new JButton("\uC911\uBCF5\uD655\uC778");
+		button_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// 라이더 중복 확인
+				String ID = rider_id.getText();
+				
+				Model m = new UserModel(ID);
+				
+				boolean result = service.idCheck(m);
+				if(result) {
+					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+					JOptionPane.showMessageDialog(frame, "존재하지 않는 아이디입니다.");
+					
+				}else {
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
+				}
+			}
+		});
 		button_5.setBounds(376, 206, 115, 32);
 		RiderJoin.add(button_5);
 		

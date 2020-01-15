@@ -1,6 +1,7 @@
 package controller;
 
 import Model.MemberDAO;
+import Model.Model;
 import Model.RiderModel;
 import Model.ShopkeeperModel;
 import Model.UserModel;
@@ -10,8 +11,18 @@ public class MemberManagementService {
 	private MemberDAO dao = new MemberDAO();
 
 	
+	// 중복 확인
+	public boolean idCheck(Model m) {
+		Model ID = dao.idCheck(m);
+		if (ID == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
-	//생성
+	
+	// 생성
 	public boolean memberJoin(UserModel m) {
 		int rows = dao.insert(m);
 		if (rows == 0) {
@@ -40,8 +51,8 @@ public class MemberManagementService {
 	}
 
 	//로그인
-	public UserModel userLogin(UserModel m) {
-		UserModel loginUser = dao.selectOne(m);
+	public Model userLogin(Model m) {
+		Model loginUser = dao.selectOne(m);
 		return loginUser;
 	}
 }
