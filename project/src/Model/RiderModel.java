@@ -2,7 +2,7 @@ package Model;
 
 public class RiderModel extends Model {
 
-	// ID, PW, 이름, 전화번호, 평점, 운행수단, 배달지역, 소속 배달회사
+	// ID, PW, 이름, 평점, 운행수단, 배달지역, 소속 배달회사, 전화번호
 
 	private String RIDERNAME;
 	private int RATING;
