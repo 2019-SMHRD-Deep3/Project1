@@ -145,8 +145,8 @@ public class 회원가입 {
 				// TODO Auto-generated method stub
 				// 로그인 기능
 				// id, pw 를 컴포넌트에서 가져오기
-				String infoId = user_id.getText();
-				String infoPw = user_pw.getText();
+				String infoId = textField.getText();
+				String infoPw = textField_1.getText();
 				// Member 객체 생성
 				UserModel m = new UserModel(infoId, infoPw);
 				// 로그인 요청하기

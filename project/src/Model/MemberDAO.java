@@ -148,6 +148,7 @@ public class MemberDAO {
 			psmt = conn.prepareStatement(sql);  
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());
+			
 			rs = psmt.executeQuery();  // 실행
 			
 			if(rs.next()) {  // rs.next()  -> 다음 줄이 있는지 없는지 T/F 로 알려줌
@@ -155,7 +156,7 @@ public class MemberDAO {
 				String id = rs.getString("USER_ID");
 				String pw = rs.getString("PW");
 				loginUser = new UserModel(id, pw);  // 객체를 생성해주기 
-	
+				
 			}
 			
 		} catch (ClassNotFoundException e) {
