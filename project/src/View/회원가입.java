@@ -19,7 +19,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import Controller.MemberManagementService;
+import controller.MemberManagementService;
 import Model.UserModel;
 
 public class 회원가입 {
