@@ -27,13 +27,13 @@ import Model.ShopkeeperModel;
 
 import Model.UserModel;
 import controller.MemberManagementService;
+import javax.swing.JPasswordField;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
 	private JTextField user_id;
 	private JTextField user_pw;
 	private JTextField user_name;
@@ -55,6 +55,7 @@ public class 회원가입 {
 	private JRadioButton car;
 	private JRadioButton bike;
 	private JRadioButton etc;
+	private JPasswordField passwordField;
 	
 
 	
@@ -133,10 +134,9 @@ public class 회원가입 {
 		lblPw.setBounds(0, -1, 119, 42);
 		panel_3.add(lblPw);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(120, 1, 269, 41);
-		panel_3.add(textField_1);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(120, 0, 269, 41);
+		panel_3.add(passwordField);
 		
 		JButton btnNewButton = new JButton("\uB85C\uADF8\uC778");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -146,7 +146,7 @@ public class 회원가입 {
 				// 로그인 기능
 				// id, pw 를 컴포넌트에서 가져오기
 				String infoId = textField.getText();
-				String infoPw = textField_1.getText();
+				String infoPw = passwordField.getText();
 				// Member 객체 생성
 				UserModel m = new UserModel(infoId, infoPw);
 				// 로그인 요청하기
