@@ -92,7 +92,7 @@ public class RiderView {
 		Rank.setLayout(null);
 		
 		JLabel categorie1 = new JLabel("");
-		String mk1 = this.getClass().getResource(".").getPath() + "..//..//img//rr.png";
+		String mk1 = this.getClass().getResource(".").getPath() + "..//..//img//mk1.png";
 		categorie1.setIcon(new ImageIcon(mk1));
 		categorie1.setBounds(68, 87, 167, 215);
 		rider_categorie.add(categorie1);
