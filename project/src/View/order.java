@@ -82,6 +82,10 @@ public class order {
 		rightView.add(menuKategorie, "name_191005233949000");
 		menuKategorie.setLayout(null);
 		
+		JPanel panel_9 = new JPanel();
+		panel_9.setBackground(Color.WHITE);
+		rightView.add(panel_9, "name_191255919361100");
+		
 		JPanel ÇÑ¼Ü = new JPanel();
 		rightView.add(ÇÑ¼Ü, "name_191008403446000");
 		ÇÑ¼Ü.setBackground(Color.WHITE);
@@ -161,10 +165,6 @@ public class order {
 					bestMenu.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 18));
 					bestMenu.setBounds(37, 10, 152, 29);
 					ÇÑ¼Ü.add(bestMenu);
-					
-					JPanel panel_9 = new JPanel();
-					panel_9.setBackground(Color.WHITE);
-					rightView.add(panel_9, "name_191255919361100");
 		
 		
 		
