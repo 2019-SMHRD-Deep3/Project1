@@ -2,27 +2,34 @@ package View;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import Model.Model;
-import java.awt.BorderLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.Font;
+import javax.swing.JScrollPane;
 
 public class order2 {
 
 	private JFrame frame;
 	private Model loginUser;
+	
+	
+	
+	
 	
 	
 	
@@ -62,6 +69,13 @@ public class order2 {
 		panel_3.setBounds(0, 0, 279, 632);
 		store.add(panel_3);
 		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(12, 20, 113, 57);
+		panel_3.add(lblNewLabel);
+		lblNewLabel.setText(loginUser.getID());
+		
+		
+		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.WHITE);
 		panel_4.setBounds(279, 0, 716, 620);
@@ -86,11 +100,6 @@ public class order2 {
 		button_1.setBounds(265, 146, 125, 111);
 		main.add(button_1);
 		
-		JButton button_2 = new JButton("\uC601\uC5C5 \uC2DC\uC791/\uC911\uC9C0");
-		
-		button_2.setBounds(465, 146, 125, 111);
-		main.add(button_2);
-		
 		JButton button_3 = new JButton("\uCD1D \uB9E4\uCD9C");
 		button_3.setBounds(52, 368, 125, 111);
 		main.add(button_3);
@@ -102,6 +111,57 @@ public class order2 {
 		JButton button_5 = new JButton("\uC8FC\uBB38 \uC811\uC218\uCC3D");
 		button_5.setBounds(465, 368, 125, 111);
 		main.add(button_5);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(465, 146, 125, 111);
+		main.add(panel);
+		panel.setLayout(null);
+		
+		JRadioButton radioButton = new JRadioButton("\uC885\uB8CC");
+		radioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(radioButton.isSelected()) {
+					JOptionPane.showMessageDialog(frame, "영업을 종료하겠습니다.");
+				}
+			}
+		});
+		radioButton.setBounds(0, 88, 121, 23);
+		panel.add(radioButton);
+		
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("\uC2DC\uC791");
+		rdbtnNewRadioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(rdbtnNewRadioButton.isSelected()) {
+					JOptionPane.showMessageDialog(frame, "영업을 시작하겠습니다.");
+				}
+			}
+		});
+		rdbtnNewRadioButton.setBounds(0, 65, 121, 23);
+		panel.add(rdbtnNewRadioButton);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(radioButton);
+		group.add(rdbtnNewRadioButton);
+		
+		
+		
+		JLabel lblNewLabel_1 = new JLabel("\uC601\uC5C5 \uC2DC\uC791/\uC885\uB8CC");
+		lblNewLabel_1.setBounds(0, 0, 125, 64);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBounds(52, 22, 589, 79);
+		main.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel lblNewLabel_5 = new JLabel("\uC0AC\uC7A5\uB2D8 ");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setBounds(0, 0, 589, 79);
+		panel_6.add(lblNewLabel_5);
 		
 		JPanel store1 = new JPanel();
 		store1.setLayout(null);
@@ -122,15 +182,460 @@ public class order2 {
 				panel_4.revalidate();
 			}
 		});
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBounds(324, 53, 305, 25);
+		store1.add(panel_5);
+		
+		JLabel lblNewLabel_2 = new JLabel("\uAC00\uAC8C \uC815\uBCF4 \uC218\uC815");
+		panel_5.add(lblNewLabel_2);
 		button_6.setBounds(62, 27, 125, 111);
 		store1.add(button_6);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBounds(0, 0, 693, 622);
+		
+		
+		
+		
+		
+		store1.add(panel_2);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBounds(37, 158, 615, 377);
+		panel_2.add(panel_7);
+		
+		JLabel store2 = new JLabel("");
+		store2.setBounds(0, 0, 555, 139);
+		store2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				
+				
+				
+			}
+		});
+		String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//s1.png";
+		panel_7.setLayout(null);
+		store2.setIcon(new ImageIcon(shopImg1));
+		panel_7.add(store2);
+		
+
+		
+		JButton btnNewButton = new JButton("\uC218\uC815\uD558\uAE30");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton.setBounds(510, 545, 142, 44);
+		panel_2.add(btnNewButton);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				
+				
+				
+				
+				
+				
+			}
+		});
 		
 		JPanel menu = new JPanel();
 		menu.setBackground(Color.WHITE);
 		panel_4.add(menu, "name_1749439843296000");
 		menu.setLayout(null);
 		
+		JPanel panel_8 = new JPanel();
+		panel_8.setLayout(null);
+		panel_8.setBackground(Color.WHITE);
+		panel_8.setBounds(0, 0, 693, 622);
+		menu.add(panel_8);
+		
+		JPanel panel_9 = new JPanel();
+		panel_9.setLayout(null);
+		panel_9.setBounds(35, 46, 600, 205);
+		panel_8.add(panel_9);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.WHITE);
+		scrollPane.setBounds(0, 0, 600, 205);
+		panel_9.add(scrollPane);
+		
+		JLabel a1 = new JLabel("");
+		a1.setBounds(0, 0, 542, 126);
+		panel_9.add(a1);
+		
+		JLabel a2 = new JLabel("");
+		a2.setBounds(0, 0, 542, 126);
+		panel_9.add(a2);
+		
+		JLabel a3 = new JLabel("");
+		a3.setBounds(0, 0, 542, 126);
+		panel_9.add(a3);
+		
+		JLabel a4 = new JLabel("");
+		a4.setBounds(0, 0, 542, 126);
+		panel_9.add(a4);
+		
+		JLabel label = new JLabel("  BEST MENU");
+		label.setFont(new Font("HY수평선B", Font.BOLD, 18));
+		label.setBounds(37, 10, 152, 29);
+		panel_8.add(label);
+		
+		JPanel panel_10 = new JPanel();
+		panel_10.setLayout(null);
+		panel_10.setBounds(35, 267, 572, 506);
+		panel_8.add(panel_10);
+		
+		JPanel panel_24 = new JPanel();
+		panel_24.setBounds(275, 0, 301, 440);
+		panel_10.add(panel_24);
+		panel_24.setLayout(null);
+		panel_24.setPreferredSize(new Dimension(280, 440));
+		panel_24.setBackground(Color.WHITE);
+		
+		JLabel label_28 = new JLabel("\uC815\uCC2C\uC2DC\uB9AC\uC988");
+		label_28.setFont(new Font("Dialog", Font.BOLD, 18));
+		label_28.setBounds(12, 10, 272, 25);
+		panel_24.add(label_28);
+		
+		JPanel panel_25 = new JPanel();
+		panel_25.setLayout(null);
+		panel_25.setBackground(Color.WHITE);
+		panel_25.setBounds(12, 35, 243, 25);
+		panel_24.add(panel_25);
+		
+		JLabel label_29 = new JLabel("\uB3C8\uAE4C\uC2A4\uB3C4\uB828\uB2D8\uB3C4\uC2DC\uB77D");
+		label_29.setBounds(0, 0, 131, 25);
+		panel_25.add(label_29);
+		
+		JLabel label_30 = new JLabel("3900\uC6D0");
+		label_30.setBounds(174, 0, 69, 25);
+		panel_25.add(label_30);
+		
+		JPanel panel_26 = new JPanel();
+		panel_26.setLayout(null);
+		panel_26.setBackground(Color.WHITE);
+		panel_26.setBounds(12, 60, 243, 25);
+		panel_24.add(panel_26);
+		
+		JLabel label_31 = new JLabel("\uAD6D\uD654\uB3C4\uC2DC\uB77D");
+		label_31.setBounds(0, 0, 131, 25);
+		panel_26.add(label_31);
+		
+		JLabel label_32 = new JLabel("4000\uC6D0");
+		label_32.setBounds(174, 0, 69, 25);
+		panel_26.add(label_32);
+		
+		JPanel panel_27 = new JPanel();
+		panel_27.setLayout(null);
+		panel_27.setBackground(Color.WHITE);
+		panel_27.setBounds(12, 87, 243, 25);
+		panel_24.add(panel_27);
+		
+		JLabel label_33 = new JLabel("\uCE58\uD0A8\uC81C\uC721\uB3C4\uC2DC\uB77D");
+		label_33.setBounds(0, 0, 131, 25);
+		panel_27.add(label_33);
+		
+		JLabel label_34 = new JLabel("4400\uC6D0");
+		label_34.setBounds(174, 0, 69, 25);
+		panel_27.add(label_34);
+		
+		JPanel panel_28 = new JPanel();
+		panel_28.setLayout(null);
+		panel_28.setBackground(Color.WHITE);
+		panel_28.setBounds(12, 113, 243, 25);
+		panel_24.add(panel_28);
+		
+		JLabel label_35 = new JLabel("\uB3D9\uBC31\uB3C4\uC2DC\uB77D");
+		label_35.setBounds(0, 0, 131, 25);
+		panel_28.add(label_35);
+		
+		JLabel label_36 = new JLabel("5000\uC6D0");
+		label_36.setBounds(174, 0, 69, 25);
+		panel_28.add(label_36);
+		
+		JPanel panel_29 = new JPanel();
+		panel_29.setLayout(null);
+		panel_29.setBackground(Color.WHITE);
+		panel_29.setBounds(12, 140, 243, 25);
+		panel_24.add(panel_29);
+		
+		JLabel label_37 = new JLabel("\uCE60\uB9AC\uCC39\uC300\uD0D5\uC218\uC721\uB3C4\uB828\uB2D8");
+		label_37.setBounds(0, 0, 131, 25);
+		panel_29.add(label_37);
+		
+		JLabel label_38 = new JLabel("4000\uC6D0");
+		label_38.setBounds(174, 0, 69, 25);
+		panel_29.add(label_38);
+		
+		JPanel panel_30 = new JPanel();
+		panel_30.setLayout(null);
+		panel_30.setBackground(Color.WHITE);
+		panel_30.setBounds(12, 168, 243, 25);
+		panel_24.add(panel_30);
+		
+		JLabel label_39 = new JLabel("\uC0DD\uC120\uAE4C\uC2A4\uB3C4\uB828\uB2D8");
+		label_39.setBounds(0, 0, 131, 25);
+		panel_30.add(label_39);
+		
+		JLabel label_40 = new JLabel("3900\uC6D0");
+		label_40.setBounds(174, 0, 69, 25);
+		panel_30.add(label_40);
+		
+		JLabel label_41 = new JLabel("\uBA54\uAC00 \uC2DC\uB9AC\uC988");
+		label_41.setFont(new Font("Dialog", Font.BOLD, 18));
+		label_41.setBounds(12, 220, 226, 25);
+		panel_24.add(label_41);
+		
+		JPanel panel_31 = new JPanel();
+		panel_31.setLayout(null);
+		panel_31.setBackground(Color.WHITE);
+		panel_31.setBounds(12, 245, 243, 25);
+		panel_24.add(panel_31);
+		
+		JLabel label_42 = new JLabel("\uBA54\uAC00 \uCE58\uD0A8\uB9C8\uC694");
+		label_42.setBounds(0, 0, 131, 25);
+		panel_31.add(label_42);
+		
+		JLabel label_43 = new JLabel("5200\uC6D0");
+		label_43.setBounds(174, 0, 69, 25);
+		panel_31.add(label_43);
+		
+		JPanel panel_32 = new JPanel();
+		panel_32.setLayout(null);
+		panel_32.setBackground(Color.WHITE);
+		panel_32.setBounds(12, 271, 243, 25);
+		panel_24.add(panel_32);
+		
+		JLabel label_44 = new JLabel("\uBA54\uAC00 \uCE58\uD0A8\uC81C\uC721");
+		label_44.setBounds(0, 0, 131, 25);
+		panel_32.add(label_44);
+		
+		JLabel label_45 = new JLabel("6900\uC6D0");
+		label_45.setBounds(174, 0, 69, 25);
+		panel_32.add(label_45);
+		
+		JPanel panel_33 = new JPanel();
+		panel_33.setLayout(null);
+		panel_33.setBackground(Color.WHITE);
+		panel_33.setBounds(12, 297, 243, 25);
+		panel_24.add(panel_33);
+		
+		JLabel label_46 = new JLabel("\uBA54\uAC00 \uACE0\uAE30\uACE0\uAE30");
+		label_46.setBounds(0, 0, 131, 25);
+		panel_33.add(label_46);
+		
+		JLabel label_47 = new JLabel("7900\uC6D0");
+		label_47.setBounds(174, 0, 69, 25);
+		panel_33.add(label_47);
+		
+		JPanel panel_11 = new JPanel();
+		panel_11.setLayout(null);
+		panel_11.setPreferredSize(new Dimension(280, 440));
+		panel_11.setBackground(Color.WHITE);
+		panel_11.setBounds(0, 0, 280, 440);
+		panel_10.add(panel_11);
+		
+		JLabel label_1 = new JLabel("\uD504\uB9AC\uBBF8\uC5C4 \uC2DC\uB9AC\uC988");
+		label_1.setFont(new Font("Dialog", Font.BOLD, 18));
+		label_1.setBounds(12, 10, 226, 25);
+		panel_11.add(label_1);
+		
+		JPanel panel_12 = new JPanel();
+		panel_12.setLayout(null);
+		panel_12.setBackground(Color.WHITE);
+		panel_12.setBounds(12, 35, 243, 25);
+		panel_11.add(panel_12);
+		
+		JLabel label_2 = new JLabel("\uB9E4\uD654\uB3C4\uC2DC\uB77D");
+		label_2.setBounds(0, 0, 131, 25);
+		panel_12.add(label_2);
+		
+		JLabel label_3 = new JLabel("10000\uC6D0");
+		label_3.setBounds(174, 0, 69, 25);
+		panel_12.add(label_3);
+		
+		JPanel panel_13 = new JPanel();
+		panel_13.setLayout(null);
+		panel_13.setBackground(Color.WHITE);
+		panel_13.setBounds(12, 61, 243, 25);
+		panel_11.add(panel_13);
+		
+		JLabel label_4 = new JLabel("\uAC1C\uB098\uB9AC\uB3C4\uC2DC\uB77D");
+		label_4.setBounds(0, 0, 131, 25);
+		panel_13.add(label_4);
+		
+		JLabel label_5 = new JLabel("8000\uC6D0");
+		label_5.setBounds(174, 0, 69, 25);
+		panel_13.add(label_5);
+		
+		JPanel panel_14 = new JPanel();
+		panel_14.setLayout(null);
+		panel_14.setBackground(Color.WHITE);
+		panel_14.setBounds(12, 87, 243, 25);
+		panel_11.add(panel_14);
+		
+		JLabel label_6 = new JLabel("\uC9C4\uB2EC\uB798\uB3C4\uC2DC\uB77D");
+		label_6.setBounds(0, 0, 131, 25);
+		panel_14.add(label_6);
+		
+		JLabel label_7 = new JLabel("7000\uC6D0");
+		label_7.setBounds(174, 0, 69, 25);
+		panel_14.add(label_7);
+		
+		JPanel panel_15 = new JPanel();
+		panel_15.setLayout(null);
+		panel_15.setBackground(Color.WHITE);
+		panel_15.setBounds(12, 155, 243, 25);
+		panel_11.add(panel_15);
+		
+		JLabel label_8 = new JLabel("\uC22F\uBD88\uC9C1\uD654\uAD6C\uC774 \uB36E\uBC25");
+		label_8.setBounds(0, 0, 131, 25);
+		panel_15.add(label_8);
+		
+		JLabel label_9 = new JLabel("5700\uC6D0");
+		label_9.setBounds(174, 0, 69, 25);
+		panel_15.add(label_9);
+		
+		JLabel label_10 = new JLabel("\uC2E0\uBA54\uB274");
+		label_10.setFont(new Font("Dialog", Font.BOLD, 18));
+		label_10.setBounds(12, 132, 226, 25);
+		panel_11.add(label_10);
+		
+		JPanel panel_16 = new JPanel();
+		panel_16.setLayout(null);
+		panel_16.setBackground(Color.WHITE);
+		panel_16.setBounds(12, 180, 243, 25);
+		panel_11.add(panel_16);
+		
+		JLabel label_11 = new JLabel("\uC911\uD654 \uC9DC\uC7A5\uBCF6\uC74C\uBC25");
+		label_11.setBounds(0, 0, 131, 25);
+		panel_16.add(label_11);
+		
+		JLabel label_12 = new JLabel("4700\uC6D0");
+		label_12.setBounds(174, 0, 69, 25);
+		panel_16.add(label_12);
+		
+		JPanel panel_17 = new JPanel();
+		panel_17.setLayout(null);
+		panel_17.setBackground(Color.WHITE);
+		panel_17.setBounds(12, 205, 243, 25);
+		panel_11.add(panel_17);
+		
+		JLabel label_13 = new JLabel("\uAD6D\uBB3C\uB5A1\uBCF6\uC774\uD280\uAE40\uC138\uD2B8");
+		label_13.setBounds(0, 0, 131, 25);
+		panel_17.add(label_13);
+		
+		JLabel label_14 = new JLabel("4800\uC6D0");
+		label_14.setBounds(174, 0, 69, 25);
+		panel_17.add(label_14);
+		
+		JLabel label_15 = new JLabel("\uACE0\uAE30\uACE0\uAE30 \uC2DC\uB9AC\uC988");
+		label_15.setFont(new Font("Dialog", Font.BOLD, 18));
+		label_15.setBounds(12, 250, 256, 19);
+		panel_11.add(label_15);
+		
+		JPanel panel_18 = new JPanel();
+		panel_18.setLayout(null);
+		panel_18.setBackground(Color.WHITE);
+		panel_18.setBounds(12, 271, 243, 25);
+		panel_11.add(panel_18);
+		
+		JLabel label_16 = new JLabel("\uACE0\uAE30\uACE0\uAE30");
+		label_16.setBounds(0, 0, 131, 25);
+		panel_18.add(label_16);
+		
+		JLabel label_17 = new JLabel("3900\uC6D0");
+		label_17.setBounds(174, 0, 69, 25);
+		panel_18.add(label_17);
+		
+		JPanel panel_19 = new JPanel();
+		panel_19.setLayout(null);
+		panel_19.setBackground(Color.WHITE);
+		panel_19.setBounds(12, 297, 243, 25);
+		panel_11.add(panel_19);
+		
+		JLabel label_18 = new JLabel("\uB3C8\uCE58\uACE0\uAE30\uACE0\uAE30");
+		label_18.setBounds(0, 0, 131, 25);
+		panel_19.add(label_18);
+		
+		JLabel label_19 = new JLabel("5200\uC6D0");
+		label_19.setBounds(174, 0, 69, 25);
+		panel_19.add(label_19);
+		
+		JPanel panel_20 = new JPanel();
+		panel_20.setLayout(null);
+		panel_20.setBackground(Color.WHITE);
+		panel_20.setBounds(12, 322, 243, 25);
+		panel_11.add(panel_20);
+		
+		JLabel label_20 = new JLabel("\uC0C8\uCE58\uACE0\uAE30\uACE0\uAE30");
+		label_20.setBounds(0, 0, 131, 25);
+		panel_20.add(label_20);
+		
+		JLabel label_21 = new JLabel("6000\uC6D0");
+		label_21.setBounds(174, 0, 69, 25);
+		panel_20.add(label_21);
+		
+		JPanel panel_21 = new JPanel();
+		panel_21.setLayout(null);
+		panel_21.setBackground(Color.WHITE);
+		panel_21.setBounds(12, 348, 243, 25);
+		panel_11.add(panel_21);
+		
+		JLabel label_22 = new JLabel("\uD0D5\uC218\uC721\uB3C4\uB828\uB2D8\uACE0\uAE30\uACE0\uAE30");
+		label_22.setBounds(0, 0, 131, 25);
+		panel_21.add(label_22);
+		
+		JLabel label_23 = new JLabel("5600\uC6D0");
+		label_23.setBounds(174, 0, 69, 25);
+		panel_21.add(label_23);
+		
+		JPanel panel_22 = new JPanel();
+		panel_22.setLayout(null);
+		panel_22.setBackground(Color.WHITE);
+		panel_22.setBounds(12, 375, 243, 25);
+		panel_11.add(panel_22);
+		
+		JLabel label_24 = new JLabel("\uB3C8\uAE4C\uC2A4\uB3C4\uB828\uB2D8\uACE0\uAE30\uACE0\uAE30");
+		label_24.setBounds(0, 0, 131, 25);
+		panel_22.add(label_24);
+		
+		JLabel label_25 = new JLabel("5500\uC6D0");
+		label_25.setBounds(174, 0, 69, 25);
+		panel_22.add(label_25);
+		
+		JPanel panel_23 = new JPanel();
+		panel_23.setLayout(null);
+		panel_23.setBackground(Color.WHITE);
+		panel_23.setBounds(12, 400, 243, 25);
+		panel_11.add(panel_23);
+		
+		JLabel label_26 = new JLabel("\uC0DD\uC120\uAE4C\uC2A4\uB3C4\uB828\uB2D8\uACE0\uAE30\uACE0\uAE30");
+		label_26.setBounds(0, 0, 162, 25);
+		panel_23.add(label_26);
+		
+		JLabel label_27 = new JLabel("5500\uC6D0");
+		label_27.setBounds(174, 0, 69, 25);
+		panel_23.add(label_27);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 450, 600, -448);
+		panel_10.add(scrollPane_1);
+		
 		JButton button_7 = new JButton("\uC774\uC804\uC73C\uB85C");
+		button_7.setBounds(375, 9, 125, 35);
+		panel_8.add(button_7);
+		
+		JButton button_2 = new JButton("\uC218\uC815\uD558\uAE30");
+		button_2.setBounds(510, 9, 125, 35);
+		panel_8.add(button_2);
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -144,8 +649,6 @@ public class order2 {
 				panel_4.revalidate();
 			}
 		});
-		button_7.setBounds(174, 153, 125, 111);
-		menu.add(button_7);
 		
 		JPanel work_start = new JPanel();
 		work_start.setBackground(Color.WHITE);
@@ -253,17 +756,6 @@ public class order2 {
 				panel_4.add(menu);
 				panel_4.repaint();
 				panel_4.revalidate();
-			}
-		});
-		
-		button_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-						panel_4.removeAll();
-						panel_4.add(work_start);
-						panel_4.repaint();
-						panel_4.revalidate();
-				
 			}
 		});
 		
