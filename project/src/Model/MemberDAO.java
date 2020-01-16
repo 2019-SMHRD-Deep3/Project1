@@ -303,5 +303,59 @@ public class MemberDAO {
 		return ID;
 	}
 	
+	public deliveryModel selectdel () {
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "hr";
+		String password = "hr";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		deliveryModel del = null;
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); // "회사별로 다름"
+			conn = DriverManager.getConnection(url, user, password); // 연결된 정보를 가진 객체를 연결시킴
+			String sql = "select DISTINCT ORDER_NUMBER,SHOP_ADDRESS,SHOPNAME, USER_ADDRESS" 
+			      + "from ORDER2 o, SHOPKEEPER s, USER2 u"
+					+"where o.USER_ID = u.USER_ID AND s.SHOPKEEPER_ID = O.SHOPKEEPER_ID ";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			
+			if(rs.next()) { // 몇줄이 select될지 모르니깐 rs.next() ->다음줄에 읽을 게 있는지 true or false
+				int ORDER_NUMBER = rs.getInt(1);  //select 한 결과물
+				String SHOP_ADDRESS = rs.getNString(3);
+				String SHOPNAME = rs.getString(2);
+				String USER_ADDRESS = rs.getString(4);
+				
+				del = new deliveryModel (ORDER_NUMBER,SHOP_ADDRESS,SHOPNAME,USER_ADDRESS);
+				
+				
+			
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) { // sql 잘못작성되었을 시
+			e.printStackTrace();
+		} finally { // 예외가 발생하더라고 finally는 무조건 실행
+			try {
+				if(rs!=null) rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null)
+					conn.close();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+		return del;
+		
+	}
 	
 }

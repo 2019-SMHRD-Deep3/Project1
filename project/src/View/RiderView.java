@@ -4,26 +4,26 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Model.deliveryModel;
+import javax.swing.JLabel;
+
 public class RiderView {
 
+	deliveryModel del = new deliveryModel();
+	
 	private JFrame frame;
 	private JPanel orderPanel;
 	private int cnt;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,6 +42,7 @@ public class RiderView {
 	 */
 	public RiderView() {
 		initialize();
+		
 		frame.setBounds(400, 150, 1011, 661);
 		
 		JPanel panel_1 =new JPanel();
@@ -61,7 +62,7 @@ public class RiderView {
 		
 		main.add(leftView);
 		
-
+		
 		
 		
 		JPanel name = new JPanel();
@@ -76,6 +77,10 @@ public class RiderView {
 		JPanel order = new JPanel();
 		order.setBounds(22, 139, 215, 70);
 		leftView.add(order);
+		order.setLayout(new CardLayout(0, 0));
+		
+		JLabel order2 = new JLabel("°¡°Ô " );
+		order.add(order2, "name_1129751298635600");
 		
 
 		
