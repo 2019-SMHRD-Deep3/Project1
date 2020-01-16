@@ -65,10 +65,16 @@ public class order {
 
 		
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 255, 255));
-		panel_2.setBounds(12, 25, 196, 40);
-		leftView.add(panel_2);
+		JPanel ID = new JPanel();
+		ID.setBackground(new Color(255, 255, 255));
+		ID.setBounds(12, 25, 196, 40);
+		leftView.add(ID);
+		
+		JPanel Information = new JPanel();
+		Information.setBackground(new Color(135, 206, 250));
+		Information.setBounds(12, 119, 255, 471);
+		leftView.add(Information);
+		Information.setLayout(null);
 	
 		
 
