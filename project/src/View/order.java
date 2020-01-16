@@ -23,11 +23,11 @@ import java.awt.GridLayout;
 public class order {
 
 	private JFrame frame;
-	private UserModel loginUser;
+	private Model loginUser;
 	private ArrayList<String> menuName = new ArrayList<String>();
 	private ArrayList<String> menuPrice = new ArrayList<String>();
 	
-	public order(UserModel loginUser) {
+	public order(Model loginUser) {
 		this.loginUser = loginUser;
 		initialize();
 		frame.setVisible(true);
