@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 
 public class RiderView {
 
@@ -67,51 +69,74 @@ public class RiderView {
 		panel_2.setBounds(12, 25, 196, 40);
 		leftView.add(panel_2);
 		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBounds(12, 387, 228, 76);
+		leftView.add(panel_5);
+		
 
 		
 
 		
 		JPanel rightView = new JPanel();
-		rightView.setBounds(279, 0, 693, 622);
+		rightView.setBackground(Color.WHITE);
+		rightView.setBounds(279, 0, 716, 622);
 		main.add(rightView);
-	
-		rightView.setLayout(new CardLayout(0, 0));
+		rightView.setLayout(null);
 		
-		JPanel rider_categorie = new JPanel();
-		rider_categorie.setBackground(Color.WHITE);
-		rightView.add(rider_categorie, "name_191005233949000");
-		rider_categorie.setLayout(null);
+		JPanel rider_call = new JPanel();
+		rider_call.setBounds(27, 97, 651, 780);
+		rider_call.setBackground(Color.WHITE);
+		rightView.add(rider_call);
+		rider_call.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 0, 651, 856);
+		rider_call.add(scrollPane_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		scrollPane_1.setViewportView(panel);
+		panel.setPreferredSize(new Dimension(500,1000));
+		panel.setLayout(null);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setToolTipText("");
+		panel_6.setBackground(Color.WHITE);
+		panel_6.setBounds(0, 0, 632, 149);
+		panel.add(panel_6);
+		panel_6.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panel_6.add(lblNewLabel, "name_1107657527168999");
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBackground(Color.WHITE);
+		panel_7.setBounds(0, 150, 632, 149);
+		panel.add(panel_7);
+		panel_7.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		panel_7.add(lblNewLabel_1, "name_1107660350809300");
+		
+		JPanel panel_8 = new JPanel();
+		panel_8.setBackground(Color.WHITE);
+		panel_8.setBounds(0, 300, 632, 149);
+		panel.add(panel_8);
+		panel_8.setLayout(new CardLayout(0, 0));
+		
 		
 		JPanel panel_9 = new JPanel();
+		panel_9.setBounds(-10287, -10031, 716, 612);
 		panel_9.setBackground(Color.WHITE);
-		rightView.add(panel_9, "name_191255919361100");
+		rightView.add(panel_9);
 		
 		JPanel Rank = new JPanel();
-		rightView.add(Rank, "name_191008403446000");
+		Rank.setBounds(-10287, -10031, 716, 612);
+		rightView.add(Rank);
 		Rank.setBackground(Color.WHITE);
 		Rank.setLayout(null);
-		
-		JLabel categorie1 = new JLabel("");
 		String mk1 = this.getClass().getResource(".").getPath() + "..//..//img//mk1.png";
-		categorie1.setIcon(new ImageIcon(mk1));
-		categorie1.setBounds(68, 87, 167, 215);
-		rider_categorie.add(categorie1);
-		categorie1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				rightView.removeAll();
-				rightView.add(Rank);
-				rightView.repaint();
-				rightView.revalidate();
-				
-			}
-		});
-		
-		JLabel categorie2 = new JLabel("");
 		String mk2 = this.getClass().getResource(".").getPath() + "..//..//img//mk2.png";
-		categorie2.setIcon(new ImageIcon(mk2));
-		categorie2.setBounds(259, 87, 141, 215);
-		rider_categorie.add(categorie2);
 		
 				
 				JPanel panel_3 = new JPanel();
