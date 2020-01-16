@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Model.Model;
 import Model.UserModel;
 import javax.swing.SwingConstants;
 import java.awt.GridLayout;
@@ -22,11 +23,11 @@ import java.awt.GridLayout;
 public class order {
 
 	private JFrame frame;
-	private UserModel loginUser;
+	private Model loginUser;
 	private ArrayList<String> menuName = new ArrayList<String>();
 	private ArrayList<String> menuPrice = new ArrayList<String>();
 	
-	public order(UserModel loginUser) {
+	public order(Model loginUser) {
 		this.loginUser = loginUser;
 		initialize();
 		frame.setVisible(true);
@@ -98,9 +99,13 @@ public class order {
 		address.setBounds(65, 5, 118, 24);
 		panel_2.add(address);
 		address.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 20));
-		address.setText(loginUser.getUSER_ADDRESS());
-		
 
+		address.setBounds(12, 65, 198, 44);
+		leftView.add(address);
+		
+		if(loginUser instanceof UserModel) {
+			address.setText(((UserModel)loginUser).getUSER_ADDRESS());
+		}
 		
 		JPanel rightView = new JPanel();
 		rightView.setBounds(279, 0, 693, 622);
