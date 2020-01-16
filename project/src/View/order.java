@@ -51,6 +51,36 @@ public class order {
 		main.add(leftView);
 		leftView.setLayout(new CardLayout(0, 0));
 		
+		JPanel information = new JPanel();
+		leftView.add(information, "name_1140935742232400");
+		information.setBackground(new Color(135, 206, 250));
+		information.setLayout(null);
+		
+		JLabel ID = new JLabel("ID");
+		ID.setBounds(19, 21, 118, 24);
+		information.add(ID);
+		ID.setFont(new Font("HY수평선B", Font.BOLD, 20));
+		ID.setText(loginUser.getID());
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBounds(19, 99, 248, 415);
+		information.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("\uC8FC\uC18C");
+		lblNewLabel_3.setFont(new Font("HY수평선B", Font.BOLD, 22));
+		lblNewLabel_3.setBounds(12, 10, 224, 44);
+		panel_2.add(lblNewLabel_3);
+		
+		JLabel address = new JLabel((String) null);
+		address.setBackground(Color.WHITE);
+		address.setBounds(12, 65, 224, 44);
+		panel_2.add(address);
+		address.setFont(new Font("HY수평선B", Font.BOLD, 20));
+		
+		address.setBounds(12, 65, 198, 44);
+		
 		JPanel order = new JPanel();
 		order.setBackground(new Color(135, 206, 250));
 		leftView.add(order, "name_274694410481799");
@@ -58,12 +88,13 @@ public class order {
 		
 		JLabel ID2 = new JLabel((String) null);
 		ID2.setFont(new Font("HY수평선B", Font.BOLD, 20));
-		ID2.setBounds(19, 5, 118, 24);
+		ID2.setBounds(19, 30, 147, 40);
+		ID2.setText(loginUser.getID());
 		order.add(ID2);
 		
 		JPanel panel_30 = new JPanel();
 		panel_30.setBackground(new Color(135, 206, 250));
-		panel_30.setBounds(19, 99, 234, 453);
+		panel_30.setBounds(19, 71, 234, 481);
 		order.add(panel_30);
 		panel_30.setLayout(null);
 		
@@ -74,34 +105,10 @@ public class order {
 		orderinformation.setFont(new Font("HY수평선B", Font.BOLD, 20));
 		
 		JPanel orderlist = new JPanel();
-		orderlist.setBounds(12, 54, 210, 312);
+		orderlist.setBounds(12, 46, 210, 320);
 		panel_30.add(orderlist);
-		orderlist.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JPanel information = new JPanel();
-		information.setBackground(new Color(135, 206, 250));
-		leftView.add(information, "name_274663161534100");
-		information.setLayout(null);
-		
-		JLabel ID = new JLabel("ID");
-		ID.setBounds(19, 21, 118, 24);
-		information.add(ID);
-		ID.setFont(new Font("HY수평선B", Font.BOLD, 20));
-		ID.setText(loginUser.getID());
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(135, 206, 250));
-		panel_2.setBounds(19, 99, 248, 415);
-		information.add(panel_2);
-		panel_2.setLayout(null);
-		
-		JLabel address = new JLabel((String) null);
-		address.setBounds(65, 5, 118, 24);
-		panel_2.add(address);
-		address.setFont(new Font("HY수평선B", Font.BOLD, 20));
-
-		address.setBounds(12, 65, 198, 44);
-		leftView.add(address);
+		orderlist.setLayout(new GridLayout(17, 1, 0, 0));
+//		leftView.add(address);
 		
 		if(loginUser instanceof UserModel) {
 			address.setText(((UserModel)loginUser).getUSER_ADDRESS());
@@ -171,6 +178,11 @@ public class order {
 				rightView.add(menuKategorie);
 				rightView.repaint();
 				rightView.revalidate();
+				
+				leftView.removeAll();
+				leftView.add(information);
+				leftView.repaint();
+				leftView.revalidate();
 			}
 		});
 		button.setBounds(566, 571, 97, 29);
@@ -192,6 +204,13 @@ public class order {
 				rightView.repaint();
 				rightView.revalidate();
 				
+				leftView.removeAll();
+				leftView.add(information);
+				leftView.repaint();
+				leftView.revalidate();
+				
+				
+				
 			}
 		});
 		
@@ -203,6 +222,11 @@ public class order {
 				rightView.add(한솥);
 				rightView.repaint();
 				rightView.revalidate();
+				
+				leftView.removeAll();
+				leftView.add(order);
+				leftView.repaint();
+				leftView.revalidate();
 			}
 		});
 		
@@ -304,6 +328,11 @@ public class order {
 							rightView.repaint();
 							rightView.revalidate();
 							
+							leftView.removeAll();
+							leftView.add(information);
+							leftView.repaint();
+							leftView.revalidate();
+							
 						}
 					});
 					
@@ -331,18 +360,19 @@ public class order {
 					panel_9.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent arg0) {
-							System.out.println("dddddd");
 							JPanel card = new JPanel();
 							card.setLayout(new GridLayout(1,2,0,0));
-							card.add(new JLabel("메뉴"));
-							card.add(new JLabel("가격"));
+							card.add(new JLabel("매화도시락"));
+							card.add(new JLabel("10000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
 							orderlist.add(card);
 							
 							orderlist.repaint();
 							orderlist.revalidate();
 							
-							menuName.add("메뉴");
-							menuPrice.add("가격");
+							menuName.add("매화도시락");
+							menuPrice.add("10000");
 						}
 					});
 					panel_9.setBackground(new Color(255, 255, 255));
@@ -350,15 +380,34 @@ public class order {
 					panel_7.add(panel_9);
 					panel_9.setLayout(null);
 					
-					JLabel lblNewLabel_1 = new JLabel("\uB9E4\uD654\uB3C4\uC2DC\uB77D");
-					lblNewLabel_1.setBounds(0, 0, 131, 25);
-					panel_9.add(lblNewLabel_1);
+					JLabel 매화도시락 = new JLabel("\uB9E4\uD654\uB3C4\uC2DC\uB77D");
+					매화도시락.setBounds(0, 0, 131, 25);
+					panel_9.add(매화도시락);
 					
 					JLabel lblNewLabel_2 = new JLabel("10000\uC6D0");
 					lblNewLabel_2.setBounds(174, 0, 69, 25);
 					panel_9.add(lblNewLabel_2);
 					
 					JPanel panel_10 = new JPanel();
+					panel_10.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("개나리도시락"));
+							card.add(new JLabel("8000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("개나리도시락");
+							menuPrice.add("8000");
+						}
+					});
 					panel_10.setLayout(null);
 					panel_10.setBackground(Color.WHITE);
 					panel_10.setBounds(12, 61, 243, 25);
@@ -373,6 +422,25 @@ public class order {
 					panel_10.add(label_2);
 					
 					JPanel panel_11 = new JPanel();
+					panel_11.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("진달래도시락"));
+							card.add(new JLabel("7000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("진달래도시락");
+							menuPrice.add("7000");
+						}
+					});
 					panel_11.setLayout(null);
 					panel_11.setBackground(Color.WHITE);
 					panel_11.setBounds(12, 87, 243, 25);
@@ -387,6 +455,25 @@ public class order {
 					panel_11.add(label_4);
 					
 					JPanel panel_12 = new JPanel();
+					panel_12.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("숯불직화구이덮밥"));
+							card.add(new JLabel("5700"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("숯불직화구이덮밥");
+							menuPrice.add("5700");
+						}
+					});
 					panel_12.setLayout(null);
 					panel_12.setBackground(Color.WHITE);
 					panel_12.setBounds(12, 155, 243, 25);
@@ -406,6 +493,25 @@ public class order {
 					panel_7.add(label_7);
 					
 					JPanel panel_13 = new JPanel();
+					panel_13.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("중화짜장볶음밥"));
+							card.add(new JLabel("4700"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("중화짜장볶음밥");
+							menuPrice.add("4700");
+						}
+					});
 					panel_13.setLayout(null);
 					panel_13.setBackground(Color.WHITE);
 					panel_13.setBounds(12, 180, 243, 25);
@@ -420,6 +526,25 @@ public class order {
 					panel_13.add(label_9);
 					
 					JPanel panel_14 = new JPanel();
+					panel_14.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("국물떡볶이튀김세트"));
+							card.add(new JLabel("4800"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("국물떡볶이튀김세트");
+							menuPrice.add("4800");
+						}
+					});
 					panel_14.setLayout(null);
 					panel_14.setBackground(Color.WHITE);
 					panel_14.setBounds(12, 205, 243, 25);
@@ -534,6 +659,25 @@ public class order {
 					panel_8.add(label_1);
 					
 					JPanel panel_15 = new JPanel();
+					panel_15.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("돈까스도련님도시락"));
+							card.add(new JLabel("3900"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("돈까스도련님도시락");
+							menuPrice.add("3900");
+						}
+					});
 					panel_15.setLayout(null);
 					panel_15.setBackground(Color.WHITE);
 					panel_15.setBounds(12, 35, 243, 25);
@@ -548,6 +692,25 @@ public class order {
 					panel_15.add(label_13);
 					
 					JPanel panel_16 = new JPanel();
+					panel_16.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("국화도시락"));
+							card.add(new JLabel("4000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("국화도시락");
+							menuPrice.add("4000");
+						}
+					});
 					panel_16.setLayout(null);
 					panel_16.setBackground(Color.WHITE);
 					panel_16.setBounds(12, 60, 243, 25);
@@ -562,6 +725,25 @@ public class order {
 					panel_16.add(label_15);
 					
 					JPanel panel_17 = new JPanel();
+					panel_17.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("치킨제육도시락"));
+							card.add(new JLabel("4400"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("치킨제육도시락");
+							menuPrice.add("4400");
+						}
+					});
 					panel_17.setLayout(null);
 					panel_17.setBackground(Color.WHITE);
 					panel_17.setBounds(12, 87, 243, 25);
@@ -576,6 +758,25 @@ public class order {
 					panel_17.add(label_17);
 					
 					JPanel panel_18 = new JPanel();
+					panel_18.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("동백도시락"));
+							card.add(new JLabel("5000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("동백도시락");
+							menuPrice.add("5000");
+						}
+					});
 					panel_18.setLayout(null);
 					panel_18.setBackground(Color.WHITE);
 					panel_18.setBounds(12, 113, 243, 25);
@@ -590,6 +791,25 @@ public class order {
 					panel_18.add(label_19);
 					
 					JPanel panel_19 = new JPanel();
+					panel_19.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("칠리찹쌀탕수육도련님"));
+							card.add(new JLabel("4000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("칠리찹쌀탕수육도련님");
+							menuPrice.add("4000");
+						}
+					});
 					panel_19.setLayout(null);
 					panel_19.setBackground(Color.WHITE);
 					panel_19.setBounds(12, 140, 243, 25);
@@ -604,6 +824,25 @@ public class order {
 					panel_19.add(label_21);
 					
 					JPanel panel_20 = new JPanel();
+					panel_20.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("생선까스도시락"));
+							card.add(new JLabel("3900"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("생선까스도시락");
+							menuPrice.add("3900");
+						}
+					});
 					panel_20.setLayout(null);
 					panel_20.setBackground(Color.WHITE);
 					panel_20.setBounds(12, 168, 243, 25);
@@ -663,10 +902,7 @@ public class order {
 					JLabel label_43 = new JLabel("7900\uC6D0");
 					label_43.setBounds(174, 0, 69, 25);
 					panel_29.add(label_43);
-//					btnNewButton.addActionListener(new ActionListener() {
-//						public void actionPerformed(ActionEvent arg0) {
-//						}
-//					});
+
 					btnNewButton.setBounds(569, 569, 97, 29);
 					한솥.add(btnNewButton);
 					
