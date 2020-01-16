@@ -10,16 +10,17 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Model.deliveryModel;
-import javax.swing.JLabel;
+import controller.MemberManagementService;
 
 public class RiderView {
 
 	deliveryModel del = new deliveryModel();
-	
+	MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
 	private JPanel orderPanel;
 	private int cnt;
@@ -79,7 +80,7 @@ public class RiderView {
 		leftView.add(order);
 		order.setLayout(new CardLayout(0, 0));
 		
-		JLabel order2 = new JLabel("가게 " );
+		JLabel order2 = new JLabel("가게 "+ service.showDelivery().getUser_address());
 		order.add(order2, "name_1129751298635600");
 		
 

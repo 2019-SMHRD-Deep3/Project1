@@ -5,6 +5,7 @@ import Model.Model;
 import Model.RiderModel;
 import Model.ShopkeeperModel;
 import Model.UserModel;
+import Model.deliveryModel;
 
 public class MemberManagementService {
 
@@ -66,4 +67,9 @@ public class MemberManagementService {
 		return loginRider;
 	}
 	
+	//
+	public deliveryModel showDelivery() {
+			deliveryModel del =dao.selectdel();
+			return del;
+	}
 }
