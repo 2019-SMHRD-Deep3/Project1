@@ -25,6 +25,7 @@ import Model.RiderModel;
 import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
+import javax.swing.ImageIcon;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
@@ -90,17 +91,107 @@ public class 회원가입 {
 		panel.setBounds(0, 0, 370, 632);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
+		String aaaa = this.getClass().getResource(".").getPath() + "..//..//img//000.png";
 		
 		JPanel panel_1 =new JPanel();
 		panel_1.setBounds(371, 0, 634, 632);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(new CardLayout(0, 0));
 		
+		// 로그인 , 회원가입 창 
+		JPanel LoJo = new JPanel();
+		LoJo.setLayout(null);
+		LoJo.setBackground(new Color(153, 204, 255));
+		panel_1.add(LoJo, "name_83535195314200");
+		
+		
 		// main 창
 		JPanel main = new JPanel();
 		main.setBackground(new Color(153, 204, 255));
 		panel_1.add(main, "name_82546225747300");
 		main.setLayout(null);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(new Color(255, 255, 255));
+		panel_6.setBounds(0, 36, 634, 99);
+		LoJo.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("\uC120\uD0DD");
+		lblNewLabel_1.setFont(new Font("HY수평선B", Font.BOLD, 35));
+		lblNewLabel_1.setBounds(23, 30, 173, 46);
+		panel_6.add(lblNewLabel_1);
+		
+		JButton User = new JButton("\uAC1C\uC778\uC0AC\uC6A9\uC790");
+		User.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		User.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				panel_1.removeAll();
+				panel_1.add(main);
+				panel_1.repaint();
+				panel_1.revalidate();
+				
+			}
+			
+		});
+		User.setBackground(new Color(255, 255, 255));
+		User.setFont(new Font("굴림", Font.BOLD, 25));
+		User.setBounds(202, 203, 229, 67);
+		LoJo.add(User);
+		
+		JButton ShopKeeper = new JButton("\uC0AC\uC7A5\uB2D8");
+		ShopKeeper.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		// 사장 회원가입 창
+		JPanel ShopKeeperJoin = new JPanel();
+		ShopKeeperJoin.setLayout(null);
+		ShopKeeperJoin.setBackground(new Color(153, 204, 255));
+		panel_1.add(ShopKeeperJoin, "name_96234007755100");
+		
+		
+		ShopKeeper.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(main);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
+		ShopKeeper.setFont(new Font("굴림", Font.BOLD, 25));
+		ShopKeeper.setBackground(new Color(255, 255, 255));
+		ShopKeeper.setBounds(202, 288, 229, 67);
+		LoJo.add(ShopKeeper);
+		
+		// RiderJoin 창 
+		JPanel RiderJoin = new JPanel();
+		RiderJoin.setLayout(null);
+		RiderJoin.setBackground(new Color(153, 204, 255));
+		panel_1.add(RiderJoin, "name_96138525806700");
+		
+		JButton Rider = new JButton("\uB77C\uC774\uB354");
+		Rider.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(main);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
+		Rider.setFont(new Font("굴림", Font.BOLD, 25));
+		Rider.setBackground(new Color(255, 255, 255));
+		Rider.setBounds(202, 381, 229, 67);
+		LoJo.add(Rider);
+		
+
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(204, 255, 255));
@@ -152,6 +243,7 @@ public class 회원가입 {
 				}else {
 					JOptionPane.showMessageDialog(frame, "로그인 성공");
 					
+					
 //					MMMain main = new MMMain(loginUser);   // 메인 창 생성
 					frame.dispose();              // 로그인 창 닫기
 					
@@ -164,25 +256,15 @@ public class 회원가입 {
 
 		});
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton.setBounds(140, 438, 132, 48);
+		btnNewButton.setBounds(95, 438, 132, 48);
 		main.add(btnNewButton);
-		 
-		// 로그인 , 회원가입 창 
-		JPanel LoJo = new JPanel();
-		LoJo.setLayout(null);
-		LoJo.setBackground(new Color(153, 204, 255));
-		panel_1.add(LoJo, "name_83535195314200");
 		
 		JButton button = new JButton("\uD68C\uC6D0\uAC00\uC785");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(LoJo);
+				panel_1.add(main);
 				panel_1.repaint();
 				panel_1.revalidate();
 				
@@ -190,101 +272,31 @@ public class 회원가입 {
 			}
 		});
 		button.setFont(new Font("굴림", Font.BOLD, 15));
-		button.setBounds(346, 438, 132, 48);
+		button.setBounds(254, 438, 132, 48);
 		main.add(button);
 		
-		JButton 취소 = new JButton("\uCDE8\uC18C");
-		취소.addMouseListener(new MouseAdapter() {
+		JButton button_9 = new JButton("\uCDE8\uC18C");
+		button_9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(main);
+				panel_1.add(LoJo);
 				panel_1.repaint();
 				panel_1.revalidate();
+				
 			}
 		});
-		취소.setFont(new Font("굴림", Font.BOLD, 15));
-		취소.setBounds(404, 500, 132, 48);
-		LoJo.add(취소);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(255, 255, 255));
-		panel_6.setBounds(0, 36, 634, 99);
-		LoJo.add(panel_6);
-		panel_6.setLayout(null);
-		
-		JLabel lblNewLabel_1 = new JLabel("\uD68C\uC6D0\uAC00\uC785");
-		lblNewLabel_1.setFont(new Font("HY수평선B", Font.BOLD, 35));
-		lblNewLabel_1.setBounds(23, 30, 173, 46);
-		panel_6.add(lblNewLabel_1);
+		button_9.setFont(new Font("굴림", Font.BOLD, 15));
+		button_9.setBounds(409, 438, 132, 48);
+		main.add(button_9);
 		
 		// User 회원가입 창
 		JPanel UserJoin = new JPanel();
 		UserJoin.setLayout(null);
 		UserJoin.setBackground(new Color(153, 204, 255));
 		panel_1.add(UserJoin, "name_90424023594900");
-		
-		JButton User = new JButton("\uAC1C\uC778\uC0AC\uC6A9\uC790");
-		User.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				panel_1.removeAll();
-				panel_1.add(UserJoin);
-				panel_1.repaint();
-				panel_1.revalidate();
-				
-			}
-			
-		});
-		User.setBackground(new Color(255, 255, 255));
-		User.setFont(new Font("굴림", Font.BOLD, 25));
-		User.setBounds(202, 203, 229, 67);
-		LoJo.add(User);
-		
-		JButton ShopKeeper = new JButton("\uC0AC\uC7A5\uB2D8");
-		ShopKeeper.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		// 사장 회원가입 창
-		JPanel ShopKeeperJoin = new JPanel();
-		ShopKeeperJoin.setLayout(null);
-		ShopKeeperJoin.setBackground(new Color(153, 204, 255));
-		panel_1.add(ShopKeeperJoin, "name_96234007755100");
-		
-		ShopKeeper.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				panel_1.removeAll();
-				panel_1.add(ShopKeeperJoin);
-				panel_1.repaint();
-				panel_1.revalidate();
-			}
-		});
-		ShopKeeper.setFont(new Font("굴림", Font.BOLD, 25));
-		ShopKeeper.setBackground(new Color(255, 255, 255));
-		ShopKeeper.setBounds(202, 288, 229, 67);
-		LoJo.add(ShopKeeper);
-		
-		JPanel RiderJoin = new JPanel();
-		RiderJoin.setLayout(null);
-		RiderJoin.setBackground(new Color(153, 204, 255));
-		panel_1.add(RiderJoin, "name_96138525806700");
-		
-		JButton Rider = new JButton("\uB77C\uC774\uB354");
-		Rider.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				panel_1.removeAll();
-				panel_1.add(RiderJoin);
-				panel_1.repaint();
-				panel_1.revalidate();
-			}
-		});
-		Rider.setFont(new Font("굴림", Font.BOLD, 25));
-		Rider.setBackground(new Color(255, 255, 255));
-		Rider.setBounds(202, 381, 229, 67);
-		LoJo.add(Rider);
+
+
 		
 		
 		JPanel panel_7 = new JPanel();
@@ -315,28 +327,35 @@ public class 회원가입 {
 				// 일반사용자 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = user_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
-				String infoPw = user_pw.getText();
-				String infoName = user_name.getText();
-				String infoAddress = user_address.getText();
-				int infoNumber = Integer.parseInt(user_number.getText());  
-				  
-				
-				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-				UserModel m = new UserModel(infoId, infoPw, infoName, infoAddress, infoNumber);
-				
-				
-				// Controller 에게 회원가입 요청
-				boolean result = service.memberJoin(m);
-				if(result) {
+				Model m1 = new UserModel(infoId);
+				boolean result1 = service.idCheck(m1);
+				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
-					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					panel_1.removeAll();
-					panel_1.add(main);
-					panel_1.repaint();
-					panel_1.revalidate();
+					String infoPw = user_pw.getText();
+					String infoName = user_name.getText();
+					String infoAddress = user_address.getText();
+					int infoNumber = Integer.parseInt(user_number.getText());  
+					  
+					
+					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
+					UserModel m = new UserModel(infoId, infoPw, infoName, infoAddress, infoNumber);
+					
+					
+					// Controller 에게 회원가입 요청
+					boolean result = service.memberJoin(m);
+					if(result) {
+						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+						panel_1.removeAll();
+						panel_1.add(main);
+						panel_1.repaint();
+						panel_1.revalidate();
+					}
 				}else {
-					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
 				}
+				
+				
 				
 				
 			}
@@ -488,28 +507,37 @@ public class 회원가입 {
 				// 사장 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = shopkeeper_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
-				String infoPw = shopkeeper_pw.getText();
-				String infoName = shopkeeper_name.getText();
-				String infoAddress = shopkeeper_address.getText();
-				int infoLicense = Integer.parseInt(shopkeeper_lic.getText());
-				int infoTel = Integer.parseInt(shopkeeper_tel.getText());
 				
-				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-				ShopkeeperModel m = new ShopkeeperModel(infoId, infoPw, infoName, infoAddress, infoLicense, infoTel);
+				Model m1 = new UserModel(infoId);
 				
-				
-				// Controller 에게 회원가입 요청
-				boolean result = service.shopkeeperJoin(m);
-				if(result) {
+				boolean result1 = service.idCheck(m1);
+				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
-					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					panel_1.removeAll();
-					panel_1.add(main);
-					panel_1.repaint();
-					panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					String infoPw = shopkeeper_pw.getText();
+					String infoName = shopkeeper_name.getText();
+					String infoAddress = shopkeeper_address.getText();
+					int infoLicense = Integer.parseInt(shopkeeper_lic.getText());
+					int infoTel = Integer.parseInt(shopkeeper_tel.getText());
+					
+					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
+					ShopkeeperModel m = new ShopkeeperModel(infoId, infoPw, infoName, infoAddress, infoLicense, infoTel);
+					
+					
+					// Controller 에게 회원가입 요청
+					boolean result = service.shopkeeperJoin(m);
+					if(result) {
+						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+						panel_1.removeAll();
+						panel_1.add(main);
+						panel_1.repaint();
+						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					}
 				}else {
-					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
 				}
+				
+				
 				
 				
 			
@@ -679,37 +707,45 @@ public class 회원가입 {
 				// 라이더 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = rider_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
-				String infoPw = rider_pw.getText();
-				String infoName = rider_name.getText();
-				String TRANSPORTATION = "";
-				if(autobike.isSelected()) { // isSelected() -> 선택이 됬는지 안 됬는지 -->  T/F 로 알려주는 메소드 
-					TRANSPORTATION = "오토바이";
-				}else if(bike.isSelected()){ 
-					TRANSPORTATION = "자전거";
-				}else if(car.isSelected()){ 
-					TRANSPORTATION = "차량";
-				}else if(etc.isSelected()){ 
-					TRANSPORTATION = "기타";
-				}
-				String infoLoc = rider_loc.getText();
-				String infoCompany = rider_company.getText();
-				int infoNumber = Integer.parseInt(PhoneNumber2.getText());  
-				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-				RiderModel m = new RiderModel(infoId, infoPw, infoName, TRANSPORTATION, infoLoc, infoCompany, infoNumber);
 				
-				
-				// Controller 에게 회원가입 요청
-				boolean result = service.riderJoin(m);
-				if(result) {
+				Model m1 = new UserModel(infoId);
+				boolean result1 = service.idCheck(m1);
+				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
-					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					panel_1.removeAll();
-					panel_1.add(main);
-					panel_1.repaint();
-					panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					String infoPw = rider_pw.getText();
+					String infoName = rider_name.getText();
+					String TRANSPORTATION = "";
+					if(autobike.isSelected()) { // isSelected() -> 선택이 됬는지 안 됬는지 -->  T/F 로 알려주는 메소드 
+						TRANSPORTATION = "오토바이";
+					}else if(bike.isSelected()){ 
+						TRANSPORTATION = "자전거";
+					}else if(car.isSelected()){ 
+						TRANSPORTATION = "차량";
+					}else if(etc.isSelected()){ 
+						TRANSPORTATION = "기타";
+					}
+					String infoLoc = rider_loc.getText();
+					String infoCompany = rider_company.getText();
+					int infoNumber = Integer.parseInt(PhoneNumber2.getText());  
+					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
+					RiderModel m = new RiderModel(infoId, infoPw, infoName, TRANSPORTATION, infoLoc, infoCompany, infoNumber);
+					
+					
+					// Controller 에게 회원가입 요청
+					boolean result = service.riderJoin(m);
+					if(result) {
+						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+						panel_1.removeAll();
+						panel_1.add(main);
+						panel_1.repaint();
+						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					}
 				}else {
-					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
 				}
+				
+				
 				
 				
 			}
