@@ -315,28 +315,35 @@ public class 회원가입 {
 				// 일반사용자 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = user_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
-				String infoPw = user_pw.getText();
-				String infoName = user_name.getText();
-				String infoAddress = user_address.getText();
-				int infoNumber = Integer.parseInt(user_number.getText());  
-				  
-				
-				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-				UserModel m = new UserModel(infoId, infoPw, infoName, infoAddress, infoNumber);
-				
-				
-				// Controller 에게 회원가입 요청
-				boolean result = service.memberJoin(m);
-				if(result) {
+				Model m1 = new UserModel(infoId);
+				boolean result1 = service.idCheck(m1);
+				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
-					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					panel_1.removeAll();
-					panel_1.add(main);
-					panel_1.repaint();
-					panel_1.revalidate();
+					String infoPw = user_pw.getText();
+					String infoName = user_name.getText();
+					String infoAddress = user_address.getText();
+					int infoNumber = Integer.parseInt(user_number.getText());  
+					  
+					
+					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
+					UserModel m = new UserModel(infoId, infoPw, infoName, infoAddress, infoNumber);
+					
+					
+					// Controller 에게 회원가입 요청
+					boolean result = service.memberJoin(m);
+					if(result) {
+						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+						panel_1.removeAll();
+						panel_1.add(main);
+						panel_1.repaint();
+						panel_1.revalidate();
+					}
 				}else {
-					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
 				}
+				
+				
 				
 				
 			}
@@ -488,28 +495,37 @@ public class 회원가입 {
 				// 사장 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = shopkeeper_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
-				String infoPw = shopkeeper_pw.getText();
-				String infoName = shopkeeper_name.getText();
-				String infoAddress = shopkeeper_address.getText();
-				int infoLicense = Integer.parseInt(shopkeeper_lic.getText());
-				int infoTel = Integer.parseInt(shopkeeper_tel.getText());
 				
-				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-				ShopkeeperModel m = new ShopkeeperModel(infoId, infoPw, infoName, infoAddress, infoLicense, infoTel);
+				Model m1 = new UserModel(infoId);
 				
-				
-				// Controller 에게 회원가입 요청
-				boolean result = service.shopkeeperJoin(m);
-				if(result) {
+				boolean result1 = service.idCheck(m1);
+				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
-					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					panel_1.removeAll();
-					panel_1.add(main);
-					panel_1.repaint();
-					panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					String infoPw = shopkeeper_pw.getText();
+					String infoName = shopkeeper_name.getText();
+					String infoAddress = shopkeeper_address.getText();
+					int infoLicense = Integer.parseInt(shopkeeper_lic.getText());
+					int infoTel = Integer.parseInt(shopkeeper_tel.getText());
+					
+					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
+					ShopkeeperModel m = new ShopkeeperModel(infoId, infoPw, infoName, infoAddress, infoLicense, infoTel);
+					
+					
+					// Controller 에게 회원가입 요청
+					boolean result = service.shopkeeperJoin(m);
+					if(result) {
+						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+						panel_1.removeAll();
+						panel_1.add(main);
+						panel_1.repaint();
+						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					}
 				}else {
-					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
 				}
+				
+				
 				
 				
 			
@@ -679,37 +695,45 @@ public class 회원가입 {
 				// 라이더 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = rider_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
-				String infoPw = rider_pw.getText();
-				String infoName = rider_name.getText();
-				String TRANSPORTATION = "";
-				if(autobike.isSelected()) { // isSelected() -> 선택이 됬는지 안 됬는지 -->  T/F 로 알려주는 메소드 
-					TRANSPORTATION = "오토바이";
-				}else if(bike.isSelected()){ 
-					TRANSPORTATION = "자전거";
-				}else if(car.isSelected()){ 
-					TRANSPORTATION = "차량";
-				}else if(etc.isSelected()){ 
-					TRANSPORTATION = "기타";
-				}
-				String infoLoc = rider_loc.getText();
-				String infoCompany = rider_company.getText();
-				int infoNumber = Integer.parseInt(PhoneNumber2.getText());  
-				// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-				RiderModel m = new RiderModel(infoId, infoPw, infoName, TRANSPORTATION, infoLoc, infoCompany, infoNumber);
 				
-				
-				// Controller 에게 회원가입 요청
-				boolean result = service.riderJoin(m);
-				if(result) {
+				Model m1 = new UserModel(infoId);
+				boolean result1 = service.idCheck(m1);
+				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
-					JOptionPane.showMessageDialog(frame, "회원가입 성공");  
-					panel_1.removeAll();
-					panel_1.add(main);
-					panel_1.repaint();
-					panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					String infoPw = rider_pw.getText();
+					String infoName = rider_name.getText();
+					String TRANSPORTATION = "";
+					if(autobike.isSelected()) { // isSelected() -> 선택이 됬는지 안 됬는지 -->  T/F 로 알려주는 메소드 
+						TRANSPORTATION = "오토바이";
+					}else if(bike.isSelected()){ 
+						TRANSPORTATION = "자전거";
+					}else if(car.isSelected()){ 
+						TRANSPORTATION = "차량";
+					}else if(etc.isSelected()){ 
+						TRANSPORTATION = "기타";
+					}
+					String infoLoc = rider_loc.getText();
+					String infoCompany = rider_company.getText();
+					int infoNumber = Integer.parseInt(PhoneNumber2.getText());  
+					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
+					RiderModel m = new RiderModel(infoId, infoPw, infoName, TRANSPORTATION, infoLoc, infoCompany, infoNumber);
+					
+					
+					// Controller 에게 회원가입 요청
+					boolean result = service.riderJoin(m);
+					if(result) {
+						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
+						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
+						panel_1.removeAll();
+						panel_1.add(main);
+						panel_1.repaint();
+						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
+					}
 				}else {
-					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					JOptionPane.showMessageDialog(frame, "이미 존재하는 아이디입니다.");
 				}
+				
+				
 				
 				
 			}

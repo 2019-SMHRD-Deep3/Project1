@@ -15,7 +15,6 @@ public class MemberDAO {
 	private Connection conn = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
-
 	
 	
 	
