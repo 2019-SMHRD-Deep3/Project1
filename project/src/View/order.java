@@ -4,43 +4,52 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Graphics;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import Model.Model;
 
 public class order {
 
 	private JFrame frame;
+	private Model loginUser;
 
+	
+	
+	public order(Model loginUser) {
+		this.loginUser = loginUser;
+		initialize();
+		frame.setVisible(true);
+	}
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					order window = new order();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					order window = new order();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
+
 	public order() {
 		initialize();
 		frame.setBounds(400, 150, 1011, 661);
@@ -62,19 +71,20 @@ public class order {
 		
 		main.add(leftView);
 		
-
-		
-		
-		JPanel ID = new JPanel();
-		ID.setBackground(new Color(255, 255, 255));
-		ID.setBounds(12, 25, 196, 40);
+		JLabel ID = new JLabel("ID");
+		ID.setFont(new Font("HY수평선B", Font.BOLD, 20));
+		ID.setBounds(12, 25, 198, 44);
 		leftView.add(ID);
+		frame.getContentPane().add(ID); 
+		ID.setText(loginUser.getID());   // 로그인 유저의 이름을 레이블에 넣겠다.
+
 		
 		JPanel Information = new JPanel();
 		Information.setBackground(new Color(135, 206, 250));
 		Information.setBounds(12, 119, 255, 471);
 		leftView.add(Information);
 		Information.setLayout(null);
+		String aaaa = this.getClass().getResource(".").getPath() + "..//..//img//000.png";
 	
 		
 
