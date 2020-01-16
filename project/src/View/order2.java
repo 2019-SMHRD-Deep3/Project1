@@ -266,21 +266,16 @@ public class order2 {
 		scrollPane.setBounds(0, 0, 600, 205);
 		panel_9.add(scrollPane);
 		
+		
 		JLabel a1 = new JLabel("");
 		a1.setBounds(0, 0, 542, 126);
 		panel_9.add(a1);
 		
-		JLabel a2 = new JLabel("");
-		a2.setBounds(0, 0, 542, 126);
-		panel_9.add(a2);
 		
-		JLabel a3 = new JLabel("");
-		a3.setBounds(0, 0, 542, 126);
-		panel_9.add(a3);
 		
-		JLabel a4 = new JLabel("");
-		a4.setBounds(0, 0, 542, 126);
-		panel_9.add(a4);
+		
+		
+		
 		
 		JLabel label = new JLabel("  BEST MENU");
 		label.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 18));

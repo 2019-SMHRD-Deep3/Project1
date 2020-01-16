@@ -14,14 +14,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Model.Model;
 import Model.UserModel;
 
 public class order {
 
 	private JFrame frame;
-	private UserModel loginUser;
+	private Model loginUser;
 
-	public order(UserModel loginUser) {
+	public order(Model loginUser) {
 		this.loginUser = loginUser;
 		initialize();
 		frame.setVisible(true);
@@ -62,7 +63,11 @@ public class order {
 		address.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 20));
 		address.setBounds(12, 65, 198, 44);
 		leftView.add(address);
-		address.setText(loginUser.getUSER_ADDRESS());
+		
+		if(loginUser instanceof UserModel) {
+			address.setText(((UserModel)loginUser).getUSER_ADDRESS());
+		}
+		
 		
 
 		
