@@ -7,11 +7,6 @@ public class deliveryModel {
 	private String store_name;
 	private String store_address;
 	
-	public deliveryModel() {
-		super();
-	
-	}
-	
 	public deliveryModel(int order_number, String user_address, String store_name, String store_address) {
 		super();
 		this.order_number = order_number;

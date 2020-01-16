@@ -4,19 +4,19 @@ public class ShopkeeperModel extends Model{
 	
 	// ID, PW, 가게 이름, 주소, 사업자번호, 평점, 전화번호 
 	private String SHOPNAME;
-	private String ADDRESS;
+	private String SHOP_ADDRESS;
 	private int BUSINESS_LICENSE;
 	private int	RATING;
-	private int	TEL;
+	private int	SHOP_TEL;
 	
 	
 	// 회원가입
-	public ShopkeeperModel(String ID, String PW, String SHOPNAME, String ADDRESS, int BUSINESS_LICENSE, int TEL) {
+	public ShopkeeperModel(String ID, String PW, String SHOPNAME, String SHOP_ADDRESS, int BUSINESS_LICENSE, int SHOP_TEL) {
 		super(ID, PW);
 		this.SHOPNAME = SHOPNAME;
-		this.ADDRESS = ADDRESS;
+		this.SHOP_ADDRESS = SHOP_ADDRESS;
 		this.BUSINESS_LICENSE = BUSINESS_LICENSE;
-		this.TEL = TEL;
+		this.SHOP_TEL = SHOP_TEL;
 	}
 	
 	// 로그인
@@ -31,8 +31,8 @@ public class ShopkeeperModel extends Model{
 	}
 
 
-	public String getADDRESS() {
-		return ADDRESS;
+	public String getSHOP_ADDRESS() {
+		return SHOP_ADDRESS;
 	}
 
 
@@ -46,8 +46,8 @@ public class ShopkeeperModel extends Model{
 	}
 
 
-	public int getTEL() {
-		return TEL;
+	public int getSHOP_TEL() {
+		return SHOP_TEL;
 	}
 
 	// setter
@@ -56,7 +56,7 @@ public class ShopkeeperModel extends Model{
 	}
 
 	public void setADDRESS(String aDDRESS) {
-		this.ADDRESS = aDDRESS;
+		this.SHOP_ADDRESS = aDDRESS;
 	}
 
 	public void setBUSINESS_LICENSE(int bUSINESS_LICENSE) {
@@ -67,8 +67,8 @@ public class ShopkeeperModel extends Model{
 		this.RATING = rATING;
 	}
 
-	public void setTEL(int tEL) {
-		this.TEL = tEL;
+	public void setTEL(int SHOP_TEL) {
+		this.SHOP_TEL = SHOP_TEL;
 	}
 	
 	

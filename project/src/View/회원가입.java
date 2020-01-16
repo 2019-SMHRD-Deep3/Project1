@@ -433,7 +433,7 @@ public class 회원가입 {
 				}else {
 					JOptionPane.showMessageDialog(frame, "로그인 성공");
 					
-					order main = new order(loginUser);   // 메인 창 생성
+					order main = new order((UserModel) loginUser);   // 메인 창 생성
 					
 					frame.dispose();              // 로그인 창 닫기
 					
