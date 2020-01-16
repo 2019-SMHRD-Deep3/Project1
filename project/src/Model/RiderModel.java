@@ -22,6 +22,12 @@ public class RiderModel extends Model {
 		this.COMPANY = COMPANY;
 		this.PHONE = PHONE;
 	}
+	
+	// ·Î±×ÀÎ
+	public RiderModel(String ID, String PW) {
+		super(ID, PW);
+		
+	}
 
 	// getter
 	public String getRIDERNAME() {

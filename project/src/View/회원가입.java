@@ -25,7 +25,6 @@ import Model.RiderModel;
 import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
-import javax.swing.ImageIcon;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
@@ -54,6 +53,10 @@ public class 회원가입 {
 	private JRadioButton bike;
 	private JRadioButton etc;
 	private JPasswordField passwordField;
+	private JTextField textField_1;
+	private JPasswordField passwordField_1;
+	private JTextField textField_2;
+	private JPasswordField passwordField_2;
 	
 
 	
@@ -106,10 +109,10 @@ public class 회원가입 {
 		
 		
 		// main 창
-		JPanel main = new JPanel();
-		main.setBackground(new Color(153, 204, 255));
-		panel_1.add(main, "name_82546225747300");
-		main.setLayout(null);
+		JPanel mainUser = new JPanel();
+		mainUser.setBackground(new Color(153, 204, 255));
+		panel_1.add(mainUser, "name_82546225747300");
+		mainUser.setLayout(null);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(255, 255, 255));
@@ -123,15 +126,12 @@ public class 회원가입 {
 		panel_6.add(lblNewLabel_1);
 		
 		JButton User = new JButton("\uAC1C\uC778\uC0AC\uC6A9\uC790");
-		User.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+
 		User.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				panel_1.removeAll();
-				panel_1.add(main);
+				panel_1.add(mainUser);
 				panel_1.repaint();
 				panel_1.revalidate();
 				
@@ -149,6 +149,71 @@ public class 회원가입 {
 			}
 		});
 		
+		JPanel mainShop = new JPanel();
+		mainShop.setLayout(null);
+		mainShop.setBackground(new Color(153, 204, 255));
+		panel_1.add(mainShop, "name_257263156329300");
+		
+		JPanel panel_13 = new JPanel();
+		panel_13.setLayout(null);
+		panel_13.setBackground(new Color(204, 255, 255));
+		panel_13.setBounds(111, 280, 389, 43);
+		mainShop.add(panel_13);
+		
+		JLabel label = new JLabel("ID");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("굴림", Font.BOLD, 16));
+		label.setBounds(0, -1, 119, 42);
+		panel_13.add(label);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(120, 1, 269, 41);
+		panel_13.add(textField_1);
+		
+		JPanel panel_28 = new JPanel();
+		panel_28.setLayout(null);
+		panel_28.setBackground(new Color(204, 255, 255));
+		panel_28.setBounds(111, 349, 389, 43);
+		mainShop.add(panel_28);
+		
+		JLabel label_2 = new JLabel("PW");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setFont(new Font("굴림", Font.BOLD, 16));
+		label_2.setBounds(0, -1, 119, 42);
+		panel_28.add(label_2);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(120, 0, 269, 41);
+		panel_28.add(passwordField_1);
+		
+		JButton button_10 = new JButton("\uB85C\uADF8\uC778");
+		button_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// 로그인 기능
+				// id, pw 를 컴포넌트에서 가져오기
+				String infoId = textField_1.getText();
+				String infoPw = passwordField_1.getText();
+				// Member 객체 생성
+				Model m = new Model(infoId, infoPw);
+				// 로그인 요청하기
+				Model loginShop = service.ShopkepperLogin(m);
+				if(loginShop==null) {
+					JOptionPane.showMessageDialog(frame, "로그인 실패");
+				}else {
+					JOptionPane.showMessageDialog(frame, "로그인 성공");
+					
+					order2 main = new order2(loginShop);   // 메인 창 생성
+					frame.dispose();              // 로그인 창 닫기
+					
+				}
+		
+			}
+		});
+		button_10.setFont(new Font("굴림", Font.BOLD, 15));
+		button_10.setBounds(95, 438, 132, 48);
+		mainShop.add(button_10);
+		
 		// 사장 회원가입 창
 		JPanel ShopKeeperJoin = new JPanel();
 		ShopKeeperJoin.setLayout(null);
@@ -156,11 +221,141 @@ public class 회원가입 {
 		panel_1.add(ShopKeeperJoin, "name_96234007755100");
 		
 		
+		JButton button_11 = new JButton("\uD68C\uC6D0\uAC00\uC785");
+		button_11.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(ShopKeeperJoin);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
+		button_11.setFont(new Font("굴림", Font.BOLD, 15));
+		button_11.setBounds(254, 438, 132, 48);
+		mainShop.add(button_11);
+		
+		JButton button_12 = new JButton("\uCDE8\uC18C");
+		button_12.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(LoJo);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
+		button_12.setFont(new Font("굴림", Font.BOLD, 15));
+		button_12.setBounds(409, 438, 132, 48);
+		mainShop.add(button_12);
+		
+		JPanel mainRider = new JPanel();
+		mainRider.setLayout(null);
+		mainRider.setBackground(new Color(153, 204, 255));
+		panel_1.add(mainRider, "name_257294859123000");
+		
+		JPanel panel_29 = new JPanel();
+		panel_29.setLayout(null);
+		panel_29.setBackground(new Color(204, 255, 255));
+		panel_29.setBounds(111, 280, 389, 43);
+		mainRider.add(panel_29);
+		
+		JLabel label_5 = new JLabel("ID");
+		label_5.setHorizontalAlignment(SwingConstants.CENTER);
+		label_5.setFont(new Font("굴림", Font.BOLD, 16));
+		label_5.setBounds(0, -1, 119, 42);
+		panel_29.add(label_5);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(120, 1, 269, 41);
+		panel_29.add(textField_2);
+		
+		JPanel panel_30 = new JPanel();
+		panel_30.setLayout(null);
+		panel_30.setBackground(new Color(204, 255, 255));
+		panel_30.setBounds(111, 349, 389, 43);
+		mainRider.add(panel_30);
+		
+		JLabel label_8 = new JLabel("PW");
+		label_8.setHorizontalAlignment(SwingConstants.CENTER);
+		label_8.setFont(new Font("굴림", Font.BOLD, 16));
+		label_8.setBounds(0, -1, 119, 42);
+		panel_30.add(label_8);
+		
+		passwordField_2 = new JPasswordField();
+		passwordField_2.setBounds(120, 0, 269, 41);
+		panel_30.add(passwordField_2);
+		
+		JButton button_13 = new JButton("\uB85C\uADF8\uC778");
+		button_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// 로그인 기능
+				// id, pw 를 컴포넌트에서 가져오기
+				String infoId = textField.getText();
+				String infoPw = passwordField.getText();
+				// Member 객체 생성
+				Model m = new Model(infoId, infoPw);
+				// 로그인 요청하기
+				Model loginRider = service.RiderLogin(m);
+				if(loginRider==null) {
+					JOptionPane.showMessageDialog(frame, "로그인 실패");
+				}else {
+					JOptionPane.showMessageDialog(frame, "로그인 성공");
+					
+//					RiderView main = new RiderView(loginRider);   // 메인 창 생성
+					frame.dispose();              // 로그인 창 닫기
+					
+				}
+		
+			}
+		});
+		button_13.setFont(new Font("굴림", Font.BOLD, 15));
+		button_13.setBounds(95, 438, 132, 48);
+		mainRider.add(button_13);
+		
+		// RiderJoin 창 
+		JPanel RiderJoin = new JPanel();
+		RiderJoin.setLayout(null);
+		RiderJoin.setBackground(new Color(153, 204, 255));
+		panel_1.add(RiderJoin, "name_96138525806700");
+		
+		JButton button_14 = new JButton("\uD68C\uC6D0\uAC00\uC785");
+		button_14.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(RiderJoin);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
+		button_14.setFont(new Font("굴림", Font.BOLD, 15));
+		button_14.setBounds(254, 438, 132, 48);
+		mainRider.add(button_14);
+		
+		JButton button_15 = new JButton("\uCDE8\uC18C");
+		button_15.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel_1.removeAll();
+				panel_1.add(LoJo);
+				panel_1.repaint();
+				panel_1.revalidate();
+			}
+		});
+		button_15.setFont(new Font("굴림", Font.BOLD, 15));
+		button_15.setBounds(409, 438, 132, 48);
+		mainRider.add(button_15);
+		
+
+		
+		
 		ShopKeeper.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(main);
+				panel_1.add(mainShop);
 				panel_1.repaint();
 				panel_1.revalidate();
 			}
@@ -169,19 +364,14 @@ public class 회원가입 {
 		ShopKeeper.setBackground(new Color(255, 255, 255));
 		ShopKeeper.setBounds(202, 288, 229, 67);
 		LoJo.add(ShopKeeper);
-		
-		// RiderJoin 창 
-		JPanel RiderJoin = new JPanel();
-		RiderJoin.setLayout(null);
-		RiderJoin.setBackground(new Color(153, 204, 255));
-		panel_1.add(RiderJoin, "name_96138525806700");
+	
 		
 		JButton Rider = new JButton("\uB77C\uC774\uB354");
 		Rider.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(main);
+				panel_1.add(mainRider);
 				panel_1.repaint();
 				panel_1.revalidate();
 			}
@@ -196,7 +386,7 @@ public class 회원가입 {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(204, 255, 255));
 		panel_2.setBounds(111, 280, 389, 43);
-		main.add(panel_2);
+		mainUser.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("ID");
@@ -214,7 +404,7 @@ public class 회원가입 {
 		panel_3.setLayout(null);
 		panel_3.setBackground(new Color(204, 255, 255));
 		panel_3.setBounds(111, 349, 389, 43);
-		main.add(panel_3);
+		mainUser.add(panel_3);
 		
 		JLabel lblPw = new JLabel("PW");
 		lblPw.setHorizontalAlignment(SwingConstants.CENTER);
@@ -243,8 +433,8 @@ public class 회원가입 {
 				}else {
 					JOptionPane.showMessageDialog(frame, "로그인 성공");
 					
+					order main = new order(loginUser);   // 메인 창 생성
 					
-//					MMMain main = new MMMain(loginUser);   // 메인 창 생성
 					frame.dispose();              // 로그인 창 닫기
 					
 				}
@@ -257,23 +447,29 @@ public class 회원가입 {
 		});
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
 		btnNewButton.setBounds(95, 438, 132, 48);
-		main.add(btnNewButton);
+		mainUser.add(btnNewButton);
+		
+		
+		// User 회원가입 창
+		JPanel UserJoin = new JPanel();
+		UserJoin.setLayout(null);
+		UserJoin.setBackground(new Color(153, 204, 255));
+		panel_1.add(UserJoin, "name_90424023594900");
 		
 		JButton button = new JButton("\uD68C\uC6D0\uAC00\uC785");
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(main);
+				panel_1.add(UserJoin);
 				panel_1.repaint();
 				panel_1.revalidate();
-				
-				
+
 			}
 		});
 		button.setFont(new Font("굴림", Font.BOLD, 15));
 		button.setBounds(254, 438, 132, 48);
-		main.add(button);
+		mainUser.add(button);
 		
 		JButton button_9 = new JButton("\uCDE8\uC18C");
 		button_9.addMouseListener(new MouseAdapter() {
@@ -288,16 +484,7 @@ public class 회원가입 {
 		});
 		button_9.setFont(new Font("굴림", Font.BOLD, 15));
 		button_9.setBounds(409, 438, 132, 48);
-		main.add(button_9);
-		
-		// User 회원가입 창
-		JPanel UserJoin = new JPanel();
-		UserJoin.setLayout(null);
-		UserJoin.setBackground(new Color(153, 204, 255));
-		panel_1.add(UserJoin, "name_90424023594900");
-
-
-		
+		mainUser.add(button_9);
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setLayout(null);
@@ -324,6 +511,7 @@ public class 회원가입 {
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				
 				// 일반사용자 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = user_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
@@ -347,7 +535,7 @@ public class 회원가입 {
 						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
 						panel_1.removeAll();
-						panel_1.add(main);
+						panel_1.add(mainUser);
 						panel_1.repaint();
 						panel_1.revalidate();
 					}
@@ -370,7 +558,7 @@ public class 회원가입 {
 			
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(LoJo);
+				panel_1.add(mainUser);
 				panel_1.repaint();
 				panel_1.revalidate();
 				
@@ -529,7 +717,7 @@ public class 회원가입 {
 						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
 						panel_1.removeAll();
-						panel_1.add(main);
+						panel_1.add(mainUser);
 						panel_1.repaint();
 						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
 					}
@@ -556,7 +744,7 @@ public class 회원가입 {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(LoJo);
+				panel_1.add(mainShop);
 				panel_1.repaint();
 				panel_1.revalidate();
 				
@@ -708,8 +896,8 @@ public class 회원가입 {
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = rider_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
 				
-				Model m1 = new UserModel(infoId);
-				boolean result1 = service.idCheck(m1);
+				Model m2 = new UserModel(infoId);
+				boolean result1 = service.idCheck(m2);
 				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 					String infoPw = rider_pw.getText();
@@ -737,7 +925,7 @@ public class 회원가입 {
 						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
 						panel_1.removeAll();
-						panel_1.add(main);
+						panel_1.add(mainUser);
 						panel_1.repaint();
 						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
 					}
@@ -759,7 +947,7 @@ public class 회원가입 {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1.removeAll();
-				panel_1.add(LoJo);
+				panel_1.add(mainRider);
 				panel_1.repaint();
 				panel_1.revalidate();
 				

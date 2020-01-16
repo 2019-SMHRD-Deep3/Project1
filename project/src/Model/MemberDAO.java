@@ -174,7 +174,7 @@ public class MemberDAO {
 					// 해당 ID와 PW를 가진 사람이 존재
 					String id = rs.getString("SHOPKEEPER_ID");
 					String pw = rs.getString("PW");
-					loginUser = new UserModel(id, pw);  // 객체를 생성해주기 
+					loginUser = new ShopkeeperModel(id, pw);  // 객체를 생성해주기 
 				
 				}
 			}
@@ -193,7 +193,7 @@ public class MemberDAO {
 							// 해당 ID와 PW를 가진 사람이 존재
 							String id = rs.getString("RIDER_ID");
 							String pw = rs.getString("PW");
-							loginUser = new UserModel(id, pw);  // 객체를 생성해주기 
+							loginUser = new RiderModel(id, pw);  // 객체를 생성해주기 
 						
 						}
 				

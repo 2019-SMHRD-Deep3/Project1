@@ -23,35 +23,13 @@ public class order {
 	private Model loginUser;
 
 	
-	
+
+
 	public order(Model loginUser) {
 		this.loginUser = loginUser;
 		initialize();
 		frame.setVisible(true);
-	}
-	
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					order window = new order();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
-
-	public order() {
-		initialize();
+		
 		frame.setBounds(400, 150, 1011, 661);
 		
 		JPanel panel_1 =new JPanel();
@@ -75,8 +53,8 @@ public class order {
 		ID.setFont(new Font("HY수평선B", Font.BOLD, 20));
 		ID.setBounds(12, 25, 198, 44);
 		leftView.add(ID);
-		frame.getContentPane().add(ID); 
-		ID.setText(loginUser.getID());   // 로그인 유저의 이름을 레이블에 넣겠다.
+//		frame.getContentPane().add(ID); 
+//		ID.setText(loginUser.getID());   // 로그인 유저의 이름을 레이블에 넣겠다.
 
 		
 		JPanel Information = new JPanel();

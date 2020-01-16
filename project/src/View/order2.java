@@ -22,46 +22,17 @@ import java.awt.event.KeyEvent;
 public class order2 {
 
 	private JFrame frame;
-//	private Model loginUser;s
-	
-	
-	
-//	
-//	public order2(Model loginUser) {
-//		this.loginUser = loginUser;
-//		initialize();
-//		frame.setVisible(true);
-//	}
-	
-	
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					order2 window = new order2();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
+	private Model loginUser;
 	
 	
 	
 	
 	
-	public order2() {
+	public order2(Model loginUser) {
 		initialize();
 		frame.setBounds(400, 150, 1011, 661);
+		frame.setVisible(true);
+		
 		
 		JPanel panel_1 =new JPanel();
 		panel_1.setBounds(371, 0, 634, 632);

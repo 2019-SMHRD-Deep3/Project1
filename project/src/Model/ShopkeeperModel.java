@@ -18,6 +18,12 @@ public class ShopkeeperModel extends Model{
 		this.BUSINESS_LICENSE = BUSINESS_LICENSE;
 		this.TEL = TEL;
 	}
+	
+	// ·Î±×ÀÎ
+	public ShopkeeperModel(String ID, String PW) {
+		super(ID, PW);
+		
+	}
 
 	// getter
 	public String getSHOPNAME() {

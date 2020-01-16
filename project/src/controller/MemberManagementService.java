@@ -55,4 +55,15 @@ public class MemberManagementService {
 		Model loginUser = dao.selectOne(m);
 		return loginUser;
 	}
+	
+	public Model ShopkepperLogin(Model m) {
+		Model loginShopkepper = dao.selectOne(m);
+		return loginShopkepper;
+	}
+	
+	public Model RiderLogin(Model m) {
+		Model loginRider = dao.selectOne(m);
+		return loginRider;
+	}
+	
 }
