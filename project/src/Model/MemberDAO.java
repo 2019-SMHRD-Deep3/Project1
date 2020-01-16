@@ -30,8 +30,8 @@ public class MemberDAO {
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());
 			psmt.setString(3, m.getUSERNAME());
-			psmt.setString(4, m.getADDRESS());
-			psmt.setInt(5, m.getPHONE());
+			psmt.setString(4, m.getUSER_ADDRESS());
+			psmt.setInt(5, m.getUSER_PHONE());
 			rows = psmt.executeUpdate();
 			if(rows==0) {
 				System.out.println("sql문이 잘못되었습니다.");
@@ -104,10 +104,10 @@ public class MemberDAO {
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());
 			psmt.setString(3, m.getSHOPNAME());
-			psmt.setString(4, m.getADDRESS());
+			psmt.setString(4, m.getSHOP_ADDRESS());
 			psmt.setInt(5, m.getBUSINESS_LICENSE());
-			psmt.setInt(6, m.getRATING());
-			psmt.setInt(7, m.getTEL());
+			psmt.setInt(6, m.getSHOP_TEL());
+//			psmt.setInt(7, m.getSECTOR());
 			rows = psmt.executeUpdate();
 			if(rows==0) {
 				System.out.println("sql문이 잘못되었습니다.");
@@ -155,7 +155,11 @@ public class MemberDAO {
 				// 해당 ID와 PW를 가진 사람이 존재
 				String id = rs.getString("USER_ID");
 				String pw = rs.getString("PW");
-				loginUser = new UserModel(id, pw);  // 객체를 생성해주기 
+				String name = rs.getString("USERNAME");
+				String address = rs.getString("USER_ADDRESS");
+				int phone = rs.getInt("USER_PHONE");
+				
+				loginUser = new UserModel(id, pw, name, address, phone);  // 객체를 생성해주기 
 				
 			}
 			

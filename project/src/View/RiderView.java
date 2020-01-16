@@ -4,23 +4,23 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Graphics;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class RiderView {
 
 	private JFrame frame;
-
+	private JPanel orderPanel;
+	private int cnt;
 	/**
 	 * Launch the application.
 	 */
@@ -64,14 +64,18 @@ public class RiderView {
 
 		
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 255, 255));
-		panel_2.setBounds(12, 25, 196, 40);
-		leftView.add(panel_2);
+		JPanel name = new JPanel();
+		name.setBackground(new Color(255, 255, 255));
+		name.setBounds(12, 25, 196, 40);
+		leftView.add(name);
 		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBounds(12, 387, 228, 76);
-		leftView.add(panel_5);
+		JPanel ranking = new JPanel();
+		ranking.setBounds(22, 229, 215, 76);
+		leftView.add(ranking);
+		
+		JPanel order = new JPanel();
+		order.setBounds(22, 139, 215, 70);
+		leftView.add(order);
 		
 
 		
@@ -84,109 +88,60 @@ public class RiderView {
 		rightView.setLayout(null);
 		
 		JPanel rider_call = new JPanel();
-		rider_call.setBounds(27, 97, 651, 780);
+		rider_call.setBounds(27, 97, 651, 432);
 		rider_call.setBackground(Color.WHITE);
 		rightView.add(rider_call);
 		rider_call.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(0, 0, 651, 856);
+		scrollPane_1.setBounds(0, 0, 651, 431);
+		scrollPane_1.setPreferredSize(new Dimension(651, 431));
 		rider_call.add(scrollPane_1);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		scrollPane_1.setViewportView(panel);
-		panel.setPreferredSize(new Dimension(500,1000));
-		panel.setLayout(null);
+		JPanel orderPanel1 = new JPanel();
+		orderPanel1.setBackground(Color.WHITE);
+		scrollPane_1.setViewportView(orderPanel1);
 		
-		JPanel panel_6 = new JPanel();
-		panel_6.setToolTipText("");
-		panel_6.setBackground(Color.WHITE);
-		panel_6.setBounds(0, 0, 632, 149);
-		panel.add(panel_6);
-		panel_6.setLayout(new CardLayout(0, 0));
+		orderPanel1.setLayout(new GridLayout(3, 1, 0, 0));
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		panel_6.add(lblNewLabel, "name_1107657527168999");
+		JButton bnt = new JButton("새로 고침");
+		bnt.setBounds(577, 10, 101, 63);
+		rightView.add(bnt);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(Color.WHITE);
-		panel_7.setBounds(0, 150, 632, 149);
-		panel.add(panel_7);
-		panel_7.setLayout(new CardLayout(0, 0));
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		panel_7.add(lblNewLabel_1, "name_1107660350809300");
-		
-		JPanel panel_8 = new JPanel();
-		panel_8.setBackground(Color.WHITE);
-		panel_8.setBounds(0, 300, 632, 149);
-		panel.add(panel_8);
-		panel_8.setLayout(new CardLayout(0, 0));
-		
-		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBounds(-10287, -10031, 716, 612);
-		panel_9.setBackground(Color.WHITE);
-		rightView.add(panel_9);
-		
-		JPanel Rank = new JPanel();
-		Rank.setBounds(-10287, -10031, 716, 612);
-		rightView.add(Rank);
-		Rank.setBackground(Color.WHITE);
-		Rank.setLayout(null);
+		bnt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				cnt++;
+				if(cnt==4) {
+					orderPanel1.setLayout(new GridLayout(-1,1,0,0));
+					System.out.println("ddd");
+				}
+				JPanel cardPanel = new JPanel();
+				// cardPanel 꾸미기 시작
+				JButton bnt1 = new JButton("New button");
+				cardPanel.add(bnt1);
+				// cardPanel 꾸미기 끝
+				cardPanel.setPreferredSize(new Dimension(350, 150));
+				cardPanel.setBackground(new Color(255,0 , 0));
+				orderPanel1.add(cardPanel);
+				
+				// 다시 화면 그리기
+				orderPanel1.repaint();
+				orderPanel1.revalidate();
+			}
+		});
 		String mk1 = this.getClass().getResource(".").getPath() + "..//..//img//mk1.png";
 		String mk2 = this.getClass().getResource(".").getPath() + "..//..//img//mk2.png";
-		
-				
-				JPanel panel_3 = new JPanel();
-				panel_3.setBounds(35, 46, 600, 205);
-				Rank.add(panel_3);
-				panel_3.setLayout(null);
-				
-				JScrollPane scrollPane = new JScrollPane();
-				scrollPane.setBackground(Color.WHITE);
-				scrollPane.setBounds(0, 0, 600, 205);
-				panel_3.add(scrollPane);
-				
-					
-					JPanel panel_4 = new JPanel();
-					panel_4.setBackground(Color.WHITE);
-					scrollPane.setViewportView(panel_4);
-					panel_4.setPreferredSize(new Dimension(500, 550));
-					panel_4.setLayout(null);
-					JLabel a1 = new JLabel("");
 					
 					
 					String imgPath1 = this.getClass().getResource(".").getPath() + "..//..//img//a1.png";
-					a1.setIcon(new ImageIcon(imgPath1));
-					a1.setBounds(27, 10, 542, 126);
-					panel_4.add(a1);
-					
-					
-					JLabel a2 = new JLabel("");
 					String imgPath2 = this.getClass().getResource(".").getPath() + "..//..//img//a2.png";
-					a2.setIcon(new ImageIcon(imgPath2));
-					a2.setBounds(27, 146, 542, 126);
-					panel_4.add(a2);
-					
-					
-					JLabel a3 = new JLabel("");
 					String imgPath3 = this.getClass().getResource(".").getPath() + "..//..//img//a3.png";
-					a3.setIcon(new ImageIcon(imgPath3));
-					a3.setBounds(27, 282, 542, 126);
-					panel_4.add(a3);
-					
-					JLabel a4 = new JLabel("");
 					String imgPath4 = this.getClass().getResource(".").getPath() + "..//..//img//a4.png";
-					a4.setIcon(new ImageIcon(imgPath4));
-					a4.setBounds(27, 418, 542, 126);
-					panel_4.add(a4);
 					
-					JLabel bestRider = new JLabel("  BEST RIDER");
-					bestRider.setFont(new Font("HY수평선B", Font.BOLD, 18));
-					bestRider.setBounds(37, 10, 152, 29);
-					Rank.add(bestRider);
+	
+					
+			
 		
 		
 		

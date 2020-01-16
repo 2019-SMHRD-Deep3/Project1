@@ -3,7 +3,6 @@ package View;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,17 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import Model.Model;
+import Model.UserModel;
 
 public class order {
 
 	private JFrame frame;
-	private Model loginUser;
+	private UserModel loginUser;
 
-	
-
-
-	public order(Model loginUser) {
+	public order(UserModel loginUser) {
 		this.loginUser = loginUser;
 		initialize();
 		frame.setVisible(true);
@@ -53,8 +49,7 @@ public class order {
 		ID.setFont(new Font("HY수평선B", Font.BOLD, 20));
 		ID.setBounds(12, 25, 198, 44);
 		leftView.add(ID);
-//		frame.getContentPane().add(ID); 
-//		ID.setText(loginUser.getID());   // 로그인 유저의 이름을 레이블에 넣겠다.
+		ID.setText(loginUser.getID());   // 로그인 유저의 이름을 레이블에 넣겠다.
 
 		
 		JPanel Information = new JPanel();
@@ -62,10 +57,12 @@ public class order {
 		Information.setBounds(12, 119, 255, 471);
 		leftView.add(Information);
 		Information.setLayout(null);
-		String aaaa = this.getClass().getResource(".").getPath() + "..//..//img//000.png";
-	
 		
-
+		JLabel address = new JLabel((String) null);
+		address.setFont(new Font("HY수평선B", Font.BOLD, 20));
+		address.setBounds(12, 65, 198, 44);
+		leftView.add(address);
+		address.setText(loginUser.getUSER_ADDRESS());
 		
 
 		
