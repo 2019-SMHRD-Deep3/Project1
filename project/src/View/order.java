@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,12 +16,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Model.UserModel;
+import javax.swing.SwingConstants;
+import java.awt.GridLayout;
 
 public class order {
 
 	private JFrame frame;
 	private UserModel loginUser;
-
+	private ArrayList<String> menuName = new ArrayList<String>();
+	private ArrayList<String> menuPrice = new ArrayList<String>();
+	
 	public order(UserModel loginUser) {
 		this.loginUser = loginUser;
 		initialize();
@@ -41,27 +46,58 @@ public class order {
 		JPanel leftView = new JPanel();
 		leftView.setBackground(new Color(135, 206, 250));
 		leftView.setBounds(0, 0, 279, 622);
-		leftView.setLayout(null);
 		
 		main.add(leftView);
+		leftView.setLayout(new CardLayout(0, 0));
+		
+		JPanel order = new JPanel();
+		order.setBackground(new Color(135, 206, 250));
+		leftView.add(order, "name_274694410481799");
+		order.setLayout(null);
+		
+		JLabel ID2 = new JLabel((String) null);
+		ID2.setFont(new Font("HY수평선B", Font.BOLD, 20));
+		ID2.setBounds(19, 5, 118, 24);
+		order.add(ID2);
+		
+		JPanel panel_30 = new JPanel();
+		panel_30.setBackground(new Color(135, 206, 250));
+		panel_30.setBounds(19, 99, 234, 453);
+		order.add(panel_30);
+		panel_30.setLayout(null);
+		
+		JLabel orderinformation = new JLabel("\uC8FC\uBB38 \uC815\uBCF4");
+		orderinformation.setHorizontalAlignment(SwingConstants.CENTER);
+		orderinformation.setBounds(12, 10, 210, 34);
+		panel_30.add(orderinformation);
+		orderinformation.setFont(new Font("HY수평선B", Font.BOLD, 20));
+		
+		JPanel orderlist = new JPanel();
+		orderlist.setBounds(12, 54, 210, 312);
+		panel_30.add(orderlist);
+		orderlist.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel information = new JPanel();
+		information.setBackground(new Color(135, 206, 250));
+		leftView.add(information, "name_274663161534100");
+		information.setLayout(null);
 		
 		JLabel ID = new JLabel("ID");
+		ID.setBounds(19, 21, 118, 24);
+		information.add(ID);
 		ID.setFont(new Font("HY수평선B", Font.BOLD, 20));
-		ID.setBounds(12, 25, 198, 44);
-		leftView.add(ID);
-		ID.setText(loginUser.getID());   // 로그인 유저의 이름을 레이블에 넣겠다.
-
+		ID.setText(loginUser.getID());
 		
-		JPanel Information = new JPanel();
-		Information.setBackground(new Color(135, 206, 250));
-		Information.setBounds(12, 119, 255, 471);
-		leftView.add(Information);
-		Information.setLayout(null);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(135, 206, 250));
+		panel_2.setBounds(19, 99, 248, 415);
+		information.add(panel_2);
+		panel_2.setLayout(null);
 		
 		JLabel address = new JLabel((String) null);
+		address.setBounds(65, 5, 118, 24);
+		panel_2.add(address);
 		address.setFont(new Font("HY수평선B", Font.BOLD, 20));
-		address.setBounds(12, 65, 198, 44);
-		leftView.add(address);
 		address.setText(loginUser.getUSER_ADDRESS());
 		
 
@@ -287,6 +323,23 @@ public class order {
 					panel_7.add(lblNewLabel);
 					
 					JPanel panel_9 = new JPanel();
+					panel_9.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							System.out.println("dddddd");
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("메뉴"));
+							card.add(new JLabel("가격"));
+							orderlist.add(card);
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("메뉴");
+							menuPrice.add("가격");
+						}
+					});
 					panel_9.setBackground(new Color(255, 255, 255));
 					panel_9.setBounds(12, 35, 243, 25);
 					panel_7.add(panel_9);
