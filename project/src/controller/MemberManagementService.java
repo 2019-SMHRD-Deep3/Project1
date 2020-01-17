@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
+
 import Model.MemberDAO;
 import Model.Model;
+import Model.Payment;
 import Model.RiderModel;
 import Model.ShopkeeperModel;
 import Model.UserModel;
@@ -74,5 +77,11 @@ public class MemberManagementService {
 			return true;
 		}
 	}
+	
+	public ArrayList<Payment> memberLookup(String id) {
+		return dao.selectAll(id);
+	}
+	
+	
 	
 }
