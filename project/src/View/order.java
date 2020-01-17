@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -14,14 +15,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 import Model.Model;
 import Model.UserModel;
-import javax.swing.SwingConstants;
-import java.awt.GridLayout;
+import controller.MemberManagementService;
 
 public class order {
 
+	MemberManagementService service = new MemberManagementService();
+	
 	private JFrame frame;
 	private Model loginUser;
 	private ArrayList<String> menuName = new ArrayList<String>();
@@ -70,16 +73,18 @@ public class order {
 		
 		JLabel lblNewLabel_3 = new JLabel("\uC8FC\uC18C");
 		lblNewLabel_3.setFont(new Font("HY수평선B", Font.BOLD, 22));
-		lblNewLabel_3.setBounds(12, 10, 224, 44);
+		lblNewLabel_3.setBounds(12, 10, 224, 26);
 		panel_2.add(lblNewLabel_3);
 		
 		JLabel address = new JLabel((String) null);
+		address.setFont(new Font("HY수평선B", Font.PLAIN, 17));
 		address.setBackground(Color.WHITE);
-		address.setBounds(12, 65, 224, 44);
+		address.setBounds(12, 41, 198, 44);
 		panel_2.add(address);
-		address.setFont(new Font("HY수평선B", Font.BOLD, 20));
-		
-		address.setBounds(12, 65, 198, 44);
+		if(loginUser instanceof UserModel) {
+			address.setText(((UserModel)loginUser).getUSER_ADDRESS());
+		}
+
 		
 		JPanel order = new JPanel();
 		order.setBackground(new Color(135, 206, 250));
@@ -105,14 +110,46 @@ public class order {
 		orderinformation.setFont(new Font("HY수평선B", Font.BOLD, 20));
 		
 		JPanel orderlist = new JPanel();
-		orderlist.setBounds(12, 46, 210, 320);
+		orderlist.setBackground(Color.WHITE);
+		orderlist.setBounds(12, 46, 210, 257);
 		panel_30.add(orderlist);
 		orderlist.setLayout(new GridLayout(17, 1, 0, 0));
-//		leftView.add(address);
 		
-		if(loginUser instanceof UserModel) {
-			address.setText(((UserModel)loginUser).getUSER_ADDRESS());
-		}
+		JButton check = new JButton("\uC8FC\uBB38\uD558\uAE30");
+		check.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				boolean ischeck = false;
+				
+				for(int n =0; n<menuName.size(); n++) {
+					
+				ischeck	=service.insultMenu(menuName.get(n));
+				}
+				if(ischeck ){
+					System.out.println("값이 잘 들어갔습니다.");
+				}else {
+					System.out.println("재확인");
+				}
+				
+				
+			}
+		});
+		check.setBounds(98, 437, 124, 34);
+		panel_30.add(check);
+		
+		JLabel money = new JLabel("");
+		money.setBackground(Color.WHITE);
+		money.setBounds(12, 349, 210, 63);
+		panel_30.add(money);
+		
+		JLabel label_44 = new JLabel("\uACB0\uC81C \uAE08\uC561");
+		label_44.setHorizontalAlignment(SwingConstants.CENTER);
+		label_44.setFont(new Font("HY수평선B", Font.BOLD, 16));
+		label_44.setBounds(12, 322, 210, 34);
+		panel_30.add(label_44);
+
+
 		
 		JPanel rightView = new JPanel();
 		rightView.setBounds(279, 0, 693, 622);
@@ -285,6 +322,25 @@ public class order {
 					panel_4.setPreferredSize(new Dimension(500, 550));
 					panel_4.setLayout(null);
 					JLabel a1 = new JLabel("");
+					a1.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("매화도시락"));
+							card.add(new JLabel("10000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("매화도시락");
+							menuPrice.add("10000");
+						}
+					});
 					
 					JLabel bestMenu = new JLabel("  BEST MENU");
 					bestMenu.setFont(new Font("HY수평선B", Font.BOLD, 18));
@@ -299,6 +355,25 @@ public class order {
 					
 					// 한솥 베스트메뉴 이미지 2
 					JLabel a2 = new JLabel("");
+					a2.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("개나리도시락"));
+							card.add(new JLabel("8000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("개나리도시락");
+							menuPrice.add("8000");
+						}
+					});
 					String imgPath2 = this.getClass().getResource(".").getPath() + "..//..//img//a2.png";
 					a2.setIcon(new ImageIcon(imgPath2));
 					a2.setBounds(27, 146, 542, 126);
@@ -306,6 +381,25 @@ public class order {
 					
 					// 한솥 베스트메뉴 이미지 3
 					JLabel a3 = new JLabel("");
+					a3.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("진달래도시락"));
+							card.add(new JLabel("7000"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("진달래도시락");
+							menuPrice.add("7000");
+						}
+					});
 					String imgPath3 = this.getClass().getResource(".").getPath() + "..//..//img//a3.png";
 					a3.setIcon(new ImageIcon(imgPath3));
 					a3.setBounds(27, 282, 542, 126);
@@ -313,6 +407,25 @@ public class order {
 					
 					// 한솥 베스트메뉴 이미지 4
 					JLabel a4 = new JLabel("");
+					a4.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							JPanel card = new JPanel();
+							card.setLayout(new GridLayout(1,2,0,0));
+							card.add(new JLabel("돈까스도련님 고기고기 도시락"));
+							card.add(new JLabel("5500"));
+							card.setPreferredSize(new Dimension(200,50));
+//							card.setBackground(new Color(0, 0, 0));
+							orderlist.add(card);
+							
+							
+							orderlist.repaint();
+							orderlist.revalidate();
+							
+							menuName.add("돈까스도련님 고기고기 도시락");
+							menuPrice.add("5500");
+						}
+					});
 					String imgPath4 = this.getClass().getResource(".").getPath() + "..//..//img//a4.png";
 					a4.setIcon(new ImageIcon(imgPath4));
 					a4.setBounds(27, 418, 542, 126);
@@ -905,10 +1018,7 @@ public class order {
 
 					btnNewButton.setBounds(569, 569, 97, 29);
 					한솥.add(btnNewButton);
-					
-					
-					
-		
+
 		
 
 	}

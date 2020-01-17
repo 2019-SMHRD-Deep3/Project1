@@ -66,4 +66,13 @@ public class MemberManagementService {
 		return loginRider;
 	}
 	
+	public boolean insultMenu(String String) {
+		int rows = dao.insert2(String);
+		if (rows == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 }
