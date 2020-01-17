@@ -58,6 +58,52 @@ public class MemberDAO {
 		return rows;
 	}
 
+	
+	
+	//2020.01.17 여기서 부터
+	//수정
+	private void update(UserModel m) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "update User2 set PW=?, USERNAME=?, USER_ADDRESS=? where USER_ID=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, m.getPW());
+			psmt.setString(2, m.getUSERNAME());
+			psmt.setString(3, m.getUSER_ADDRESS());
+			psmt.setString(4, m.getID());
+			int rows = psmt.executeUpdate();
+			if(rows == 0) {
+				System.out.println("SQL문을 확인하세요.");
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(psmt != null) psmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 라이더
 	public int insert1(RiderModel m) {
 		int rows = 0;

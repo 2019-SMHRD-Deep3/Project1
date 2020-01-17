@@ -18,20 +18,23 @@ import javax.swing.JTextPane;
 
 import Model.UserModel;
 import controller.MemberManagementService;
+import javax.swing.JTextField;
+import java.awt.Font;
 
 public class Jungbosujung {
 
 	private MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
 	private UserModel loginUser2;
-	private JTable table;
-	private int sum;
+	private JTextField pwField;
+	private JTextField adressField;
+	private JTextField numberField;
+	private JTextField nameField;
 	
 	
 	
 	public Jungbosujung(UserModel loginUser2,int sum) {
 		this.loginUser2 = loginUser2;
-		this.sum = sum;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -61,87 +64,122 @@ public class Jungbosujung {
 		frame.setBounds(400, 150, 367, 588);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(50, 115, 263, 52);
-		frame.getContentPane().add(textPane);
-		
-		
-			textPane.setText(((UserModel)loginUser2).getUSER_ADDRESS());
 	
 		
 		
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("\uC8FC\uC18C");
-		lblNewLabel_1.setBounds(36, 49, 196, 41);
+		JLabel lblNewLabel_1 = new JLabel("\uBE44\uBC00\uBC88\uD638 \uBCC0\uACBD");
+		lblNewLabel_1.setBounds(38, 73, 196, 41);
 		frame.getContentPane().add(lblNewLabel_1);
 				
 		
 		
 		JLabel lblNewLabel = new JLabel("\uAC1C\uC778 \uC815\uBCF4 \uC218\uC815");
-		lblNewLabel.setBounds(146, 10, 146, 52);
+		lblNewLabel.setFont(new Font("양재벨라체M", Font.PLAIN, 20));
+		lblNewLabel.setBounds(116, 10, 146, 52);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_2 = new JLabel("\uAE08\uC561");
-		lblNewLabel_2.setBounds(47, 378, 59, 52);
-		frame.getContentPane().add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setBounds(99, 378, 214, 52);
-		frame.getContentPane().add(lblNewLabel_3);
-		lblNewLabel_3.setText(""+sum+"원");
-		
 		JButton btnNewButton = new JButton("\uD655\uC778");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
-				frame.dispose();
-				JOptionPane.showMessageDialog(frame,
-					    "구매해 주셔서 감사합니다.");
-				order main = new order(loginUser2);
+
 				
 			}
 		});
 		
-		btnNewButton.setBounds(120, 460, 116, 41);
+		btnNewButton.setBounds(38, 498, 116, 41);
 		frame.getContentPane().add(btnNewButton);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(49, 202, 264, 166);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 264, 166);
-		panel.add(scrollPane);
-		
-		
-		
 	
-
-		
-		String[] columnNames = {"MENU","가격"};
-		ArrayList<Model.Payment> list = service.memberLookup(loginUser2.getID());
-		System.out.println(list.size());
-		Object[][] data = new Object[list.size()][2];
-		
-		for (int i = 0; i < list.size(); i++) {
-			Model.Payment m = list.get(i);
-			data[i] = new Object[]{m.getMenu(),m.getPrice()};
-		}
-		System.out.println("ddd");
-		table = new JTable(data, columnNames);
-		scrollPane.setViewportView(table);
-		System.out.println("ddd");
-
-		
 		
 			JLabel a1 = new JLabel("");
 		
-		JLabel lblNewLabel_4 = new JLabel("\uAD6C\uB9E4 \uB0B4\uC5ED");
-		lblNewLabel_4.setBounds(49, 177, 57, 15);
-		frame.getContentPane().add(lblNewLabel_4);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		pwField = new JTextField();
+		pwField.setBounds(36, 111, 230, 41);
+		frame.getContentPane().add(pwField);
+		pwField.setColumns(10);
+		
+		adressField = new JTextField();
+		adressField.setColumns(10);
+		adressField.setBounds(38, 213, 230, 41);
+		frame.getContentPane().add(adressField);
+		
+		numberField = new JTextField();
+		numberField.setColumns(10);
+		numberField.setBounds(38, 315, 230, 41);
+		frame.getContentPane().add(numberField);
+		
+		nameField = new JTextField();
+		nameField.setColumns(10);
+		nameField.setBounds(38, 417, 230, 41);
+		frame.getContentPane().add(nameField);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		JLabel label = new JLabel("\uC8FC\uC18C \uBCC0\uACBD");
+		label.setBounds(38, 162, 196, 41);
+		frame.getContentPane().add(label);
+		
+		
+		
+		JLabel label_1 = new JLabel("\uC804\uD654\uBC88\uD638 \uBCC0\uACBD");
+		label_1.setBounds(38, 264, 196, 41);
+		frame.getContentPane().add(label_1);
+		
+		
+		
+		JButton button = new JButton("\uCDE8\uC18C");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button.setBounds(166, 498, 116, 41);
+		frame.getContentPane().add(button);
+		
+		JLabel label_2 = new JLabel("\uC774\uB984");
+		label_2.setBounds(38, 366, 196, 41);
+		frame.getContentPane().add(label_2);
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 }
