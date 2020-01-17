@@ -19,7 +19,7 @@ import javax.swing.JTextPane;
 import Model.UserModel;
 import controller.MemberManagementService;
 
-public class Payment {
+public class Jungbosujung {
 
 	private MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
@@ -29,7 +29,7 @@ public class Payment {
 	
 	
 	
-	public Payment(UserModel loginUser2,int sum) {
+	public Jungbosujung(UserModel loginUser2,int sum) {
 		this.loginUser2 = loginUser2;
 		this.sum = sum;
 		initialize();
@@ -74,13 +74,13 @@ public class Payment {
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("\uC8FC\uC18C");
-		lblNewLabel_1.setBounds(40, 82, 196, 41);
+		lblNewLabel_1.setBounds(36, 49, 196, 41);
 		frame.getContentPane().add(lblNewLabel_1);
 				
 		
 		
-		JLabel lblNewLabel = new JLabel("\uACB0\uC81C \uBC0F \uC8FC\uBB38\uB0B4\uC5ED");
-		lblNewLabel.setBounds(131, 10, 146, 52);
+		JLabel lblNewLabel = new JLabel("\uAC1C\uC778 \uC815\uBCF4 \uC218\uC815");
+		lblNewLabel.setBounds(146, 10, 146, 52);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_2 = new JLabel("\uAE08\uC561");

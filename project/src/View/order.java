@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -20,6 +21,10 @@ import javax.swing.SwingConstants;
 import Model.Model;
 import Model.UserModel;
 import controller.MemberManagementService;
+import javax.swing.JTextPane;
+import javax.swing.JSeparator;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class order {
 
@@ -78,13 +83,49 @@ public class order {
 		lblNewLabel_3.setBounds(12, 10, 224, 26);
 		panel_2.add(lblNewLabel_3);
 		
-		JLabel address = new JLabel((String) null);
-		address.setFont(new Font("HY수평선B", Font.PLAIN, 17));
-		address.setBackground(Color.WHITE);
-		address.setBounds(12, 41, 198, 44);
-		panel_2.add(address);
+		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
+		textPane.setBounds(22, 46, 203, 69);
+		panel_2.add(textPane);
+		
+		JLabel label_45 = new JLabel("\uC815\uBCF4\uC218\uC815");
+		label_45.addMouseListener(new MouseAdapter() {
+			
+			
+			
+			
+			
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		label_45.setFont(new Font("HY수평선B", Font.BOLD, 22));
+		label_45.setBounds(12, 150, 224, 26);
+		panel_2.add(label_45);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(12, 131, 224, 2);
+		panel_2.add(separator);
+		
+		JLabel label_46 = new JLabel("\uC8FC\uBB38\uB0B4\uC5ED");
+		label_46.setFont(new Font("HY수평선B", Font.BOLD, 22));
+		label_46.setBounds(12, 240, 224, 26);
+		panel_2.add(label_46);
+		
+		JButton 로그아웃 = new JButton("\uB85C\uADF8\uC544\uC6C3");
+		로그아웃.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frame.dispose();
+				회원가입 Login = new 회원가입();
+				
+			}
+		});
+		로그아웃.setBounds(174, 533, 93, 37);
+		information.add(로그아웃);
+		
 		if(loginUser instanceof UserModel) {
-			address.setText(((UserModel)loginUser).getUSER_ADDRESS());
+			textPane.setText(((UserModel)loginUser).getUSER_ADDRESS());
 		}
 
 		
@@ -169,13 +210,30 @@ public class order {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				   // 메인 창 생성
+				frame.dispose();
 				UserModel loginUser2 = (UserModel)loginUser;
-				Payment main = new Payment(loginUser2);
+				Payment main = new Payment(loginUser2, sum);
 				
 			}
 		});
 		pay.setBounds(115, 439, 107, 34);
 		panel_30.add(pay);
+		
+		JButton button_1 = new JButton("\uB85C\uADF8\uC544\uC6C3");
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				frame.dispose();
+				회원가입 Login = new 회원가입();
+			}
+		});
+		
+		
+		
+		
+		button_1.setBounds(172, 10, 81, 34);
+		order.add(button_1);
 
 
 		
@@ -235,7 +293,7 @@ public class order {
 		panel_5.add(shop4);
 		
 		// 상점 카테고리에서 취소를 눌렀을 때 메뉴 카테고리 보여주기
-		JButton button = new JButton("\uCDE8\uC18C");
+		JButton button = new JButton("\uC774\uC804");
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -462,7 +520,7 @@ public class order {
 					panel_4.add(a4);
 					
 				// 한솥에서 취소버튼을 눌렀을 때 가게 카테고리 보여주기
-					JButton btnNewButton = new JButton("\uCDE8\uC18C");
+					JButton btnNewButton = new JButton("\uC774\uC804");
 					btnNewButton.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {

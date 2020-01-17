@@ -73,11 +73,13 @@ public class 회원가입 {
 		});
 	}
 
+	
 	/**
 	 * Create the application.
 	 */
 	public 회원가입() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
