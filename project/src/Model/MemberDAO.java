@@ -237,6 +237,7 @@ public class MemberDAO {
 			// 일반유저 테이블 확인
 			String sql = "SELECT * FROM USER2 " +
 						"WHERE USER_ID = ?"; 
+
 			psmt = conn.prepareStatement(sql);  
 			psmt.setString(1, m.getID());
 			
@@ -254,6 +255,7 @@ public class MemberDAO {
 				// 사장님 테이블 확인
 			sql = "SELECT * FROM SHOPKEEPER " +
 				"WHERE SHOPKEEPER_ID = ?"; 
+		
 			psmt = conn.prepareStatement(sql);  
 			psmt.setString(1, m.getID());
 			
@@ -269,16 +271,18 @@ public class MemberDAO {
 			
 			if(ID == null) {
 				// 라이더 테이블 확인
-				sql = "SELECT * FROM RIDER " +
-						"WHERE RIDER_ID = ?"; 
+			sql = "SELECT * FROM RIDER " +
+						"WHERE RIDER_ID = ?"; 	
+
 					psmt = conn.prepareStatement(sql);  
 					psmt.setString(1, m.getID());
-					
+				
 					rs = psmt.executeQuery();  // 실행
-						
+			
 						if(rs.next()) {  // rs.next()  -> 다음 줄이 있는지 없는지 T/F 로 알려줌
 							// 해당 ID와 PW를 가진 사람이 존재
 							String id = rs.getString("RIDER_ID");
+						
 							ID = new UserModel(id); 
 						
 						}
