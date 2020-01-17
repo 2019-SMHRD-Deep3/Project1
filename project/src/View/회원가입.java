@@ -435,6 +435,8 @@ public class 회원가입 {
 					
 //					order main = new order((ShopkeeperModel)loginUser);   // 메인 창 생성
 					order main = new order(loginUser);
+//					UserModel loginUser2 = (UserModel)loginUser;
+//					Payment main = new Payment(loginUser2);
 					frame.dispose();              // 로그인 창 닫기
 					
 				}

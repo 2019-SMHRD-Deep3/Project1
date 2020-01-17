@@ -21,10 +21,10 @@ public class Payment {
 
 	private MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
-	private UserModel loginUser;
+	private UserModel loginUser2;
 	
-	public Payment(UserModel loginUser) {
-		this.loginUser = loginUser;
+	public Payment(UserModel loginUser2) {
+		this.loginUser2 = loginUser2;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -55,12 +55,18 @@ public class Payment {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		
+		
+		
 		JLabel Address = new JLabel("New label");
 		Address.setBounds(49, 109, 264, 52);
 		frame.getContentPane().add(Address);
 		frame.getContentPane().add(Address);
-		Address.setText(loginUser.getUSER_ADDRESS());
+		Address.setText(loginUser2.getUSER_ADDRESS());
 	
+		
+		
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("\uC8FC\uC18C");
 		lblNewLabel_1.setBounds(50, 82, 196, 41);
