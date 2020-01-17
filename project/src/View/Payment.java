@@ -22,6 +22,9 @@ public class Payment {
 	private MemberManagementService service = new MemberManagementService();
 	private JFrame frame;
 	private UserModel loginUser2;
+	private JTable table;
+	
+	
 	
 	public Payment(UserModel loginUser2) {
 		this.loginUser2 = loginUser2;
@@ -51,7 +54,7 @@ public class Payment {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 367, 513);
+		frame.setBounds(100, 100, 367, 588);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -79,11 +82,11 @@ public class Payment {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_2 = new JLabel("\uAE08\uC561");
-		lblNewLabel_2.setBounds(49, 350, 59, 52);
+		lblNewLabel_2.setBounds(223, 378, 59, 52);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setBounds(120, 350, 214, 52);
+		lblNewLabel_3.setBounds(49, 378, 214, 52);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		JButton btnNewButton = new JButton("\uD655\uC778");
@@ -91,79 +94,43 @@ public class Payment {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(120, 412, 116, 41);
+		btnNewButton.setBounds(120, 460, 116, 41);
 		frame.getContentPane().add(btnNewButton);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(49, 202, 264, 468);
+		panel.setBounds(49, 202, 264, 166);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 264, 468);
+		scrollPane.setBounds(0, 0, 264, 166);
 		panel.add(scrollPane);
 		
-		String[] columnNames = {};
-		
-//		ArrayList<> list = service.();
-//	
-//		Object[][] data = new Object[list.size()][2];
-//		
-//		for (int i = 0; i < list.size(); i++) {
-//			Member m = list.get(i);
-//			data[i] = new Object[]{m.menuName(),m.menuPrice()};
-//		}
-//		table = new JTable(data, columnNames);
-//		scrollPane.setViewportView(table);
-//		
 		
 		
-//		sysdate
-//		
-//		
-//		String[] columnNames = {"아이디","이름",
-//                "나이"};
-//		
-//		ArrayList<Member> list = service.memberLookup(loginUser.getId());
-//	
-//		Object[][] data = new Object[list.size()][3];
-//		
-//		for (int i = 0; i < list.size(); i++) {
-//			Member m = list.get(i);
-//			data[i] = new Object[]{m.getId(),m.getName(),m.getAge()};
-//		}
-//			    
-//		
-//		table = new JTable(data, columnNames);
-//		scrollPane.setViewportView(table);
+	
+
+		
+		String[] columnNames = {"MENU","가격"};
+		ArrayList<Model.Payment> list = service.memberLookup(loginUser2.getID());
+		System.out.println(list.size());
+		Object[][] data = new Object[list.size()][2];
+		
+		for (int i = 0; i < list.size(); i++) {
+			Model.Payment m = list.get(i);
+			data[i] = new Object[]{m.getMenu(),m.getPrice()};
+		}
+		System.out.println("ddd");
+		table = new JTable(data, columnNames);
+		scrollPane.setViewportView(table);
+		System.out.println("ddd");
+
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		JPanel panel_1 = new JPanel();
-		scrollPane.setViewportView(panel_1);
 			JLabel a1 = new JLabel("");
-			panel_1.setPreferredSize(new Dimension(240, 400));
 		
 		JLabel lblNewLabel_4 = new JLabel("\uAD6C\uB9E4 \uB0B4\uC5ED");
 		lblNewLabel_4.setBounds(49, 177, 57, 15);
 		frame.getContentPane().add(lblNewLabel_4);
 	}
-
 }
