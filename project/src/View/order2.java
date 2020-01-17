@@ -29,12 +29,6 @@ public class order2 {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 	public order2(Model loginUser) {
 		initialize();
 		frame.setBounds(400, 150, 1011, 661);
