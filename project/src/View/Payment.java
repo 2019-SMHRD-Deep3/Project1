@@ -115,6 +115,36 @@ public class Payment {
 //		}
 //		table = new JTable(data, columnNames);
 //		scrollPane.setViewportView(table);
+//		
+		
+		
+//		sysdate
+//		
+//		
+//		String[] columnNames = {"아이디","이름",
+//                "나이"};
+//		
+//		ArrayList<Member> list = service.memberLookup(loginUser.getId());
+//	
+//		Object[][] data = new Object[list.size()][3];
+//		
+//		for (int i = 0; i < list.size(); i++) {
+//			Member m = list.get(i);
+//			data[i] = new Object[]{m.getId(),m.getName(),m.getAge()};
+//		}
+//			    
+//		
+//		table = new JTable(data, columnNames);
+//		scrollPane.setViewportView(table);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

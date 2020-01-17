@@ -31,6 +31,7 @@ public class order {
 	private ArrayList<Integer> menuPrice = new ArrayList<Integer>();
 	private int sum = 0;
 	
+	
 	public order(Model loginUser) {
 		this.loginUser = loginUser;
 		initialize();
@@ -162,9 +163,19 @@ public class order {
 		label_44.setHorizontalAlignment(SwingConstants.CENTER);
 		label_44.setFont(new Font("HY수평선B", Font.BOLD, 16));
 		
-		JButton button_1 = new JButton("\uACB0\uC81C\uD558\uAE30");
-		button_1.setBounds(115, 439, 107, 34);
-		panel_30.add(button_1);
+		JButton pay = new JButton("\uACB0\uC81C\uD558\uAE30");
+		pay.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				   // 메인 창 생성
+				UserModel loginUser2 = (UserModel)loginUser;
+				Payment main = new Payment(loginUser2);
+				
+			}
+		});
+		pay.setBounds(115, 439, 107, 34);
+		panel_30.add(pay);
 
 
 		
