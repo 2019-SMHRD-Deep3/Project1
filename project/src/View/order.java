@@ -28,7 +28,8 @@ public class order {
 	private JFrame frame;
 	private Model loginUser;
 	private ArrayList<String> menuName = new ArrayList<String>();
-	private ArrayList<String> menuPrice = new ArrayList<String>();
+	private ArrayList<Integer> menuPrice = new ArrayList<Integer>();
+	private int sum = 0;
 	
 	public order(Model loginUser) {
 		this.loginUser = loginUser;
@@ -93,7 +94,7 @@ public class order {
 		
 		JLabel ID2 = new JLabel((String) null);
 		ID2.setFont(new Font("HY수평선B", Font.BOLD, 20));
-		ID2.setBounds(19, 30, 147, 40);
+		ID2.setBounds(19, 30, 118, 40);
 		ID2.setText(loginUser.getID());
 		order.add(ID2);
 		
@@ -115,39 +116,55 @@ public class order {
 		panel_30.add(orderlist);
 		orderlist.setLayout(new GridLayout(17, 1, 0, 0));
 		
+		JPanel panel_31 = new JPanel();
+		panel_31.setBackground(Color.WHITE);
+		panel_31.setBounds(12, 382, 210, 47);
+		panel_30.add(panel_31);
+		panel_31.setLayout(null);
+		
+		JLabel money = new JLabel("");
+		money.setBounds(12, 10, 186, 27);
+		panel_31.add(money);
+		money.setBackground(new Color(255, 255, 255));
+		
+		
 		JButton check = new JButton("\uC8FC\uBB38\uD558\uAE30");
 		check.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				sum = 0;
 				boolean ischeck = false;
 				
 				for(int n =0; n<menuName.size(); n++) {
 					
-				ischeck	=service.insultMenu(menuName.get(n));
+				ischeck	=service.insultMenu(menuName.get(n), menuPrice.get(n),loginUser.getID());
+				sum+=menuPrice.get(n);
+				
 				}
 				if(ischeck ){
 					System.out.println("값이 잘 들어갔습니다.");
 				}else {
 					System.out.println("재확인");
 				}
+				money.setText(sum+"원");
+				
 				
 				
 			}
 		});
-		check.setBounds(98, 437, 124, 34);
+		check.setBounds(115, 313, 107, 34);
 		panel_30.add(check);
 		
-		JLabel money = new JLabel("");
-		money.setBackground(Color.WHITE);
-		money.setBounds(12, 349, 210, 63);
-		panel_30.add(money);
 		
 		JLabel label_44 = new JLabel("\uACB0\uC81C \uAE08\uC561");
+		label_44.setBounds(12, 357, 210, 27);
+		panel_30.add(label_44);
 		label_44.setHorizontalAlignment(SwingConstants.CENTER);
 		label_44.setFont(new Font("HY수평선B", Font.BOLD, 16));
-		label_44.setBounds(12, 322, 210, 34);
-		panel_30.add(label_44);
+		
+		JButton button_1 = new JButton("\uACB0\uC81C\uD558\uAE30");
+		button_1.setBounds(115, 439, 107, 34);
+		panel_30.add(button_1);
 
 
 		
@@ -338,7 +355,9 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("매화도시락");
-							menuPrice.add("10000");
+							menuPrice.add(10000);
+
+				
 						}
 					});
 					
@@ -371,7 +390,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("개나리도시락");
-							menuPrice.add("8000");
+							menuPrice.add(8000);
 						}
 					});
 					String imgPath2 = this.getClass().getResource(".").getPath() + "..//..//img//a2.png";
@@ -397,7 +416,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("진달래도시락");
-							menuPrice.add("7000");
+							menuPrice.add(7000);
 						}
 					});
 					String imgPath3 = this.getClass().getResource(".").getPath() + "..//..//img//a3.png";
@@ -423,7 +442,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("돈까스도련님 고기고기 도시락");
-							menuPrice.add("5500");
+							menuPrice.add(5500);
 						}
 					});
 					String imgPath4 = this.getClass().getResource(".").getPath() + "..//..//img//a4.png";
@@ -485,7 +504,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("매화도시락");
-							menuPrice.add("10000");
+							menuPrice.add(10000);
 						}
 					});
 					panel_9.setBackground(new Color(255, 255, 255));
@@ -518,7 +537,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("개나리도시락");
-							menuPrice.add("8000");
+							menuPrice.add(8000);
 						}
 					});
 					panel_10.setLayout(null);
@@ -551,7 +570,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("진달래도시락");
-							menuPrice.add("7000");
+							menuPrice.add(7000);
 						}
 					});
 					panel_11.setLayout(null);
@@ -584,7 +603,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("숯불직화구이덮밥");
-							menuPrice.add("5700");
+							menuPrice.add(5700);
 						}
 					});
 					panel_12.setLayout(null);
@@ -622,7 +641,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("중화짜장볶음밥");
-							menuPrice.add("4700");
+							menuPrice.add(4700);
 						}
 					});
 					panel_13.setLayout(null);
@@ -655,7 +674,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("국물떡볶이튀김세트");
-							menuPrice.add("4800");
+							menuPrice.add(4800);
 						}
 					});
 					panel_14.setLayout(null);
@@ -788,7 +807,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("돈까스도련님도시락");
-							menuPrice.add("3900");
+							menuPrice.add(3900);
 						}
 					});
 					panel_15.setLayout(null);
@@ -821,7 +840,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("국화도시락");
-							menuPrice.add("4000");
+							menuPrice.add(4000);
 						}
 					});
 					panel_16.setLayout(null);
@@ -854,7 +873,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("치킨제육도시락");
-							menuPrice.add("4400");
+							menuPrice.add(4400);
 						}
 					});
 					panel_17.setLayout(null);
@@ -887,7 +906,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("동백도시락");
-							menuPrice.add("5000");
+							menuPrice.add(5000);
 						}
 					});
 					panel_18.setLayout(null);
@@ -920,7 +939,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("칠리찹쌀탕수육도련님");
-							menuPrice.add("4000");
+							menuPrice.add(4000);
 						}
 					});
 					panel_19.setLayout(null);
@@ -953,7 +972,7 @@ public class order {
 							orderlist.revalidate();
 							
 							menuName.add("생선까스도시락");
-							menuPrice.add("3900");
+							menuPrice.add(3900);
 						}
 					});
 					panel_20.setLayout(null);

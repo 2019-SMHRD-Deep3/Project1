@@ -309,14 +309,17 @@ public class MemberDAO {
 
 
 	// ∂Û¿Ã¥ı
-	public int insert2 ( String String) {
+	public int insert5 ( String String, int num, String id) {
 		int rows = 0;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO ORDERLIST(MENU) VALUES (?)";
+			String sql = "INSERT INTO ORDERLIST VALUES (?,?,?, sysdate)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, String);
+			psmt.setInt(2, num);
+			psmt.setString(3, id);
+			
 			
 
 			rows = psmt.executeUpdate();
