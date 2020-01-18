@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -26,11 +28,14 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
 
 public class order2 {
 
 	private JFrame frame;
 	private Model loginUser;
+	private JTable table;
+	private JTable table_1;
 
 	public order2(Model loginUser) {
 		initialize();
@@ -106,10 +111,10 @@ public class order2 {
 		});
 
 
-		button.setBounds(152, 566, 93, 37);
+		button.setBounds(160, 566, 93, 37);
 		panel_3.add(button);
 		
-		JButton button_1 = new JButton("\uD68C\uC6D0 \uD0C8\uD1F4");
+		JButton button_1 = new JButton("\uD68C\uC6D0\uD0C8\uD1F4");
 		button_1.setBounds(23, 566, 93, 37);
 		panel_3.add(button_1);
 		
@@ -396,7 +401,7 @@ public class order2 {
 		
 				JButton button_6 = new JButton("\uC774\uC804\uC73C\uB85C");
 				button_6.setFont(new Font("±¼¸²", Font.BOLD, 14));
-				button_6.setBounds(38, 42, 94, 40);
+				button_6.setBounds(38, 42, 115, 40);
 				panel_2.add(button_6);
 				
 						JPanel panel_5 = new JPanel();
@@ -435,17 +440,38 @@ public class order2 {
 
 		JPanel panel_9 = new JPanel();
 		panel_9.setLayout(null);
-		panel_9.setBounds(35, 46, 600, 205);
+		panel_9.setBounds(35, 46, 600, 211);
 		panel_8.add(panel_9);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(Color.WHITE);
-		scrollPane.setBounds(0, 0, 600, 205);
+		scrollPane.setBounds(0, 0, 600, 211);
 		panel_9.add(scrollPane);
-
-		JLabel a1 = new JLabel("");
-		a1.setBounds(0, 0, 542, 126);
-		panel_9.add(a1);
+		
+		JPanel panel_42 = new JPanel();
+		panel_42.setBackground(Color.WHITE);
+		scrollPane.setViewportView(panel_42);
+		panel_42.setPreferredSize(new Dimension(550, 500));
+				panel_42.setLayout(null);
+				
+				JLabel a1 = new JLabel("");
+				String imgPath1 = this.getClass().getResource(".").getPath() + "..//..//img//a1.png";
+				a1.setIcon(new ImageIcon(imgPath1));
+				a1.setBounds(12, 10, 542, 126);
+				panel_42.add(a1);
+				
+				JLabel a2 = new JLabel("");
+				String imgPath2 = this.getClass().getResource(".").getPath() + "..//..//img//a2.png";
+				a2.setIcon(new ImageIcon(imgPath2));
+				a2.setBounds(12, 146, 542, 126);
+				panel_42.add(a2);
+				
+				JLabel a3 = new JLabel("");
+				String imgPath3 = this.getClass().getResource(".").getPath() + "..//..//img//a3.png";
+				a3.setIcon(new ImageIcon(imgPath3));
+				a3.setBounds(12, 282, 542, 126);
+				panel_42.add(a3);
+				
 
 		JLabel label = new JLabel("  BEST MENU");
 		label.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 18));
@@ -834,15 +860,11 @@ public class order2 {
 				panel_4.revalidate();
 			}
 		});
-		button_8.setBounds(69, 30, 125, 111);
+		button_8.setBounds(69, 30, 115, 40);
 		work_start.add(button_8);
-
-		JButton button_9 = new JButton("\uC774\uC804\uC73C\uB85C");
-		button_9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		button_9.addMouseListener(new MouseAdapter() {
+		
+		JButton button_3 = new JButton("\uC774\uC804\uC73C\uB85C");
+		button_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_4.removeAll();
@@ -851,14 +873,19 @@ public class order2 {
 				panel_4.revalidate();
 			}
 		});
-		button_9.setBounds(69, 30, 125, 111);
-		pay.add(button_9);
+		button_3.setBounds(47, 30, 115, 40);
+		pay.add(button_3);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(47, 144, 611, 403);
+		pay.add(scrollPane_2);
+		
+		table_1 = new JTable();
+		scrollPane_2.setViewportView(table_1);
+
 
 		JButton button_10 = new JButton("\uC774\uC804\uC73C\uB85C");
-		button_10.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		button_10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -868,7 +895,7 @@ public class order2 {
 				panel_4.revalidate();
 			}
 		});
-		button_10.setBounds(69, 30, 125, 111);
+		button_10.setBounds(69, 30, 115, 40);
 		Review.add(button_10);
 
 		JButton button_11 = new JButton("\uC774\uC804\uC73C\uB85C");
@@ -885,7 +912,7 @@ public class order2 {
 				panel_4.revalidate();
 			}
 		});
-		button_11.setBounds(69, 30, 125, 111);
+		button_11.setBounds(69, 30, 115, 40);
 		order.add(button_11);
 
 	}
