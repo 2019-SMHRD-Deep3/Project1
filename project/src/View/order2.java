@@ -19,6 +19,9 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import Model.Model;
+import Model.ShopkeeperModel;
+import Model.UserModel;
+
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
@@ -80,9 +83,36 @@ public class order2 {
 		textPane.setBounds(22, 60, 203, 69);
 		panel.add(textPane);
 		
+		// 가게 주소 가져오기
+		if(loginUser instanceof ShopkeeperModel) {
+			textPane.setText(((ShopkeeperModel)loginUser).getSHOP_ADDRESS());
+		}
+		
+
+		
+		
+	
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 145, 224, 2);
 		panel.add(separator);
+		
+		JButton button = new JButton("\uB85C\uADF8\uC544\uC6C3");
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				회원가입 Login = new 회원가입();
+			}
+		});
+
+
+		button.setBounds(152, 566, 93, 37);
+		panel_3.add(button);
+		
+		JButton button_1 = new JButton("\uD68C\uC6D0 \uD0C8\uD1F4");
+		button_1.setBounds(23, 566, 93, 37);
+		panel_3.add(button_1);
+		
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.WHITE);
@@ -95,8 +125,7 @@ public class order2 {
 		panel_4.add(main, "name_1749428196331400");
 		main.setLayout(null);
 
-		ButtonGroup group = new ButtonGroup();
-
+		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(224, 255, 255));
 		panel_6.setBounds(52, 22, 589, 79);

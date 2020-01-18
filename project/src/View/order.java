@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import Model.Model;
+import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
 import javax.swing.JTextPane;
@@ -89,15 +90,6 @@ public class order {
 		panel_2.add(textPane);
 		
 		JLabel label_45 = new JLabel("\uC815\uBCF4\uC218\uC815");
-		label_45.addMouseListener(new MouseAdapter() {
-			
-			
-			
-			
-			
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
 		label_45.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 22));
 		label_45.setBounds(12, 177, 224, 26);
 		panel_2.add(label_45);
@@ -120,6 +112,7 @@ public class order {
 		panel_2.add(separator_2);
 		
 		JButton ·Î±×¾Æ¿ô = new JButton("\uB85C\uADF8\uC544\uC6C3");
+	
 		·Î±×¾Æ¿ô.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -129,12 +122,19 @@ public class order {
 				
 			}
 		});
-		·Î±×¾Æ¿ô.setBounds(174, 533, 93, 37);
+		·Î±×¾Æ¿ô.setBounds(161, 533, 93, 37);
 		information.add(·Î±×¾Æ¿ô);
+		
+		JButton button_2 = new JButton("\uD68C\uC6D0 \uD0C8\uD1F4");
+		button_2.setBounds(29, 533, 93, 37);
+		information.add(button_2);
 		
 		if(loginUser instanceof UserModel) {
 			textPane.setText(((UserModel)loginUser).getUSER_ADDRESS());
 		}
+
+	
+		
 
 		
 		JPanel order = new JPanel();
