@@ -142,7 +142,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO SHOPKEEPER(SHOPKEEPER_ID,PW,SHOPNAME,SHOP_ADDRESS,BUSINESS_LICENSE,SHOP_TEL) VALUES (?,?,?,?,?,?)";
+			String sql = "INSERT INTO SHOPKEEPER(SEQ,SHOPKEEPER_ID,PW,SHOPNAME,SHOP_ADDRESS,BUSINESS_LICENSE,SHOP_TEL) VALUES (Update_sequence.NEXTVAL,?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());
@@ -176,7 +176,7 @@ public class MemberDAO {
 	}
 
 	// 로그인
-	public Model selectOne(Model m) {
+	public Model selectUser(Model m) {
 		Model loginUser = null;
 
 		try { // try ~ catch 예외처리
@@ -204,42 +204,7 @@ public class MemberDAO {
 
 			}
 
-			if (loginUser == null) {
-				// 사장님 로그인
-				sql = "SELECT * FROM SHOPKEEPER " + "WHERE SHOPKEEPER_ID = ? AND PW = ?";
-				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, m.getID());
-				psmt.setString(2, m.getPW());
-
-				rs = psmt.executeQuery(); // 실행
-
-				if (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
-					// 해당 ID와 PW를 가진 사람이 존재
-					String id = rs.getString("SHOPKEEPER_ID");
-					String pw = rs.getString("PW");
-					loginUser = new ShopkeeperModel(id, pw); // 객체를 생성해주기
-
-				}
-			}
-
-			if (loginUser == null) {
-				// 라이더 로그인
-				sql = "SELECT * FROM RIDER " + "WHERE RIDER_ID = ? AND PW = ?";
-				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, m.getID());
-				psmt.setString(2, m.getPW());
-
-				rs = psmt.executeQuery(); // 실행
-
-				if (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
-					// 해당 ID와 PW를 가진 사람이 존재
-					String id = rs.getString("RIDER_ID");
-					String pw = rs.getString("PW");
-					loginUser = new RiderModel(id, pw); // 객체를 생성해주기
-
-				}
-
-			}
+		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -265,6 +230,111 @@ public class MemberDAO {
 		return loginUser;
 	}
 
+
+
+
+
+
+	public Model selectShopkeeper(Model m) {
+		Model loginUser = null;
+
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 로그인
+			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE SHOPKEEPER_ID = ? AND PW = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, m.getID());
+			psmt.setString(2, m.getPW());
+
+			rs = psmt.executeQuery(); // 실행
+
+			if (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+				// 해당 ID와 PW를 가진 사람이 존재
+				String id = rs.getString("SHOPKEEPER_ID");
+				String pw = rs.getString("PW");
+				loginUser = new ShopkeeperModel(id, pw); // 객체를 생성해주기
+
+				}
+			}
+
+		
+		 catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return loginUser;
+	}
+
+	public Model selectRider(Model m) {
+		Model loginUser = null;
+
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 로그인
+			String sql = "SELECT * FROM RIDER " + "WHERE RIDER_ID = ? AND PW = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, m.getID());
+			psmt.setString(2, m.getPW());
+
+			rs = psmt.executeQuery(); // 실행
+
+			if (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+				// 해당 ID와 PW를 가진 사람이 존재
+				String id = rs.getString("RIDER_ID");
+				String pw = rs.getString("PW");
+				loginUser = new RiderModel(id, pw); // 객체를 생성해주기
+
+				}
+
+			}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return loginUser;
+	}
 	// 중복 확인
 	public Model idCheck(Model m) {
 		Model ID = null;
@@ -429,6 +499,109 @@ public class MemberDAO {
 		return list;
 		/////////// 리스트 뽑는 부분
 
+	}
+
+
+
+
+
+	public int next() {
+		int price =0;
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 테이블 확인
+			String sql = "SELECT Update_sequence.CURRVAL FROM DUAL ";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery(); // 실행
+
+			if (rs.next()) {
+			 price = rs.getInt("CURRVAL");
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return price;
+	}
+
+
+
+
+
+	public ShopkeeperModel selectshop(int n) {
+		ShopkeeperModel loginUser = null;
+
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 로그인
+			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE SEQ = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, n);
+			
+
+			rs = psmt.executeQuery(); // 실행
+
+			if (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+				// 해당 ID와 PW를 가진 사람이 존재
+				String shopName = rs.getString("SHOPNAME");
+				String address = rs.getString("SHOP_ADDRESS");
+//				Integer.parseInt(AGE.getText());
+				int tel = Integer.parseInt(rs.getString("SHOP_TEL"));
+				loginUser = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
+
+				}
+			}
+
+		
+		 catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return loginUser;
+	
 	}
 
 

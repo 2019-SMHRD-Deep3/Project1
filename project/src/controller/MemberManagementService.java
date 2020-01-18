@@ -67,17 +67,17 @@ public class MemberManagementService {
 
 	//·Î±×ÀÎ
 	public Model userLogin(Model m) {
-		Model loginUser = dao.selectOne(m);
+		Model loginUser = dao.selectUser(m);
 		return loginUser;
 	}
 	
 	public Model ShopkepperLogin(Model m) {
-		Model loginShopkepper = dao.selectOne(m);
+		Model loginShopkepper = dao.selectShopkeeper(m);
 		return loginShopkepper;
 	}
 	
 	public Model RiderLogin(Model m) {
-		Model loginRider = dao.selectOne(m);
+		Model loginRider = dao.selectRider(m);
 		return loginRider;
 	}
 	
@@ -94,7 +94,19 @@ public class MemberManagementService {
 		return dao.selectAll(id);
 	}
 
+	public ShopkeeperModel getShop (int n ) {
+		
+		ShopkeeperModel shop = dao.selectshop(n);
+		return shop;
+		
+		
+	}
+	
 
+	public int nextline() {
+		return dao.next();
+	}
+	
 	
 
 }

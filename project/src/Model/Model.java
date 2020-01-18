@@ -13,6 +13,11 @@ public class Model {
 		this.PW = PW;
 	}
 	
+	public Model () {
+		
+	}
+	
+	
 	// 중복 확인
 	public Model(String ID) {
 		super();

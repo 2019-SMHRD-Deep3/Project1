@@ -19,11 +19,23 @@ public class ShopkeeperModel extends Model{
 		this.SHOP_TEL = SHOP_TEL;
 	}
 	
+	
+	
 	// ·Î±×ÀÎ
 	public ShopkeeperModel(String ID, String PW) {
 		super(ID, PW);
 		
 	}
+
+
+
+	public ShopkeeperModel( String sHOPNAME, String sHOP_ADDRESS, int sHOP_TEL) {
+		SHOPNAME = sHOPNAME;
+		SHOP_ADDRESS = sHOP_ADDRESS;
+		SHOP_TEL = sHOP_TEL;
+	}
+
+
 
 	// getter
 	public String getSHOPNAME() {

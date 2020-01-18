@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import Model.Model;
+import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
 
@@ -32,7 +34,7 @@ public class order {
 	private ArrayList<String> menuName = new ArrayList<String>();
 	private ArrayList<Integer> menuPrice = new ArrayList<Integer>();
 	private int sum = 0;
-	
+	private int cnt;
 	
 	public order(Model loginUser) {
 		this.loginUser = loginUser;
@@ -288,31 +290,50 @@ public class order {
 		panel_5.setBackground(new Color(255, 255, 255));
 		scrollPane_1.setViewportView(panel_5);
 		panel_5.setPreferredSize(new Dimension(590,600));
-		panel_5.setLayout(null);
-		
-		JLabel shop1 = new JLabel("");
+		panel_5.setLayout(new GridLayout(3, 1, 0, 0));
 		String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//s1.png";
-		shop1.setIcon(new ImageIcon(shopImg1));
-		shop1.setBounds(12, 10, 555, 139);
-		panel_5.add(shop1);
-		
-		JLabel shop2 = new JLabel("");
 		String shopImg2 = this.getClass().getResource(".").getPath() + "..//..//img//s2.png";
-		shop2.setIcon(new ImageIcon(shopImg2));
-		shop2.setBounds(12, 159, 555, 139);
-		panel_5.add(shop2);
-		
-		JLabel shop3 = new JLabel("");
 		String shopImg3 = this.getClass().getResource(".").getPath() + "..//..//img//s3.png";
-		shop3.setIcon(new ImageIcon(shopImg3));
-		shop3.setBounds(12, 308, 555, 139);
-		panel_5.add(shop3);
-		
-		JLabel shop4 = new JLabel("");
 		String shopImg4 = this.getClass().getResource(".").getPath() + "..//..//img//s4.png";
-		shop4.setIcon(new ImageIcon(shopImg4));
-		shop4.setBounds(12, 457, 555, 139);
-		panel_5.add(shop4);
+		
+	
+//		for(int n =1; n<=service.nextline(); n++) {
+//			Date date = new Date(System.currentTimeMillis());
+//			ShopkeeperModel shop = service.getShop(n);
+//			cnt++;
+//			if(cnt==4) {
+//				panel_5.setLayout(new GridLayout(-1, 1, 0, 0));
+//			}
+//			
+//			JPanel cardPanel = new JPanel();  //가게 패널
+//			JPanel cardPane2 = new JPanel();   //가게 이름
+//			JLabel two = new JLabel("");
+//			two.setText(shop.getSHOPNAME());
+//			JPanel cardPane3 = new JPanel();   //가게 주소
+//			JLabel three = new JLabel("");
+//			three.setText(shop.getSHOP_ADDRESS());
+////			three.setText(service.selectone());
+//			JPanel cardPane4 = new JPanel();   //가게 전화번호
+//			JLabel four = new JLabel("");
+//			four.setText(""+shop.getSHOP_TEL());
+//
+//			cardPanel.setPreferredSize(new Dimension(350, 150));
+//			cardPanel.add(cardPane2);
+//			cardPanel.add(cardPane3);
+//			cardPanel.add(cardPane4);
+//			cardPane2.add(two);
+//			cardPane3.add(three);
+//			cardPane4.add(four);
+//			panel_5.add(cardPanel);
+//			
+//			panel_5.repaint();
+//			panel_5.revalidate();
+//			
+//		}
+//		
+		
+		
+		
 		
 		// 상점 카테고리에서 취소를 눌렀을 때 메뉴 카테고리 보여주기
 		JButton button = new JButton("\uC774\uC804");
@@ -328,6 +349,43 @@ public class order {
 				leftView.add(information);
 				leftView.repaint();
 				leftView.revalidate();
+				int n = 0;
+				for(n =1; n<=service.nextline(); n++) {
+					Date date = new Date(System.currentTimeMillis());
+					ShopkeeperModel shop = service.getShop(n);
+					cnt++;
+					if(cnt==4) {
+						panel_5.setLayout(new GridLayout(-1, 1, 0, 0));
+					}
+					
+					JPanel cardPanel = new JPanel();  //가게 패널
+					JPanel cardPane2 = new JPanel();   //가게 이름
+					JLabel two = new JLabel("");
+					two.setText(shop.getSHOPNAME());
+					JPanel cardPane3 = new JPanel();   //가게 주소
+					JLabel three = new JLabel("");
+					three.setText(shop.getSHOP_ADDRESS());
+//					three.setText(service.selectone());
+					JPanel cardPane4 = new JPanel();   //가게 전화번호
+					JLabel four = new JLabel("");
+					four.setText(""+shop.getSHOP_TEL());
+		
+					cardPanel.setPreferredSize(new Dimension(350, 150));
+					cardPanel.setBackground(new Color(255, 0, 0));
+					cardPanel.add(cardPane2);
+					cardPanel.add(cardPane3);
+					cardPanel.add(cardPane4);
+					cardPane2.add(two);
+					cardPane3.add(three);
+					cardPane4.add(four);
+					panel_5.add(cardPanel);
+					
+					panel_5.repaint();
+					panel_5.revalidate();
+					
+				}
+				
+				System.out.println(n);
 			}
 		});
 		button.setBounds(566, 571, 97, 29);
@@ -356,22 +414,7 @@ public class order {
 				
 				
 				
-			}
-		});
-		
-		// 상점 카테고리에서 한솥을 눌렀을 때 한솥 카테고리 보여주기
-		shop1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				rightView.removeAll();
-				rightView.add(한솥);
-				rightView.repaint();
-				rightView.revalidate();
 				
-				leftView.removeAll();
-				leftView.add(order);
-				leftView.repaint();
-				leftView.revalidate();
 			}
 		});
 		
