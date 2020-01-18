@@ -58,7 +58,7 @@ CONSTRAINT SHOP_SECTOR_FK FOREIGN KEY (SECTOR)
 REFERENCES FOODCATEGORY(UNQ_NUMBER)
  );
  
-Insert into SHOPKEEPER values (Update_sequence.NEXTVAL,'6','6','±Á³×Ä¡Å²','0987',6666666666,'1235898-6','2');
+Insert into SHOPKEEPER values (Update_sequence.NEXTVAL,'6','6','±Á³×Ä¡Å²','0987',6666666666,'12358986','2');
 Insert into SHOPKEEPER  values (Update_sequence.NEXTVAL,'7','7','±è¹ä³ª¶ó','56485',7777777777,'5489-524','1');
 Insert into SHOPKEEPER  values (Update_sequence.NEXTVAL,'8','8','ÁßÈ­·ç','13578',8888888888,'98725-54','5');
 Insert into SHOPKEEPER  values (Update_sequence.NEXTVAL,'9','9','Ä«º£º£³×','2315',9999999999,'54654564','6');
@@ -156,4 +156,5 @@ Insert into HYGIENE (SHOPNAME,BUSINESS_LICENSE,VIOLATION_DETAILS) values ('´õ·´Ä
 Insert into HYGIENE (SHOPNAME,BUSINESS_LICENSE,VIOLATION_DETAILS) values ('´õ·´±è¹ä',2345678901,'´õ·¯¿ò');
 Insert into HYGIENE (SHOPNAME,BUSINESS_LICENSE,VIOLATION_DETAILS) values ('´õ·´Áß±¹Áý',3456789012,'´õ·¯¿ò');
  
+SELECT  Update_sequence.NEXTVAL FROM DUAL;
  

@@ -293,10 +293,10 @@ public class order {
 		panel_5.setBackground(new Color(255, 255, 255));
 		scrollPane_1.setViewportView(panel_5);
 		panel_5.setLayout(new GridLayout(3, 1, 30, 0));
-		String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//s1.png";
-		String shopImg2 = this.getClass().getResource(".").getPath() + "..//..//img//s2.png";
-		String shopImg3 = this.getClass().getResource(".").getPath() + "..//..//img//s3.png";
-		String shopImg4 = this.getClass().getResource(".").getPath() + "..//..//img//s4.png";
+//		String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//s1.png";
+//		String shopImg2 = this.getClass().getResource(".").getPath() + "..//..//img//s2.png";
+//		String shopImg3 = this.getClass().getResource(".").getPath() + "..//..//img//s3.png";
+//		String shopImg4 = this.getClass().getResource(".").getPath() + "..//..//img//s4.png";
 		
 	
 //		for(int n =1; n<=service.nextline(); n++) {
@@ -393,7 +393,7 @@ public class order {
 					JPanel cardPanel = new JPanel();  //가게 패널
 					cardPanel.setBackground(Color.WHITE);
 					JLabel img = new JLabel();  //이미지
-					String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//s1.png";
+					String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
 					img.setIcon(new ImageIcon(shopImg1));
 					
 					cardPanel.setLayout(new FlowLayout());
