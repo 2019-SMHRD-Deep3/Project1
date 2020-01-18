@@ -3,45 +3,42 @@ package View;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.reflect.Member;
-import java.util.ArrayList;
 
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
-
-import Model.Model;
-import Model.ShopkeeperModel;
-import Model.UserModel;
-
-import java.awt.Font;
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+
+import Model.ShopkeeperModel;
+import controller.MemberManagementService;
 
 public class order2 {
 
 	private JFrame frame;
-	private Model loginUser;
+	private ShopkeeperModel loginUser;
 	private JTable table;
 	private JTable table_1;
 
-	public order2(Model loginUser) {
+	MemberManagementService service = new MemberManagementService();
+	
+	public order2(ShopkeeperModel loginUser) {
 		initialize();
 		frame.setBounds(400, 150, 1011, 661);
 		frame.setVisible(true);
 
+		this.loginUser = loginUser;
+		
 		String c1 = this.getClass().getResource(".").getPath() + "..//..//img//c.png";
 
 		JPanel panel_1 = new JPanel();
@@ -83,15 +80,17 @@ public class order2 {
 		label_60.setBounds(12, 24, 224, 26);
 		panel.add(label_60);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setEditable(false);
-		textPane.setBounds(22, 60, 203, 69);
-		panel.add(textPane);
+		JTextPane address = new JTextPane();
+		address.setEditable(false);
+		address.setBounds(22, 60, 203, 69);
+		panel.add(address);
+		address.setText(loginUser.getSHOP_ADDRESS());
+		
 		
 		// 가게 주소 가져오기
-		if(loginUser instanceof ShopkeeperModel) {
-			textPane.setText(((ShopkeeperModel)loginUser).getSHOP_ADDRESS());
-		}
+//		if(loginUser instanceof ShopkeeperModel) {
+//			textPane.setText(((ShopkeeperModel)loginUser).getSHOP_ADDRESS());
+//		}
 		
 
 		
@@ -137,12 +136,15 @@ public class order2 {
 		main.add(panel_6);
 		panel_6.setLayout(null);
 
-		JLabel lblNewLabel_5 = new JLabel("\uD55C\uC1A5 \uAD11\uC8FC\uB300\uC810");
-		lblNewLabel_5.setBackground(new Color(255, 255, 255));
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setBounds(0, 0, 589, 79);
-		panel_6.add(lblNewLabel_5);
+		JLabel shopname = new JLabel("\uD55C\uC1A5 \uAD11\uC8FC\uB300\uC810");
+		shopname.setBackground(new Color(255, 255, 255));
+		shopname.setHorizontalAlignment(SwingConstants.CENTER);
+		shopname.setBounds(0, 0, 589, 79);
+		panel_6.add(shopname);
+		shopname.setText(loginUser.getSHOPNAME());
+//		ID.setText(loginUser.getID());
 
+		
 		JPanel menu = new JPanel();
 		menu.setBackground(Color.WHITE);
 		panel_4.add(menu, "name_1749439843296000");
@@ -153,33 +155,6 @@ public class order2 {
 		store1.setLayout(null);
 		store1.setBackground(Color.WHITE);
 		panel_4.add(store1, "name_1751013448779400");
-		
-		JPanel panel_34 = new JPanel();
-		panel_34.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				panel_4.removeAll();
-				panel_4.add(store1);
-				panel_4.repaint();
-				panel_4.revalidate();
-				
-			}
-		});
-		panel_34.setBackground(Color.WHITE);
-		panel_34.setBounds(88, 146, 137, 135);
-		main.add(panel_34);
-		panel_34.setLayout(null);
-
-		JLabel lblNewLabel_4 = new JLabel("\uAC00\uAC8C \uC815\uBCF4 \uC218\uC815");
-		lblNewLabel_4.setFont(new Font("HY수평선B", Font.BOLD, 15));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(0, 25, 137, 82);
-		panel_34.add(lblNewLabel_4);
-
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(0, 0, 137, 135);
-		panel_34.add(lblNewLabel_3);
-		lblNewLabel_3.setIcon(new ImageIcon(c1));
 
 		JPanel panel_35 = new JPanel();
 		panel_35.addMouseListener(new MouseAdapter() {
@@ -266,7 +241,7 @@ public class order2 {
 		panel_38.setBounds(275, 302, 137, 135);
 		main.add(panel_38);
 
-		JLabel label_54 = new JLabel("\uB9AC\uBDF0/\uB9AC\uD50C \uAD00\uB9AC");
+		JLabel label_54 = new JLabel("\uB9AC\uD50C \uAD00\uB9AC");
 		label_54.setHorizontalAlignment(SwingConstants.CENTER);
 		label_54.setFont(new Font("HY수평선B", Font.BOLD, 15));
 		label_54.setBounds(0, 25, 137, 82);
@@ -317,11 +292,18 @@ public class order2 {
 		JPanel panel_41 = new JPanel();
 		panel_36.addMouseListener(new MouseAdapter() {
 			@Override
+			
+			//
 			public void mouseClicked(MouseEvent e) {
 				panel_40.removeAll();
 				panel_40.add(panel_41);
 				panel_40.repaint();
 				panel_40.revalidate();
+				
+				service.onoff(loginUser.getID(),0);
+				
+				
+				
 			}
 		});
 		panel_40.add(panel_36, "name_1229935410162600");
@@ -335,6 +317,8 @@ public class order2 {
 				panel_40.add(panel_36);
 				panel_40.repaint();
 				panel_40.revalidate();
+				
+				service.onoff(loginUser.getID(),1);
 
 			}
 		});
@@ -373,22 +357,24 @@ public class order2 {
 
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(Color.WHITE);
-		panel_7.setBounds(37, 158, 615, 377);
+		panel_7.setBounds(37, 158, 615, 693);
 		panel_2.add(panel_7);
-
-		JLabel store2 = new JLabel("");
-		store2.setBackground(Color.WHITE);
-		store2.setBounds(22, 10, 593, 129);
-		store2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-
-			}
-		});
 		String shopimg1 = this.getClass().getResource(".").getPath() + "..//..//img//s1.png";
-		store2.setIcon(new ImageIcon(shopimg1));
 		panel_7.setLayout(null);
-		panel_7.add(store2);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(0, 0, 615, 796);
+		panel_7.add(scrollPane_4);
+		
+		JPanel panel_43 = new JPanel();
+		panel_43.setBackground(Color.WHITE);
+		scrollPane_4.setViewportView(panel_43);
+		panel_43.setPreferredSize(new Dimension(570, 600));
+		panel_43.setLayout(null);
+		
+		JPanel panel_44 = new JPanel();
+		panel_44.setBounds(23, 26, 560, 154);
+		panel_43.add(panel_44);
 
 		JButton btnNewButton = new JButton("\uC218\uC815\uD558\uAE30");
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 14));
@@ -882,6 +868,8 @@ public class order2 {
 		
 		table_1 = new JTable();
 		scrollPane_2.setViewportView(table_1);
+		
+		
 
 
 		JButton button_10 = new JButton("\uC774\uC804\uC73C\uB85C");

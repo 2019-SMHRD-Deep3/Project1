@@ -71,8 +71,8 @@ public class MemberManagementService {
 		return loginUser;
 	}
 	
-	public Model ShopkepperLogin(Model m) {
-		Model loginShopkepper = dao.selectShopkeeper(m);
+	public ShopkeeperModel ShopkepperLogin(Model m) {
+		ShopkeeperModel loginShopkepper = dao.selectShopkeeper(m);
 		return loginShopkepper;
 	}
 	
@@ -105,6 +105,12 @@ public class MemberManagementService {
 
 	public int nextline(int m) {
 		return dao.next(m);
+	}
+
+
+	public void onoff(String id, int n) {
+		dao.onoff(id,n);
+		
 	}
 	
 	

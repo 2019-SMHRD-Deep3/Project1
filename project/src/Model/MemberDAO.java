@@ -235,8 +235,8 @@ public class MemberDAO {
 
 
 
-	public Model selectShopkeeper(Model m) {
-		Model loginUser = null;
+	public ShopkeeperModel selectShopkeeper(Model m) {
+		ShopkeeperModel loginUser = null;
 
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -255,7 +255,10 @@ public class MemberDAO {
 				// 해당 ID와 PW를 가진 사람이 존재
 				String id = rs.getString("SHOPKEEPER_ID");
 				String pw = rs.getString("PW");
-				loginUser = new ShopkeeperModel(id, pw); // 객체를 생성해주기
+				String name = rs.getString("SHOPNAME");
+				String address = rs.getString("SHOP_ADDRESS");
+				String tel = rs.getString("SHOP_TEL");
+				loginUser = new ShopkeeperModel(id, pw, name, address, tel); // 객체를 생성해주기
 
 				}
 			}
@@ -513,7 +516,7 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 테이블 확인
-			String sql = "SELECT * FROM SHOPKEEPER WHERE SECTOR = ? ";
+			String sql = "SELECT * FROM SHOPKEEPER WHERE SECTOR = ? AND ONOFF = 0 ";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, m);
 			rs = psmt.executeQuery(); // 실행
@@ -559,7 +562,7 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 로그인
-			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE 	SECTOR= ? ";
+			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE 	SECTOR= ?  AND ONOFF = 0";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, n);
 
@@ -607,4 +610,45 @@ public class MemberDAO {
 
 
 
+
+
+	public void onoff(String id, int n) {
+		int rows = 0;
+		try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url, user, password);
+		String sql = "UPDATE SHOPKEEPER SET ONOFF = ? WHERE SHOPKEEPER_ID =? ";
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setInt(1, n);
+		psmt.setString(2, id);
+
+		rows = psmt.executeUpdate();
+		if (rows == 0) {
+			System.out.println("sql문이 잘못되었습니다.");
+		} else {
+
+		}
+
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace(); // 오류문구 출력
+	} catch (SQLException e) {
+		e.printStackTrace(); // 오류문구 출력
+	} finally {
+		try {
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
+		
+	}
+
+
+
+
