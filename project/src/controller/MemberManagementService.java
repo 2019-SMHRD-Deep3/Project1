@@ -106,6 +106,12 @@ public class MemberManagementService {
 	public int nextline(int m) {
 		return dao.next(m);
 	}
+
+
+	public void onoff(String id, int n) {
+		dao.onoff(id,n);
+		
+	}
 	
 	
 

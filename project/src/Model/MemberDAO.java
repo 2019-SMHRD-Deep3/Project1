@@ -516,7 +516,7 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 테이블 확인
-			String sql = "SELECT * FROM SHOPKEEPER WHERE SECTOR = ? ";
+			String sql = "SELECT * FROM SHOPKEEPER WHERE SECTOR = ? AND ONOFF = 0 ";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, m);
 			rs = psmt.executeQuery(); // 실행
@@ -562,7 +562,7 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 로그인
-			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE 	SECTOR= ? ";
+			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE 	SECTOR= ?  AND ONOFF = 0";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, n);
 
@@ -610,4 +610,45 @@ public class MemberDAO {
 
 
 
+
+
+	public void onoff(String id, int n) {
+		int rows = 0;
+		try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url, user, password);
+		String sql = "UPDATE SHOPKEEPER SET ONOFF = ? WHERE SHOPKEEPER_ID =? ";
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setInt(1, n);
+		psmt.setString(2, id);
+
+		rows = psmt.executeUpdate();
+		if (rows == 0) {
+			System.out.println("sql문이 잘못되었습니다.");
+		} else {
+
+		}
+
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace(); // 오류문구 출력
+	} catch (SQLException e) {
+		e.printStackTrace(); // 오류문구 출력
+	} finally {
+		try {
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
+		
+	}
+
+
+
+

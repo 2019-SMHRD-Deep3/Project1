@@ -459,7 +459,7 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 				
-				for(int n =0; n<=service.nextline(2); n++) {
+				for(int n =0; n<service.nextline(2); n++) {
 				
 					shop = service.getShop(2);
 					cnt++;
@@ -578,7 +578,7 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 				
-				for(int n =0; n<=service.nextline(4); n++) {
+				for(int n =0; n<service.nextline(4); n++) {
 				
 					shop = service.getShop(4);
 					cnt++;
@@ -638,7 +638,7 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 				
-				for(int n =1; n<=service.nextline(5); n++) {
+				for(int n =1; n<service.nextline(5); n++) {
 				
 					shop = service.getShop(5);
 					cnt++;
@@ -698,7 +698,7 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 			
-				for(int  n =1; n<=service.nextline(6); n++) {
+				for(int  n =1; n<service.nextline(6); n++) {
 				
 					shop = service.getShop(6);
 					cnt++;
