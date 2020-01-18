@@ -27,6 +27,9 @@ import Model.UserModel;
 import controller.MemberManagementService;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class 초기화면 {
 	MemberManagementService service = new MemberManagementService();
@@ -68,17 +71,25 @@ public class 초기화면 {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(102, 153, 255));
-		panel.setBounds(0, 0, 370, 632);
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				회원가입 Login = new 회원가입();
+			}
+		});
+
+		panel.setBackground(new Color(47, 190, 198));
+		panel.setBounds(0, 0, 1005, 632);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		String aaaa = this.getClass().getResource(".").getPath() + "..//..//img//000.png";
+		String main = this.getClass().getResource(".").getPath() + "..//..//img//main2.png";
 		
-		JPanel panel_1 =new JPanel();
-		panel_1.setBounds(371, 0, 634, 632);
-		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(new CardLayout(0, 0));
-//		ShpKeeperJoin.setBackground(new Color(153, 204, 255));
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(83, 10, 833, 597);
+		panel.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(main));
+
 		
 		ButtonGroup group = new ButtonGroup();
 	}

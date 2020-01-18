@@ -64,20 +64,6 @@ public class 회원가입 {
 	
 
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					회원가입 window = new 회원가입();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	
 	/**
 	 * Create the application.
 	 */
