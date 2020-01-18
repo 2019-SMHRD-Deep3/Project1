@@ -72,12 +72,13 @@ public class MemberDAO {
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, m.getPW());
+
 			psmt.setString(2, m.getUSERNAME());
 			psmt.setString(3, m.getUSER_ADDRESS());
 			psmt.setInt(4, m.getUSER_PHONE());
 			psmt.setString(5, id);
 			
-			System.out.println(id);
+		
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
