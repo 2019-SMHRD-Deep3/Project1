@@ -27,6 +27,7 @@ import Model.UserModel;
 import controller.MemberManagementService;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
@@ -82,12 +83,22 @@ public class 회원가입 {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(102, 153, 255));
+		panel.setBackground(new Color(47, 190, 198));
 		panel.setBounds(0, 0, 370, 632);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		String aaaa = this.getClass().getResource(".").getPath() + "..//..//img//000.png";
 		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(12, 229, 358, 352);
+		panel.add(lblNewLabel_2);
+		String aaaa = this.getClass().getResource(".").getPath() + "..//..//img//배경1.png";
+		lblNewLabel_2.setIcon(new ImageIcon(aaaa));
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		String aaa = this.getClass().getResource(".").getPath() + "..//..//img//배경2.png";
+		lblNewLabel_3.setIcon(new ImageIcon(aaa));
+		lblNewLabel_3.setBounds(141, 39, 204, 152);
+		panel.add(lblNewLabel_3);
 		JPanel panel_1 =new JPanel();
 		panel_1.setBounds(371, 0, 634, 632);
 		frame.getContentPane().add(panel_1);
