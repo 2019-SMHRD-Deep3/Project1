@@ -25,6 +25,18 @@ public class MemberManagementService {
 	}
 	
 	
+	//
+	public boolean sujung(UserModel m, String id) {
+		int rows = dao.sujung(m, id);
+		if (rows == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	
 	// »ý¼º
 	public boolean memberJoin(UserModel m) {
 		int rows = dao.insert(m);
@@ -81,7 +93,8 @@ public class MemberManagementService {
 	public ArrayList<Payment> memberLookup(String id) {
 		return dao.selectAll(id);
 	}
+
+
 	
-	
-	
+
 }

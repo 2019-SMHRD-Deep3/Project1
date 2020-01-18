@@ -19,7 +19,14 @@ public class UserModel extends Model{
 	// 로그인
 	public UserModel(String ID, String PW) {
 		super(ID, PW);
-		
+	}
+	
+	//수정
+	public UserModel(String NAME, String PW, String ADDRESS, int User_PHONE) {
+		super(PW);
+		this.USERNAME = NAME;
+		this.User_ADDRESS = ADDRESS;
+		this.User_PHONE = User_PHONE;
 	}
 	
 	// 중복 확인

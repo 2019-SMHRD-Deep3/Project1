@@ -1,25 +1,20 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextPane;
+import javax.swing.JTextField;
 
 import Model.UserModel;
 import controller.MemberManagementService;
-import javax.swing.JTextField;
-import java.awt.Font;
 
 public class Jungbosujung {
 
@@ -30,7 +25,7 @@ public class Jungbosujung {
 	private JTextField adressField;
 	private JTextField numberField;
 	private JTextField nameField;
-	
+	private String id;
 	
 	
 	public Jungbosujung(UserModel loginUser2,int sum) {
@@ -39,26 +34,18 @@ public class Jungbosujung {
 		frame.setVisible(true);
 	}
 
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Payment window = new Payment();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-//
-//
-//	public Payment() {
-//		initialize();
-//	}
+
+	public Jungbosujung(String id) {
+		initialize();
+		frame.setVisible(true);
+		this.id = id;
+	}
+	
+	
 
 
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(400, 150, 367, 588);
@@ -73,49 +60,6 @@ public class Jungbosujung {
 		lblNewLabel_1.setBounds(38, 73, 196, 41);
 		frame.getContentPane().add(lblNewLabel_1);
 				
-		
-		
-		JLabel lblNewLabel = new JLabel("\uAC1C\uC778 \uC815\uBCF4 \uC218\uC815");
-		lblNewLabel.setFont(new Font("양재벨라체M", Font.PLAIN, 20));
-		lblNewLabel.setBounds(116, 10, 146, 52);
-		frame.getContentPane().add(lblNewLabel);
-		
-		JButton btnNewButton = new JButton("\uD655\uC778");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-
-				
-			}
-		});
-		
-		btnNewButton.setBounds(38, 498, 116, 41);
-		frame.getContentPane().add(btnNewButton);
-		
-	
-		
-			JLabel a1 = new JLabel("");
-		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 		pwField = new JTextField();
 		pwField.setBounds(36, 111, 230, 41);
 		frame.getContentPane().add(pwField);
@@ -136,11 +80,51 @@ public class Jungbosujung {
 		nameField.setBounds(38, 417, 230, 41);
 		frame.getContentPane().add(nameField);
 		
+		JLabel lblNewLabel = new JLabel("\uAC1C\uC778 \uC815\uBCF4 \uC218\uC815");
+		lblNewLabel.setFont(new Font("양재벨라체M", Font.PLAIN, 20));
+		lblNewLabel.setBounds(116, 10, 146, 52);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("\uD655\uC778");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String infoPW = pwField.getText();
+				String infoADDRESS = adressField.getText();
+				int infoNUMBER = Integer.parseInt(numberField.getText());
+				String infoNAME = nameField.getText();
+				// Member 객체생성
+				UserModel m = new UserModel(infoNAME, infoPW, infoADDRESS, infoNUMBER);
+			
+				boolean result = service.sujung(m, id);
+				if (result) {
+					JOptionPane.showMessageDialog(frame,
+							"수정 실패");
+				} else {
+					JOptionPane.showMessageDialog(frame,
+						    "수정 성공");
+					//페이지 닫기
+					frame.dispose();
+					//페이지 닫기
+				}
+
+			}
+		});
+				
 		
 		
+		btnNewButton.setBounds(38, 498, 116, 41);
+		frame.getContentPane().add(btnNewButton);
 		
+	
 		
-		
+		JLabel a1 = new JLabel("");
+
+
 		
 		
 		
@@ -160,10 +144,15 @@ public class Jungbosujung {
 		
 		
 		JButton button = new JButton("\uCDE8\uC18C");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frame.dispose();
+				
 			}
 		});
+		
 		button.setBounds(166, 498, 116, 41);
 		frame.getContentPane().add(button);
 		
