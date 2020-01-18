@@ -60,23 +60,22 @@ public class MemberDAO {
 
 	
 	
-	//2020.01.17 여기서 부터
+	
+
 	//수정
-	private void update(UserModel m) {
+	public int sujung(UserModel m) {
+		int rows = 0;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "update User2 set PW=?, USERNAME=?, USER_ADDRESS=? where USER_ID=?";
+			String sql = "update User2 set PW=?, USER_ADDRESS=?, USER_PHONE, USERNAME=? where USER_ID=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getPW());
-			psmt.setString(2, m.getUSERNAME());
-			psmt.setString(3, m.getUSER_ADDRESS());
-			psmt.setString(4, m.getID());
-			int rows = psmt.executeUpdate();
-			if(rows == 0) {
-				System.out.println("SQL문을 확인하세요.");
-			}
-			
+			psmt.setString(2, m.getUSER_ADDRESS());
+			psmt.setInt(3, m.getUSER_PHONE());
+			psmt.setString(4, m.getUSERNAME());
+			psmt.setString(5, m.getID());
+			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -89,20 +88,9 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
+		return rows;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	// 라이더
 	public int insert1(RiderModel m) {
@@ -120,7 +108,6 @@ public class MemberDAO {
 			psmt.setString(6, m.getLOC());
 			psmt.setString(7, m.getCOMPANY());
 			psmt.setInt(8, m.getPHONE());
-
 			rows = psmt.executeUpdate();
 			if (rows == 0) {
 				System.out.println("sql문이 잘못되었습니다.");
@@ -439,4 +426,7 @@ public class MemberDAO {
 		/////////// 리스트 뽑는 부분
 
 	}
+
+
+
 }
