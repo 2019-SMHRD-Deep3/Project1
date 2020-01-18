@@ -13,19 +13,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import Model.Model;
-import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
-import javax.swing.JTextPane;
-import javax.swing.JSeparator;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class order {
 
@@ -90,6 +86,17 @@ public class order {
 		panel_2.add(textPane);
 		
 		JLabel label_45 = new JLabel("\uC815\uBCF4\uC218\uC815");
+		label_45.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				Jungbosujung main = new Jungbosujung(loginUser.getID());
+				
+				
+				
+			}
+		});
 		label_45.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 22));
 		label_45.setBounds(12, 177, 224, 26);
 		panel_2.add(label_45);

@@ -63,18 +63,21 @@ public class MemberDAO {
 	
 
 	//¼öÁ¤
-	public int sujung(UserModel m) {
+	public int sujung(UserModel m, String id) {
 		int rows = 0;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "update User2 set PW=?, USER_ADDRESS=?, USER_PHONE, USERNAME=? where USER_ID=?";
+			String sql = "update USER2 set PW=?, USERNAME=?, USER_ADDRESS=?, USER_PHONE=? where USER_ID=?  ";
 			psmt = conn.prepareStatement(sql);
+			
 			psmt.setString(1, m.getPW());
-			psmt.setString(2, m.getUSER_ADDRESS());
-			psmt.setInt(3, m.getUSER_PHONE());
-			psmt.setString(4, m.getUSERNAME());
-			psmt.setString(5, m.getID());
+			psmt.setString(2, m.getUSERNAME());
+			psmt.setString(3, m.getUSER_ADDRESS());
+			psmt.setInt(4, m.getUSER_PHONE());
+			psmt.setString(5, id);
+			
+			System.out.println(id);
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

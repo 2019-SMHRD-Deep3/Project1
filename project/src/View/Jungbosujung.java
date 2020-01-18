@@ -25,7 +25,7 @@ public class Jungbosujung {
 	private JTextField adressField;
 	private JTextField numberField;
 	private JTextField nameField;
-	
+	private String id;
 	
 	
 	public Jungbosujung(UserModel loginUser2,int sum) {
@@ -34,26 +34,18 @@ public class Jungbosujung {
 		frame.setVisible(true);
 	}
 
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Payment window = new Payment();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-//
-//
-//	public Payment() {
-//		initialize();
-//	}
+
+	public Jungbosujung(String id) {
+		initialize();
+		frame.setVisible(true);
+		this.id = id;
+	}
+	
+	
 
 
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(400, 150, 367, 588);
@@ -103,11 +95,12 @@ public class Jungbosujung {
 			public void mouseClicked(MouseEvent arg0) {
 				String infoPW = pwField.getText();
 				String infoADDRESS = adressField.getText();
-				String infoNUMBER = numberField.getText();
+				int infoNUMBER = Integer.parseInt(numberField.getText());
 				String infoNAME = nameField.getText();
 				// Member 객체생성
-				UserModel m = new UserModel(infoPW, infoADDRESS, infoNUMBER, infoNAME, 0);
-				boolean result = service.sujung(m);
+				UserModel m = new UserModel(infoNAME, infoPW, infoADDRESS, infoNUMBER);
+			
+				boolean result = service.sujung(m, id);
 				if (result) {
 					JOptionPane.showMessageDialog(frame,
 							"수정 실패");

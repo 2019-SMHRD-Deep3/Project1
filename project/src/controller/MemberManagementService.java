@@ -26,8 +26,8 @@ public class MemberManagementService {
 	
 	
 	//
-	public boolean sujung(UserModel m) {
-		int rows = dao.sujung(m);
+	public boolean sujung(UserModel m, String id) {
+		int rows = dao.sujung(m, id);
 		if (rows == 0) {
 			return true;
 		} else {
