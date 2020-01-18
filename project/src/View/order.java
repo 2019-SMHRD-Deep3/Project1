@@ -361,6 +361,19 @@ public class order {
 		button.setBounds(566, 571, 97, 29);
 		shopKategorie.add(button);
 		
+		JButton button_3 = new JButton("\uC0C8\uB85C\uACE0\uCE68");
+		button_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rightView.removeAll();
+				rightView.add(shopKategorie);
+				rightView.repaint();
+				rightView.revalidate();
+			}
+		});
+		button_3.setBounds(543, 28, 97, 29);
+		shopKategorie.add(button_3);
+		
 		
 		JPanel ÇÑ¼Ü = new JPanel();
 		rightView.add(ÇÑ¼Ü, "name_191008403446000");
