@@ -80,12 +80,12 @@ public class order {
 		
 		JLabel lblNewLabel_3 = new JLabel("\uC8FC\uC18C");
 		lblNewLabel_3.setFont(new Font("HY수평선B", Font.BOLD, 22));
-		lblNewLabel_3.setBounds(12, 10, 224, 26);
+		lblNewLabel_3.setBounds(12, 24, 224, 26);
 		panel_2.add(lblNewLabel_3);
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setEditable(false);
-		textPane.setBounds(22, 46, 203, 69);
+		textPane.setBounds(22, 60, 203, 69);
 		panel_2.add(textPane);
 		
 		JLabel label_45 = new JLabel("\uC815\uBCF4\uC218\uC815");
@@ -99,17 +99,25 @@ public class order {
 			}
 		});
 		label_45.setFont(new Font("HY수평선B", Font.BOLD, 22));
-		label_45.setBounds(12, 150, 224, 26);
+		label_45.setBounds(12, 177, 224, 26);
 		panel_2.add(label_45);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(12, 131, 224, 2);
+		separator.setBounds(12, 145, 224, 2);
 		panel_2.add(separator);
 		
 		JLabel label_46 = new JLabel("\uC8FC\uBB38\uB0B4\uC5ED");
 		label_46.setFont(new Font("HY수평선B", Font.BOLD, 22));
-		label_46.setBounds(12, 240, 224, 26);
+		label_46.setBounds(12, 254, 224, 26);
 		panel_2.add(label_46);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(12, 206, 224, 2);
+		panel_2.add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(12, 290, 224, 2);
+		panel_2.add(separator_2);
 		
 		JButton 로그아웃 = new JButton("\uB85C\uADF8\uC544\uC6C3");
 		로그아웃.addMouseListener(new MouseAdapter() {

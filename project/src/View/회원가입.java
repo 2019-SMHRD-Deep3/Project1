@@ -718,7 +718,7 @@ public class 회원가입 {
 						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
 						panel_1.removeAll();
-						panel_1.add(mainUser);
+						panel_1.add(mainShop);
 						panel_1.repaint();
 						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
 					}
@@ -926,7 +926,7 @@ public class 회원가입 {
 						// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
 						JOptionPane.showMessageDialog(frame, "회원가입 성공");  
 						panel_1.removeAll();
-						panel_1.add(mainUser);
+						panel_1.add(mainRider);
 						panel_1.repaint();
 						panel_1.revalidate();  // 화면종료  (가입에 성공하면 가입창을 종료시키기)
 					}

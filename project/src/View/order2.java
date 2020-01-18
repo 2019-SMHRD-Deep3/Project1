@@ -21,6 +21,8 @@ import javax.swing.SwingConstants;
 import Model.Model;
 import java.awt.Font;
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.JSeparator;
 
 public class order2 {
 
@@ -57,9 +59,30 @@ public class order2 {
 		store.add(panel_3);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(12, 20, 113, 57);
+		lblNewLabel.setFont(new Font("HY수평선B", Font.BOLD, 20));
+		lblNewLabel.setBounds(12, 20, 176, 57);
 		panel_3.add(lblNewLabel);
 		lblNewLabel.setText(loginUser.getID());
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(12, 122, 248, 415);
+		panel_3.add(panel);
+		
+		JLabel label_60 = new JLabel("\uAC00\uAC8C\uC8FC\uC18C");
+		label_60.setFont(new Font("HY수평선B", Font.BOLD, 22));
+		label_60.setBounds(12, 24, 224, 26);
+		panel.add(label_60);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
+		textPane.setBounds(22, 60, 203, 69);
+		panel.add(textPane);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(12, 145, 224, 2);
+		panel.add(separator);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.WHITE);
@@ -307,30 +330,6 @@ public class order2 {
 		panel_36.add(label_51);
 		label_51.setIcon(new ImageIcon(c1));
 
-		JButton button_6 = new JButton("\uC774\uC804\uC73C\uB85C");
-		button_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		button_6.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				panel_4.removeAll();
-				panel_4.add(main);
-				panel_4.repaint();
-				panel_4.revalidate();
-			}
-		});
-
-		JPanel panel_5 = new JPanel();
-		panel_5.setBounds(324, 53, 305, 25);
-		store1.add(panel_5);
-
-		JLabel lblNewLabel_2 = new JLabel("\uAC00\uAC8C \uC815\uBCF4 \uC218\uC815");
-		panel_5.add(lblNewLabel_2);
-		button_6.setBounds(62, 27, 94, 46);
-		store1.add(button_6);
-
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBackground(Color.WHITE);
@@ -339,11 +338,13 @@ public class order2 {
 		store1.add(panel_2);
 
 		JPanel panel_7 = new JPanel();
+		panel_7.setBackground(Color.WHITE);
 		panel_7.setBounds(37, 158, 615, 377);
 		panel_2.add(panel_7);
 
 		JLabel store2 = new JLabel("");
-		store2.setBounds(0, 0, 555, 139);
+		store2.setBackground(Color.WHITE);
+		store2.setBounds(22, 10, 593, 129);
 		store2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -356,12 +357,39 @@ public class order2 {
 		panel_7.add(store2);
 
 		JButton btnNewButton = new JButton("\uC218\uC815\uD558\uAE30");
+		btnNewButton.setFont(new Font("굴림", Font.BOLD, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(510, 545, 142, 44);
+		btnNewButton.setBounds(510, 545, 142, 40);
 		panel_2.add(btnNewButton);
+		
+				JButton button_6 = new JButton("\uC774\uC804\uC73C\uB85C");
+				button_6.setFont(new Font("굴림", Font.BOLD, 14));
+				button_6.setBounds(38, 42, 94, 40);
+				panel_2.add(button_6);
+				
+						JPanel panel_5 = new JPanel();
+						panel_5.setBounds(257, 46, 305, 36);
+						panel_2.add(panel_5);
+						
+								JLabel lblNewLabel_2 = new JLabel("\uAC00\uAC8C \uC815\uBCF4 \uC218\uC815");
+								lblNewLabel_2.setFont(new Font("HY수평선B", Font.BOLD, 22));
+								panel_5.add(lblNewLabel_2);
+				button_6.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+				button_6.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						panel_4.removeAll();
+						panel_4.add(main);
+						panel_4.repaint();
+						panel_4.revalidate();
+					}
+				});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
