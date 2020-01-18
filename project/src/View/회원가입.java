@@ -132,6 +132,7 @@ public class 회원가입 {
 		User.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				//회원가입 창에서 개인사용자 클릭 시
 				panel_1.removeAll();
 				panel_1.add(mainUser);
 				panel_1.repaint();
@@ -461,6 +462,7 @@ public class 회원가입 {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//유저모드 회원가입 창 
 				panel_1.removeAll();
 				panel_1.add(UserJoin);
 				panel_1.repaint();
@@ -890,14 +892,15 @@ public class 회원가입 {
 		rider_id.setBounds(120, 1, 269, 41);
 		panel_14.add(rider_id);
 		
-		JButton button_3 = new JButton("\uAC00\uC785\uC2E0\uCCAD");
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JButton RiserJoin = new JButton("\uAC00\uC785\uC2E0\uCCAD");
+		RiserJoin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				// 라이더 회원가입 기능
 				// 아이디, 비밀번호, 이름, 나이, 성별을 컴포넌트로부터 가져온다.
 				String infoId = rider_id.getText();                  // id 라는 텍스트창에 적힌 내용을 가져와서 infoId에  넣는다.
 				
-				Model m2 = new UserModel(infoId);
+				Model m2 = new RiderModel(infoId);
 				boolean result1 = service.idCheck(m2);
 				if(result1) {
 					// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 들어가서 맘에 드는 디자인 코드 복사 붙여넣기
@@ -939,9 +942,9 @@ public class 회원가입 {
 				
 			}
 		});
-		button_3.setFont(new Font("굴림", Font.BOLD, 15));
-		button_3.setBounds(140, 548, 132, 48);
-		RiderJoin.add(button_3);
+		RiserJoin.setFont(new Font("굴림", Font.BOLD, 15));
+		RiserJoin.setBounds(140, 548, 132, 48);
+		RiderJoin.add(RiserJoin);
 		
 		JButton button_4 = new JButton("\uCDE8\uC18C");
 		button_4.addMouseListener(new MouseAdapter() {
@@ -1045,6 +1048,10 @@ public class 회원가입 {
 		
 		
 		JButton button_5 = new JButton("\uC911\uBCF5\uD655\uC778");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		button_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
