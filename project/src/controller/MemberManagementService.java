@@ -71,8 +71,8 @@ public class MemberManagementService {
 		return loginUser;
 	}
 	
-	public Model ShopkepperLogin(Model m) {
-		Model loginShopkepper = dao.selectShopkeeper(m);
+	public ShopkeeperModel ShopkepperLogin(Model m) {
+		ShopkeeperModel loginShopkepper = dao.selectShopkeeper(m);
 		return loginShopkepper;
 	}
 	

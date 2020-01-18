@@ -204,7 +204,7 @@ public class 회원가입 {
 				// Member 객체 생성
 				Model m = new Model(infoId, infoPw);
 				// 로그인 요청하기
-				Model loginShop = service.ShopkepperLogin(m);
+				ShopkeeperModel loginShop = service.ShopkepperLogin(m);
 				if(loginShop==null) {
 					JOptionPane.showMessageDialog(frame, "로그인 실패");
 				}else {

@@ -24,6 +24,15 @@ public class ShopkeeperModel extends Model{
 	
 	
 	
+	public ShopkeeperModel(String ID, String PW, String sHOPNAME, String sHOP_ADDRESS, String sHOP_TEL) {
+		super(ID, PW);
+		SHOPNAME = sHOPNAME;
+		SHOP_ADDRESS = sHOP_ADDRESS;
+		SHOP_TEL = sHOP_TEL;
+	}
+
+
+
 	// ·Î±×ÀÎ
 	public ShopkeeperModel(String ID, String PW) {
 		super(ID, PW);

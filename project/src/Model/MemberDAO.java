@@ -235,8 +235,8 @@ public class MemberDAO {
 
 
 
-	public Model selectShopkeeper(Model m) {
-		Model loginUser = null;
+	public ShopkeeperModel selectShopkeeper(Model m) {
+		ShopkeeperModel loginUser = null;
 
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -255,7 +255,10 @@ public class MemberDAO {
 				// 해당 ID와 PW를 가진 사람이 존재
 				String id = rs.getString("SHOPKEEPER_ID");
 				String pw = rs.getString("PW");
-				loginUser = new ShopkeeperModel(id, pw); // 객체를 생성해주기
+				String name = rs.getString("SHOPNAME");
+				String address = rs.getString("SHOP_ADDRESS");
+				String tel = rs.getString("SHOP_TEL");
+				loginUser = new ShopkeeperModel(id, pw, name, address, tel); // 객체를 생성해주기
 
 				}
 			}
