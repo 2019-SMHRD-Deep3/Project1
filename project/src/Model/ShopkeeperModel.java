@@ -85,6 +85,18 @@ public class ShopkeeperModel extends Model{
 	public void setTEL(String SHOP_TEL) {
 		this.SHOP_TEL = SHOP_TEL;
 	}
+
+
+
+	public String getSECTOR() {
+		return SECTOR;
+	}
+
+
+
+	public void setSECTOR(String sECTOR) {
+		SECTOR = sECTOR;
+	}
 	
 	
 	

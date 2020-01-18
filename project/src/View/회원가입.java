@@ -59,7 +59,7 @@ public class 회원가입 {
 	private JPasswordField passwordField_1;
 	private JTextField textField_2;
 	private JPasswordField passwordField_2;
-	private String sector = "";
+	private String sector = "1";
 	private JPanel panel_12;
 	
 
