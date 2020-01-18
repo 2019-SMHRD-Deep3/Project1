@@ -23,7 +23,7 @@ public class UserModel extends Model{
 	
 	//¼öÁ¤
 	public UserModel(String NAME, String PW, String ADDRESS, int User_PHONE) {
-		super(PW);
+		super(null,PW);
 		this.USERNAME = NAME;
 		this.User_ADDRESS = ADDRESS;
 		this.User_PHONE = User_PHONE;

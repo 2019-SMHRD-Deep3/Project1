@@ -94,6 +94,7 @@ public class Jungbosujung {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String infoPW = pwField.getText();
+		
 				String infoADDRESS = adressField.getText();
 				int infoNUMBER = Integer.parseInt(numberField.getText());
 				String infoNAME = nameField.getText();
