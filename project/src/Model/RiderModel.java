@@ -28,6 +28,12 @@ public class RiderModel extends Model {
 		super(ID, PW);
 		
 	}
+	
+	public RiderModel(String ID ) {
+		super(ID );
+		
+	}
+	
 
 	// getter
 	public String getRIDERNAME() {
