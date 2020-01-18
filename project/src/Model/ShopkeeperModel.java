@@ -7,11 +7,11 @@ public class ShopkeeperModel extends Model{
 	private String SHOP_ADDRESS;
 	private int BUSINESS_LICENSE;
 	private int	RATING;
-	private int	SHOP_TEL;
+	private String	SHOP_TEL;
 	
 	
 	// 회원가입
-	public ShopkeeperModel(String ID, String PW, String SHOPNAME, String SHOP_ADDRESS, int BUSINESS_LICENSE, int SHOP_TEL) {
+	public ShopkeeperModel(String ID, String PW, String SHOPNAME, String SHOP_ADDRESS, int BUSINESS_LICENSE, String SHOP_TEL) {
 		super(ID, PW);
 		this.SHOPNAME = SHOPNAME;
 		this.SHOP_ADDRESS = SHOP_ADDRESS;
@@ -29,7 +29,7 @@ public class ShopkeeperModel extends Model{
 
 
 
-	public ShopkeeperModel( String sHOPNAME, String sHOP_ADDRESS, int sHOP_TEL) {
+	public ShopkeeperModel( String sHOPNAME, String sHOP_ADDRESS, String sHOP_TEL) {
 		SHOPNAME = sHOPNAME;
 		SHOP_ADDRESS = sHOP_ADDRESS;
 		SHOP_TEL = sHOP_TEL;
@@ -58,7 +58,7 @@ public class ShopkeeperModel extends Model{
 	}
 
 
-	public int getSHOP_TEL() {
+	public String getSHOP_TEL() {
 		return SHOP_TEL;
 	}
 
@@ -79,7 +79,7 @@ public class ShopkeeperModel extends Model{
 		this.RATING = rATING;
 	}
 
-	public void setTEL(int SHOP_TEL) {
+	public void setTEL(String SHOP_TEL) {
 		this.SHOP_TEL = SHOP_TEL;
 	}
 	

@@ -349,43 +349,9 @@ public class order {
 				leftView.add(information);
 				leftView.repaint();
 				leftView.revalidate();
-				int n = 0;
-				for(n =1; n<=service.nextline(); n++) {
-					Date date = new Date(System.currentTimeMillis());
-					ShopkeeperModel shop = service.getShop(n);
-					cnt++;
-					if(cnt==4) {
-						panel_5.setLayout(new GridLayout(-1, 1, 0, 0));
-					}
-					
-					JPanel cardPanel = new JPanel();  //가게 패널
-					JPanel cardPane2 = new JPanel();   //가게 이름
-					JLabel two = new JLabel("");
-					two.setText(shop.getSHOPNAME());
-					JPanel cardPane3 = new JPanel();   //가게 주소
-					JLabel three = new JLabel("");
-					three.setText(shop.getSHOP_ADDRESS());
-//					three.setText(service.selectone());
-					JPanel cardPane4 = new JPanel();   //가게 전화번호
-					JLabel four = new JLabel("");
-					four.setText(""+shop.getSHOP_TEL());
-		
-					cardPanel.setPreferredSize(new Dimension(350, 150));
-					cardPanel.setBackground(new Color(255, 0, 0));
-					cardPanel.add(cardPane2);
-					cardPanel.add(cardPane3);
-					cardPanel.add(cardPane4);
-					cardPane2.add(two);
-					cardPane3.add(three);
-					cardPane4.add(four);
-					panel_5.add(cardPanel);
-					
-					panel_5.repaint();
-					panel_5.revalidate();
-					
-				}
+			
 				
-				System.out.println(n);
+				
 			}
 		});
 		button.setBounds(566, 571, 97, 29);
@@ -411,6 +377,43 @@ public class order {
 				leftView.add(information);
 				leftView.repaint();
 				leftView.revalidate();
+				
+				int n = 0;
+				for(n =1; n<=service.nextline(); n++) {
+				
+					ShopkeeperModel shop = service.getShop(n);
+					cnt++;
+					if(cnt==4) {
+						panel_5.setLayout(new GridLayout(-1, 1, 0, 0));
+					}
+					
+					JPanel cardPanel = new JPanel();  //가게 패널
+				
+					JPanel cardPane2 = new JPanel();   //가게 이름
+					JLabel two = new JLabel("");
+					two.setText(shop.getSHOPNAME());
+					JPanel cardPane3 = new JPanel();   //가게 주소
+					JLabel three = new JLabel("");
+					three.setText(shop.getSHOP_ADDRESS());
+//					three.setText(service.selectone());
+					JPanel cardPane4 = new JPanel();   //가게 전화번호
+					JLabel four = new JLabel("");
+					four.setText(""+shop.getSHOP_TEL());
+		
+					cardPanel.setPreferredSize(new Dimension(350, 150));
+				
+					cardPanel.add(cardPane2);
+					cardPanel.add(cardPane3);
+					cardPanel.add(cardPane4);
+					cardPane2.add(two);
+					cardPane3.add(three);
+					cardPane4.add(four);
+					panel_5.add(cardPanel);
+					
+					panel_5.repaint();
+					panel_5.revalidate();
+					
+				}
 				
 				
 				

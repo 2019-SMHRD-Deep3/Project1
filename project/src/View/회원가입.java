@@ -708,7 +708,7 @@ public class 회원가입 {
 					String infoName = shopkeeper_name.getText();
 					String infoAddress = shopkeeper_address.getText();
 					int infoLicense = Integer.parseInt(shopkeeper_lic.getText());
-					int infoTel = Integer.parseInt(shopkeeper_tel.getText());
+					String infoTel = shopkeeper_tel.getText();
 					
 					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
 					ShopkeeperModel m = new ShopkeeperModel(infoId, infoPw, infoName, infoAddress, infoLicense, infoTel);

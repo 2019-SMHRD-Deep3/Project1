@@ -149,7 +149,7 @@ public class MemberDAO {
 			psmt.setString(3, m.getSHOPNAME());
 			psmt.setString(4, m.getSHOP_ADDRESS());
 			psmt.setInt(5, m.getBUSINESS_LICENSE());
-			psmt.setInt(6, m.getSHOP_TEL());
+			psmt.setString(6, m.getSHOP_TEL());
 //			psmt.setInt(7, m.getSECTOR());
 			rows = psmt.executeUpdate();
 			if (rows == 0) {
@@ -513,14 +513,14 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 테이블 확인
-			String sql = "SELECT Update_sequence.CURRVAL FROM DUAL ";
+			String sql = "SELECT * FROM SHOPKEEPER ";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(); // 실행
 
-			if (rs.next()) {
-			 price = rs.getInt("CURRVAL");
+			while (rs.next()) {
+			 price++; 
 			}
-			
+			System.out.println(price);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -571,7 +571,7 @@ public class MemberDAO {
 				String shopName = rs.getString("SHOPNAME");
 				String address = rs.getString("SHOP_ADDRESS");
 //				Integer.parseInt(AGE.getText());
-				int tel = Integer.parseInt(rs.getString("SHOP_TEL"));
+				String tel =rs.getString("SHOP_TEL");
 				loginUser = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
 
 				}
