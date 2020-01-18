@@ -232,7 +232,7 @@ public class order {
 		
 		
 		
-		button_1.setBounds(172, 10, 81, 34);
+		button_1.setBounds(159, 10, 94, 34);
 		order.add(button_1);
 
 
