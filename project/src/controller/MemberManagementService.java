@@ -94,9 +94,9 @@ public class MemberManagementService {
 		return dao.selectAll(id);
 	}
 
-	public ShopkeeperModel getShop (int n ) {
+	public ShopkeeperModel getShop (int n, int m ) {
 		
-		ShopkeeperModel shop = dao.selectshop(n);
+		ShopkeeperModel shop = dao.selecthan(n,m);
 		return shop;
 		
 		

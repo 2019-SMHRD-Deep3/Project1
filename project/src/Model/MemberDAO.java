@@ -520,7 +520,6 @@ public class MemberDAO {
 			while (rs.next()) {
 			 price++; 
 			}
-			System.out.println(price);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -550,7 +549,7 @@ public class MemberDAO {
 
 
 
-	public ShopkeeperModel selectshop(int n) {
+	public ShopkeeperModel selecthan(int n, int m) {
 		ShopkeeperModel loginUser = null;
 
 		try { // try ~ catch 예외처리
@@ -559,7 +558,7 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 로그인
-			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE SEQ = ?";
+			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE SEQ = ? ";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, n);
 			
