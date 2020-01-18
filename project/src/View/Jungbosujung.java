@@ -28,11 +28,11 @@ public class Jungbosujung {
 	private String id;
 	
 	
-	public Jungbosujung(UserModel loginUser2,int sum) {
-		this.loginUser2 = loginUser2;
-		initialize();
-		frame.setVisible(true);
-	}
+//	public Jungbosujung(UserModel loginUser2,int sum) {
+//		this.loginUser2 = loginUser2;
+//		initialize();
+//		frame.setVisible(true);
+//	}
 
 
 	public Jungbosujung(String id) {
@@ -161,15 +161,6 @@ public class Jungbosujung {
 		label_2.setBounds(38, 366, 196, 41);
 		frame.getContentPane().add(label_2);
 		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	}
 }
