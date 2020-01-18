@@ -735,6 +735,8 @@ public class order {
 					panel_5.repaint();
 					panel_5.revalidate();
 					
+					
+					
 				}
 			
 			}
