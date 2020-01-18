@@ -161,15 +161,6 @@ public class Jungbosujung {
 		label_2.setBounds(38, 366, 196, 41);
 		frame.getContentPane().add(label_2);
 		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	}
 }
