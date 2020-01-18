@@ -505,7 +505,7 @@ public class MemberDAO {
 
 
 
-	public int next() {
+	public int next(int m) {
 		int price =0;
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -513,8 +513,9 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 테이블 확인
-			String sql = "SELECT * FROM SHOPKEEPER ";
+			String sql = "SELECT * FROM SHOPKEEPER WHERE SECTOR = ? ";
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, m);
 			rs = psmt.executeQuery(); // 실행
 
 			while (rs.next()) {
@@ -549,8 +550,8 @@ public class MemberDAO {
 
 
 
-	public ShopkeeperModel selecthan(int n, int m) {
-		ShopkeeperModel loginUser = null;
+	public ArrayList <ShopkeeperModel> selecthan(int n) {
+		ArrayList <ShopkeeperModel> list = new ArrayList<ShopkeeperModel>();
 
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -565,14 +566,14 @@ public class MemberDAO {
 
 			rs = psmt.executeQuery(); // 실행
 
-			if (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+			while (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
 				// 해당 ID와 PW를 가진 사람이 존재
 				String shopName = rs.getString("SHOPNAME");
 				String address = rs.getString("SHOP_ADDRESS");
 //				Integer.parseInt(AGE.getText());
 				String tel =rs.getString("SHOP_TEL");
-				loginUser = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
-
+				ShopkeeperModel m = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
+				list.add(m);
 				}
 			}
 
@@ -599,7 +600,7 @@ public class MemberDAO {
 			}
 		}
 
-		return loginUser;
+		return list;
 	
 	}
 

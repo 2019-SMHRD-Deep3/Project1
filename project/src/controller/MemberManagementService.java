@@ -94,17 +94,17 @@ public class MemberManagementService {
 		return dao.selectAll(id);
 	}
 
-	public ShopkeeperModel getShop (int n, int m ) {
+	public ArrayList <ShopkeeperModel> getShop (int n ) {
 		
-		ShopkeeperModel shop = dao.selecthan(n,m);
+		ArrayList <ShopkeeperModel> shop = dao.selecthan(n);
 		return shop;
 		
 		
 	}
 	
 
-	public int nextline() {
-		return dao.next();
+	public int nextline(int m) {
+		return dao.next(m);
 	}
 	
 	
