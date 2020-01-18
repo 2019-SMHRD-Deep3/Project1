@@ -25,6 +25,8 @@ import Model.RiderModel;
 import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class 회원가입 {
 	MemberManagementService service = new MemberManagementService();
@@ -57,6 +59,8 @@ public class 회원가입 {
 	private JPasswordField passwordField_1;
 	private JTextField textField_2;
 	private JPasswordField passwordField_2;
+	private String sector = "";
+	private JPanel panel_12;
 	
 
 	
@@ -678,7 +682,7 @@ public class 회원가입 {
 		JPanel panel_21 = new JPanel();
 		panel_21.setLayout(null);
 		panel_21.setBackground(new Color(204, 255, 255));
-		panel_21.setBounds(107, 157, 389, 39);
+		panel_21.setBounds(107, 143, 389, 39);
 		ShopKeeperJoin.add(panel_21);
 		
 		JLabel label_13 = new JLabel("ID");
@@ -709,9 +713,11 @@ public class 회원가입 {
 					String infoAddress = shopkeeper_address.getText();
 					int infoLicense = Integer.parseInt(shopkeeper_lic.getText());
 					String infoTel = shopkeeper_tel.getText();
+					String infoSector = sector;
+					
 					
 					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-					ShopkeeperModel m = new ShopkeeperModel(infoId, infoPw, infoName, infoAddress, infoLicense, infoTel);
+					ShopkeeperModel m = new ShopkeeperModel(infoId, infoPw, infoName, infoAddress, infoLicense, infoTel, infoSector);
 					
 					
 					// Controller 에게 회원가입 요청
@@ -771,7 +777,7 @@ public class 회원가입 {
 		JPanel panel_23 = new JPanel();
 		panel_23.setLayout(null);
 		panel_23.setBackground(new Color(204, 255, 255));
-		panel_23.setBounds(107, 248, 389, 39);
+		panel_23.setBounds(107, 234, 389, 39);
 		ShopKeeperJoin.add(panel_23);
 		
 		JLabel lblPw_3 = new JLabel("PW");
@@ -788,7 +794,7 @@ public class 회원가입 {
 		JPanel panel_24 = new JPanel();
 		panel_24.setLayout(null);
 		panel_24.setBackground(new Color(204, 255, 255));
-		panel_24.setBounds(107, 297, 389, 39);
+		panel_24.setBounds(107, 283, 389, 39);
 		ShopKeeperJoin.add(panel_24);
 		
 		JLabel label_16 = new JLabel("\uAC00\uAC8C\uC774\uB984");
@@ -805,7 +811,7 @@ public class 회원가입 {
 		JPanel panel_25 = new JPanel();
 		panel_25.setLayout(null);
 		panel_25.setBackground(new Color(204, 255, 255));
-		panel_25.setBounds(107, 349, 389, 39);
+		panel_25.setBounds(107, 335, 389, 39);
 		ShopKeeperJoin.add(panel_25);
 		
 		JLabel label_17 = new JLabel("\uC8FC\uC18C");
@@ -838,13 +844,13 @@ public class 회원가입 {
 				}
 			}
 		});
-		button_8.setBounds(372, 206, 115, 32);
+		button_8.setBounds(374, 192, 115, 32);
 		ShopKeeperJoin.add(button_8);
 		
 		JPanel panel_26 = new JPanel();
 		panel_26.setLayout(null);
 		panel_26.setBackground(new Color(204, 255, 255));
-		panel_26.setBounds(107, 398, 389, 39);
+		panel_26.setBounds(107, 384, 389, 39);
 		ShopKeeperJoin.add(panel_26);
 		
 		JLabel label_18 = new JLabel("\uC0AC\uC5C5\uC790\uBC88\uD638");
@@ -861,7 +867,7 @@ public class 회원가입 {
 		JPanel panel_27 = new JPanel();
 		panel_27.setLayout(null);
 		panel_27.setBackground(new Color(204, 255, 255));
-		panel_27.setBounds(107, 447, 389, 39);
+		panel_27.setBounds(107, 433, 389, 39);
 		ShopKeeperJoin.add(panel_27);
 		
 		JLabel label_19 = new JLabel("\uAC00\uAC8C\uBC88\uD638");
@@ -874,6 +880,29 @@ public class 회원가입 {
 		shopkeeper_tel.setColumns(10);
 		shopkeeper_tel.setBounds(120, 1, 269, 41);
 		panel_27.add(shopkeeper_tel);
+		
+		panel_12 = new JPanel();
+		panel_12.setLayout(null);
+		panel_12.setBackground(new Color(204, 255, 255));
+		panel_12.setBounds(107, 482, 389, 39);
+		ShopKeeperJoin.add(panel_12);
+		
+		JLabel label_15 = new JLabel("\uC5C5\uC885");
+		label_15.setHorizontalAlignment(SwingConstants.CENTER);
+		label_15.setFont(new Font("굴림", Font.BOLD, 16));
+		label_15.setBounds(0, -1, 119, 42);
+		panel_12.add(label_15);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uD55C\uC2DD", "\uCE58\uD0A8", "\uD53C\uC790/\uC591\uC2DD", "\uC871\uBC1C/\uBCF4\uC308", "\uC911\uAD6D\uC9D1", "\uCE74\uD398/\uB514\uC800\uD2B8"}));
+		
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				sector = comboBox.getSelectedIndex()+1+"";
+			}
+		});
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setBounds(120, -1, 269, 40);
+		panel_12.add(comboBox);
 		
 		JPanel panel_14 = new JPanel();
 		panel_14.setLayout(null);

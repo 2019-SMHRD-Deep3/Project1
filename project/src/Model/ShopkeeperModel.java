@@ -8,15 +8,18 @@ public class ShopkeeperModel extends Model{
 	private int BUSINESS_LICENSE;
 	private int	RATING;
 	private String	SHOP_TEL;
+	private String	SECTOR;
 	
 	
 	// 회원가입
-	public ShopkeeperModel(String ID, String PW, String SHOPNAME, String SHOP_ADDRESS, int BUSINESS_LICENSE, String SHOP_TEL) {
+	public ShopkeeperModel(String ID, String PW, String SHOPNAME, String SHOP_ADDRESS, int BUSINESS_LICENSE, String SHOP_TEL, String SECTOR) {
 		super(ID, PW);
 		this.SHOPNAME = SHOPNAME;
 		this.SHOP_ADDRESS = SHOP_ADDRESS;
 		this.BUSINESS_LICENSE = BUSINESS_LICENSE;
 		this.SHOP_TEL = SHOP_TEL;
+		this.SECTOR = SECTOR;
+		
 	}
 	
 	
