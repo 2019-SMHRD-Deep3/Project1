@@ -19,6 +19,8 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import Model.Model;
+import Model.UserModel;
+
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
@@ -79,7 +81,7 @@ public class order2 {
 		textPane.setEditable(false);
 		textPane.setBounds(22, 60, 203, 69);
 		panel.add(textPane);
-		
+	
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 145, 224, 2);
 		panel.add(separator);
