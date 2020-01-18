@@ -106,6 +106,13 @@ public class order {
 		panel_2.add(separator);
 		
 		JLabel label_46 = new JLabel("\uC8FC\uBB38\uB0B4\uC5ED");
+		label_46.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				orderListCheck main = new orderListCheck(loginUser.getID());
+				
+			}
+		});
 		label_46.setFont(new Font("HY¼öÆò¼±B", Font.BOLD, 22));
 		label_46.setBounds(12, 254, 224, 26);
 		panel_2.add(label_46);
