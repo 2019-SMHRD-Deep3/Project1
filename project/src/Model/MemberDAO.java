@@ -142,7 +142,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO SHOPKEEPER(SEQ,SHOPKEEPER_ID,PW,SHOPNAME,SHOP_ADDRESS,BUSINESS_LICENSE,SHOP_TEL) VALUES (Update_sequence.NEXTVAL,?,?,?,?,?,?)";
+			String sql = "INSERT INTO SHOPKEEPER(SEQ,SHOPKEEPER_ID,PW,SHOPNAME,SHOP_ADDRESS,BUSINESS_LICENSE,SHOP_TEL, SECTOR) VALUES (Update_sequence.NEXTVAL,?,?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());
@@ -150,7 +150,7 @@ public class MemberDAO {
 			psmt.setString(4, m.getSHOP_ADDRESS());
 			psmt.setInt(5, m.getBUSINESS_LICENSE());
 			psmt.setString(6, m.getSHOP_TEL());
-//			psmt.setInt(7, m.getSECTOR());
+			psmt.setString(7, m.getSECTOR());
 			rows = psmt.executeUpdate();
 			if (rows == 0) {
 				System.out.println("sql문이 잘못되었습니다.");
@@ -559,10 +559,9 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 
 			// 일반유저 로그인
-			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE SEQ = ? ";
+			String sql = "SELECT * FROM SHOPKEEPER " + "WHERE 	SECTOR= ? ";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, n);
-			
 
 			rs = psmt.executeQuery(); // 실행
 
@@ -574,9 +573,11 @@ public class MemberDAO {
 				String tel =rs.getString("SHOP_TEL");
 				ShopkeeperModel m = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
 				list.add(m);
+				System.out.println( "사이즈는" +list.size());
+				System.out.println(shopName);
 				}
 			}
-
+			
 		
 		 catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -384,13 +384,12 @@ public class order {
 			
 				
 				for(int n =0; n<service.nextline(1); n++) {
-				
+					System.out.println("line 은 "+service.nextline(1));
 					shop = service.getShop(1);
 					cnt++;
 					if(cnt==4) {
 						panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
 					}
-					
 					JPanel cardPanel = new JPanel();  //가게 패널
 					cardPanel.setBackground(Color.WHITE);
 					JLabel img = new JLabel();  //이미지
@@ -429,6 +428,7 @@ public class order {
 					
 					panel_5.repaint();
 					panel_5.revalidate();
+					System.out.println(n);
 					
 				}
 				
@@ -459,7 +459,7 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 				
-				for(int n =1; n<=service.nextline(2); n++) {
+				for(int n =0; n<=service.nextline(2); n++) {
 				
 					shop = service.getShop(2);
 					cnt++;
@@ -517,8 +517,8 @@ public class order {
 				leftView.add(information);
 				leftView.repaint();
 				leftView.revalidate();
-				int n = 0;
-				for(n =1; n<=service.nextline(3); n++) {
+				
+				for(int n =0; n<=service.nextline(3); n++) {
 				
 					shop = service.getShop(3);
 					cnt++;
@@ -577,8 +577,8 @@ public class order {
 				leftView.add(information);
 				leftView.repaint();
 				leftView.revalidate();
-				int n = 0;
-				for(n =1; n<=service.nextline(4); n++) {
+				
+				for(int n =0; n<=service.nextline(4); n++) {
 				
 					shop = service.getShop(4);
 					cnt++;
@@ -637,8 +637,8 @@ public class order {
 				leftView.add(information);
 				leftView.repaint();
 				leftView.revalidate();
-				int n = 0;
-				for(n =1; n<=service.nextline(5); n++) {
+				
+				for(int n =1; n<=service.nextline(5); n++) {
 				
 					shop = service.getShop(5);
 					cnt++;
@@ -697,8 +697,8 @@ public class order {
 				leftView.add(information);
 				leftView.repaint();
 				leftView.revalidate();
-				int n = 0;
-				for(n =1; n<=service.nextline(6); n++) {
+			
+				for(int  n =1; n<=service.nextline(6); n++) {
 				
 					shop = service.getShop(6);
 					cnt++;
