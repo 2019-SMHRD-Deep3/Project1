@@ -135,11 +135,31 @@ public class MemberManagementService {
 	}
 
 
+
 	public ArrayList <Menu> getMenu (String id) {
 		ArrayList <Menu> menulist = dao.selecmenu(id);
 		return menulist;
 		
 	}
+	
+//	service.insertOrder(userId, shopkeeperID,seq);
+	public boolean insertOrder(String userId, String shopkeeperID, int seq) {
+		int rows =  dao.insertOrder(userId, shopkeeperID, seq);
+		if (rows == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+
+	public int selectMenu(String id, String food) {
+		
+			return  dao.selectMenu(id, food);
+		
+		
+	}
+	
 	
 	
 

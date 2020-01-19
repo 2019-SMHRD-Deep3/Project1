@@ -762,6 +762,8 @@ public class MemberDAO {
 		return sum;
 	}
 
+	
+	
 	public ArrayList<Menu> selecmenu(String id) {
 
 		ArrayList<Menu> list = new ArrayList<Menu>();
@@ -816,4 +818,99 @@ public class MemberDAO {
 
 	}
 
-}
+	public int insertOrder(String userId, String shopkeeperID, int seq) {
+		int rows = 0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "INSERT INTO ORDER2 VALUES (SEQ_MENU.NEXTVAL,?,?,?,sysdate)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, userId);
+			psmt.setString(2, shopkeeperID);
+			psmt.setInt(3, seq);
+			rows = psmt.executeUpdate();
+			if (rows == 0) {
+				System.out.println("sql문이 잘못되었습니다.");
+			} else {
+
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace(); // 오류문구 출력
+		} catch (SQLException e) {
+			e.printStackTrace(); // 오류문구 출력
+		} finally {
+			try {
+				if (psmt != null)
+					psmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return rows;
+	}
+
+	public int selectMenu(String id, String food) {
+	
+		int seq =0;
+		
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 로그인
+			String sql = "SELECT * FROM MENU WHERE SHOPKEEPER_ID = ? AND FOOD = ? ";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,id);
+			psmt.setString(2, food);
+
+			rs = psmt.executeQuery(); // 실행
+
+			if (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+				// 해당 ID와 PW를 가진 사람이 존재
+
+				seq = rs.getInt("MENU_SEQ");
+
+				 // 객체를 생성해주기
+
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return seq;
+	}
+	}
+		
+		 
+		
+		
+		
+		
+		
+		
+	
+
+
