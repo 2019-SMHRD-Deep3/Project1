@@ -142,7 +142,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO SHOPKEEPER(SEQ,SHOPKEEPER_ID,PW,SHOPNAME,SHOP_ADDRESS,BUSINESS_LICENSE,SHOP_TEL, SECTOR) VALUES (Update_sequence.NEXTVAL,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO SHOPKEEPER(SHOPKEEPER_ID,PW,SHOPNAME,SHOP_ADDRESS,BUSINESS_LICENSE,SHOP_TEL, SECTOR) VALUES (?,?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());

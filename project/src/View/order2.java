@@ -329,24 +329,26 @@ public class order2 {
 		JLabel label_58 = new JLabel("\uC601\uC5C5\uC2DC\uC791");
 		label_58.setHorizontalAlignment(SwingConstants.CENTER);
 		label_58.setFont(new Font("HY수평선B", Font.BOLD, 15));
-		label_58.setBounds(0, 25, 137, 82);
+		label_58.setBounds(0, 34, 125, 73);
 		panel_41.add(label_58);
 
 		JLabel label_59 = new JLabel("");
 		label_59.setBounds(0, 0, 137, 135);
 		panel_41.add(label_59);
-		label_59.setIcon(new ImageIcon(c1));
+		String c3 = this.getClass().getResource(".").getPath() + "..//..//img//c1.png";
+		label_59.setIcon(new ImageIcon(c3));
 
 		JLabel label_50 = new JLabel("\uC601\uC5C5\uC885\uB8CC");
 		label_50.setHorizontalAlignment(SwingConstants.CENTER);
 		label_50.setFont(new Font("HY수평선B", Font.BOLD, 15));
-		label_50.setBounds(0, 25, 137, 82);
+		label_50.setBounds(0, 25, 125, 82);
 		panel_36.add(label_50);
 
 		JLabel label_51 = new JLabel("");
 		label_51.setBounds(0, 0, 137, 135);
 		panel_36.add(label_51);
-		label_51.setIcon(new ImageIcon(c1));
+		String c2 = this.getClass().getResource(".").getPath() + "..//..//img//c2.png";
+		label_51.setIcon(new ImageIcon(c2));
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
