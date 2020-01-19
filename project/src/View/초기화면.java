@@ -58,7 +58,6 @@ public class 초기화면 {
 	 */
 	public 초기화면() {
 		initialize();
-		frame.setVisible(true);
 	}
 
 	/**
