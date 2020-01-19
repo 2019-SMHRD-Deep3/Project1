@@ -3,31 +3,31 @@ package View;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 import Model.UserModel;
 import controller.MemberManagementService;
-import javax.swing.SwingConstants;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class orderListCheck {
 
 	private MemberManagementService service = new MemberManagementService();
+	Date date = new Date(System.currentTimeMillis());
 	private JFrame frame;
 	private UserModel loginUser2;
 	private String id;
 	
 
+	
+	
 
 	public orderListCheck(String id) {
 		initialize();
@@ -88,6 +88,7 @@ public class orderListCheck {
 		JLabel day = new JLabel("");
 		day.setBounds(12, 10, 133, 24);
 		panel_2.add(day);
+		day.setText(date.getYear()-100+"/"+(date.getMonth()+1)+"/"+date.getDate());
 		
 		JLabel menu = new JLabel("");
 		menu.setBounds(12, 78, 219, 39);
