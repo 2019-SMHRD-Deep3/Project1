@@ -419,8 +419,11 @@ public class order {
 					
 
 				}
+				
+			
 //				//식당 클릭햇을 때
 				for(int m = 0; m<service.nextline(1); m++) {
+					final int a = m;
 				list.get(m).addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -430,8 +433,8 @@ public class order {
 						rightView.repaint();
 						rightView.revalidate();
 						
-//						list.get(m)
-//						
+						ShopkeeperModel m =  shop.get(a);
+						
 					}
 				});};
 			}
@@ -466,18 +469,14 @@ public class order {
 		scrollPane_1.setPreferredSize(new Dimension(600,281));
 		panel_6.add(scrollPane_2);
 		
-		JPanel panel_7 = new JPanel();
-		scrollPane_2.setViewportView(panel_7);
-		panel_7.setLayout(new GridLayout(15, 2, 20, 0));
+		JPanel menu = new JPanel();
+		scrollPane_2.setViewportView(menu);
+		menu.setLayout(new GridLayout(15, 2, 20, 0));
 		
 	
 		btnNewButton.setBounds(569, 569, 97, 29);
 		한솥.add(btnNewButton);
 		
-		System.out.println("몇 줄?"+service.nextline(1));
-		System.out.println("몇 개?"+list.size());
-		
-
 
 		// 메뉴 카테고리 이미지 1 ( 한식 )
 		String mk1 = this.getClass().getResource(".").getPath() + "..//..//img//mk1.png";
@@ -539,6 +538,26 @@ public class order {
 					panel_5.revalidate();
 
 				}
+				
+				//식당 클릭햇을 때
+				for(int m = 0; m<service.nextline(2); m++) {
+					final int n =m;
+				list.get(m).addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					
+						
+						
+						rightView.removeAll();
+						rightView.add(한솥);
+						rightView.repaint();
+						rightView.revalidate();
+						
+						shop.get(n);
+						
+					}
+				});
+				};
 			}
 		});
 		String mk2 = this.getClass().getResource(".").getPath() + "..//..//img//mk2.png";
@@ -598,6 +617,24 @@ public class order {
 					panel_5.revalidate();
 
 				}
+				//식당 클릭햇을 때
+				for(int m = 0; m<service.nextline(3); m++) {
+					final int a = m;
+				list.get(m).addMouseListener(new MouseAdapter() {
+				
+					@Override
+				
+					public void mouseClicked(MouseEvent e) {
+					
+						rightView.removeAll();
+						rightView.add(한솥);
+						rightView.repaint();
+						rightView.revalidate();
+					
+						shop.get(a);
+						
+					}
+				});};
 			}
 
 		});
@@ -658,6 +695,22 @@ public class order {
 					panel_5.revalidate();
 
 				}
+				//식당 클릭햇을 때
+				for(int m = 0; m<service.nextline(4); m++) {
+					final int a = m;
+				list.get(m).addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					
+						rightView.removeAll();
+						rightView.add(한솥);
+						rightView.repaint();
+						rightView.revalidate();
+						
+						shop.get(a);
+						
+					}
+				});};
 
 			}
 		});
@@ -718,6 +771,22 @@ public class order {
 					panel_5.revalidate();
 
 				}
+				//식당 클릭햇을 때
+				for(int m = 0; m<service.nextline(5); m++) {
+					final int a = m ;
+				list.get(m).addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					
+						rightView.removeAll();
+						rightView.add(한솥);
+						rightView.repaint();
+						rightView.revalidate();
+						
+						shop.get(a);
+						
+					}
+				});};
 
 			}
 		});
@@ -778,7 +847,22 @@ public class order {
 					panel_5.revalidate();
 
 				}
-
+				//식당 클릭햇을 때
+				for(int m = 0; m<service.nextline(6); m++) {
+					final int a = m;
+				list.get(m).addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					
+						rightView.removeAll();
+						rightView.add(한솥);
+						rightView.repaint();
+						rightView.revalidate();
+						
+						shop.get(a);
+						
+					}
+				});};
 			}
 		});
 		String mk6 = this.getClass().getResource(".").getPath() + "..//..//img//mk6.png";
