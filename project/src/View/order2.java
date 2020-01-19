@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +24,9 @@ import javax.swing.SwingConstants;
 
 import Model.ShopkeeperModel;
 import controller.MemberManagementService;
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
 public class order2 {
 
@@ -81,6 +86,7 @@ public class order2 {
 		panel.add(label_60);
 		
 		JTextPane address = new JTextPane();
+		address.setFont(new Font("굴림", Font.BOLD, 12));
 		address.setEditable(false);
 		address.setBounds(22, 60, 203, 69);
 		panel.add(address);
@@ -137,6 +143,7 @@ public class order2 {
 		panel_6.setLayout(null);
 
 		JLabel shopname = new JLabel("\uD55C\uC1A5 \uAD11\uC8FC\uB300\uC810");
+		shopname.setFont(new Font("HY수평선B", Font.BOLD, 24));
 		shopname.setBackground(new Color(255, 255, 255));
 		shopname.setHorizontalAlignment(SwingConstants.CENTER);
 		shopname.setBounds(0, 0, 589, 79);
@@ -168,7 +175,7 @@ public class order2 {
 		});
 		panel_35.setLayout(null);
 		panel_35.setBackground(Color.WHITE);
-		panel_35.setBounds(275, 146, 137, 135);
+		panel_35.setBounds(176, 146, 137, 135);
 		main.add(panel_35);
 
 		JLabel label_48 = new JLabel("\uBA54\uB274 \uC218\uC815");
@@ -229,10 +236,13 @@ public class order2 {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
-				panel_4.removeAll();
-				panel_4.add(Review);
-				panel_4.repaint();
-				panel_4.revalidate();
+//				panel_4.removeAll();
+//				panel_4.add(Review);
+//				panel_4.repaint();
+//				panel_4.revalidate();
+				frame.dispose();
+				reviewShop2 Login = new reviewShop2();
+				
 
 			}
 		});
@@ -284,7 +294,7 @@ public class order2 {
 		label_57.setIcon(new ImageIcon(c1));
 
 		JPanel panel_40 = new JPanel();
-		panel_40.setBounds(461, 146, 137, 135);
+		panel_40.setBounds(369, 146, 137, 135);
 		main.add(panel_40);
 		panel_40.setLayout(new CardLayout(0, 0));
 
@@ -864,13 +874,43 @@ public class order2 {
 		button_3.setBounds(47, 30, 115, 40);
 		pay.add(button_3);
 		
+		
+		
+		
+		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(47, 144, 611, 403);
 		pay.add(scrollPane_2);
 		
-		table_1 = new JTable();
-		scrollPane_2.setViewportView(table_1);
 		
+//		String[] columnNames = {"주문한 ID",
+//                "메뉴",
+//                "수량",
+//                "금액"};
+//		
+//		ArrayList<Member> list = service.memberLookup(loginUser.getId());
+//		
+//		Object[][] data = new Object[list.size()][3];
+//		
+//		for (int i = 0; i < list.size(); i++) {
+//			Member m = list.get(i);
+//			data[i] = new Object[]{m.getId(), m.getName(), m.getAge()} ;  // 컬럼명을 설정한 순서대로 적기 
+//		}
+//		
+//		
+//		table_1 = new JTable();
+//		scrollPane_2.setViewportView(table_1);
+		
+		JPanel panel_34 = new JPanel();
+		panel_34.setBounds(51, 100, 282, 34);
+		pay.add(panel_34);
+		
+		UtilDateModel model1 = new UtilDateModel();
+		JDatePanelImpl datePanel1 = new JDatePanelImpl(model1);
+		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel1);
+		 
+		panel_34.add(datePicker);
+
 		
 
 
