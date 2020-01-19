@@ -43,7 +43,7 @@ public class order {
 	private ArrayList<Integer> menuPrice = new ArrayList<Integer>();
 	private int sum = 0;
 	private int cnt;
-
+	private int sum1 = 0;
 	public order(Model loginUser) {
 		this.loginUser = loginUser;
 		initialize();
@@ -180,7 +180,7 @@ public class order {
 		orderlist.setBackground(Color.WHITE);
 		orderlist.setBounds(12, 46, 210, 257);
 		panel_30.add(orderlist);
-		orderlist.setLayout(new GridLayout(17, 1, 0, 0));
+		orderlist.setLayout(new GridLayout(9, 1, 0, 0));
 
 		JPanel panel_31 = new JPanel();
 		panel_31.setBackground(Color.WHITE);
@@ -192,6 +192,7 @@ public class order {
 		money.setBounds(12, 10, 186, 27);
 		panel_31.add(money);
 		money.setBackground(new Color(255, 255, 255));
+		
 
 		JButton check = new JButton("\uC8FC\uBB38\uD558\uAE30");
 		check.addMouseListener(new MouseAdapter() {
@@ -225,17 +226,7 @@ public class order {
 		label_44.setFont(new Font("HY수평선B", Font.BOLD, 16));
 
 		JButton pay = new JButton("\uACB0\uC81C\uD558\uAE30");
-		pay.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-
-				// 메인 창 생성
-				frame.dispose();
-				UserModel loginUser2 = (UserModel) loginUser;
-				Payment main = new Payment(loginUser2, sum);
-
-			}
-		});
+		
 		pay.setBounds(115, 439, 107, 34);
 		panel_30.add(pay);
 
@@ -481,28 +472,35 @@ public class order {
 							leftView.revalidate();
 
 							shopkeeper = shop.get(a);  //shopkeeper model
-
+							
 							int cn = 0;
 							for (int n = 0; n < service.nextmenu(shopkeeper.getID()); n++) {
 								menu1 = service.getMenu(shopkeeper.getID());
 								cn++;
 								if (cn == 16) {
-									menu.setLayout(new GridLayout(-1, 2, 20, 0));
+									menu.setLayout(new GridLayout(-1, 2, 30, 0));
 									// menu.setLayout(new GridLayout(15, 2, 20, 0));
 								}
 								JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
-								listmenu.add(cardPanel);
-
+								cardPanel.setLayout(new GridLayout(1,2,0,0));         // 
 								cardPanel.setBackground(Color.WHITE);
+								listmenu.add(cardPanel);
+//								cardPanel.setBackground(Color.WHITE);
+//
+//								cardPanel.setBackground(Color.GRAY);
 
 								JPanel cardPane2 = new JPanel(); // 메뉴이름
+//								cardPane2.setBackground(Color.WHITE);
 								JLabel two = new JLabel("");
+								
 								two.setText(menu1.get(n).getFood());
 								JPanel cardPane3 = new JPanel(); // 메뉴가격
+//								cardPane3.setBackground(Color.WHITE);
 								JLabel three = new JLabel("");
 								three.setText(""+menu1.get(n).getPrice());
+								
 
-								cardPanel.setPreferredSize(new Dimension(350, 150));
+								cardPanel.setPreferredSize(new Dimension(150, 40));
 
 								cardPanel.add(cardPane2);
 								cardPanel.add(cardPane3);
@@ -521,31 +519,17 @@ public class order {
 									@Override
 									public void mouseClicked(MouseEvent e) {
 
-//										클릭된 값이 주문창에 추가 된다. 
-										
-										
-										
-//										ShopkeeperModel m = shop.get(a);
-///										order2 테이블에 추가해야 함
-										
-//										menu1 ->메뉴 어레이리스트
-//										int cn = 0;
-//										for (int n = 0; n < service.nextmenu(shopkeeper.getID()); n++) {
-//											menu1 = service.getOrder(shopkeeper.getID());
-//											cn++;
-//											if (cn == 16) {
-//												menu.setLayout(new GridLayout(-1, 2, 20, 0));
-//												// menu.setLayout(new GridLayout(15, 2, 20, 0));
-//											}
-											
-//											listmenu.add(cardPanel);
+
 										JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
 											cardPanel.setBackground(Color.WHITE);
 
 											JPanel cardPane2 = new JPanel(); // 메뉴이름
+											cardPane2.setBackground(new Color(224, 255, 255));
+											
 											JLabel two = new JLabel("");
 											two.setText(menu1.get(a).getFood());
 											JPanel cardPane3 = new JPanel(); // 메뉴가격
+											cardPane3.setBackground(new Color(224, 255, 255));
 											JLabel three = new JLabel("");
 											three.setText(""+menu1.get(a).getPrice());
 
@@ -561,14 +545,20 @@ public class order {
 											orderlist.revalidate();
 
 											int b =  service.selectMenu(shopkeeper.getID(),menu1.get(a).getFood() );
-											
+											int price = service.selectPrice(shopkeeper.getID(),menu1.get(a).getFood());
 											if(b == 0) {
 												System.out.println("sql문장이 잘 못 되엇습니다.");
 											}
+											if(price ==0) {
+												System.out.println("sql문장이 잘 못 되엇습니다.");
+											}
+											
+											
 											
 											 service.insertOrder(loginUser.getID(), shopkeeper.getID(), b);
-											
-											
+											sum1 +=price;
+											money.setText(""+sum1+"원");
+										
 											
 //										}
 										
@@ -595,6 +585,32 @@ public class order {
 			}
 		});
 
+		
+//		pay.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent arg0) {
+//
+//				// 메인 창 생성
+//				frame.dispose();
+//				UserModel loginUser2 = (UserModel) loginUser;
+//				Payment main = new Payment(loginUser2, sum1, shopkeeper);
+//				
+//
+//			}
+//		});
+		
+		pay.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+				// 메인 창 생성
+				frame.dispose();
+				UserModel loginUser2 = (UserModel) loginUser;
+				Payment main = new Payment(loginUser2, sum1,shopkeeper);
+
+			}
+		});
+		
 		// 메뉴 카테고리 이미지 1 ( 한식 )
 		String mk1 = this.getClass().getResource(".").getPath() + "..//..//img//mk1.png";
 		kategorie1.setIcon(new ImageIcon(mk1));

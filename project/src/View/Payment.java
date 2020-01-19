@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 
+import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
 
@@ -23,13 +24,25 @@ public class Payment {
 	private JFrame frame;
 	private UserModel loginUser2;
 	private JTable table;
-	private int sum;
+	private int sum ;
+	private ShopkeeperModel shopkeeper;
 	
 	
+//	public Payment(UserModel loginUser2,int sum) {
+//		this.loginUser2 = loginUser2;
+//		this.sum = sum;
+//		initialize();
+//		frame.setVisible(true);
+//	}
+
+public Payment(UserModel loginUser2, int sum, ShopkeeperModel shopkeeper2) {
+		
+//	super();
 	
-	public Payment(UserModel loginUser2,int sum) {
+	System.out.println("sum ¤¡°ª"+sum);
 		this.loginUser2 = loginUser2;
 		this.sum = sum;
+		this.shopkeeper = shopkeeper2;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -49,12 +62,13 @@ public class Payment {
 //
 //
 //	public Payment() {
-//		initialize();
+//		
 //	}
 
 
 	private void initialize() {
 		frame = new JFrame();
+		
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(400, 150, 367, 588);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -121,18 +135,17 @@ public class Payment {
 
 		
 		String[] columnNames = {"MENU","°¡°Ý"};
-		ArrayList<Model.Payment> list = service.memberLookup(loginUser2.getID());
-		System.out.println(list.size());
+		ArrayList<Model.Payment> list = service.memberLookup(loginUser2.getID(),shopkeeper.getID());
+		
 		Object[][] data = new Object[list.size()][2];
 		
 		for (int i = 0; i < list.size(); i++) {
 			Model.Payment m = list.get(i);
 			data[i] = new Object[]{m.getMenu(),m.getPrice()};
+			
 		}
-		System.out.println("ddd");
 		table = new JTable(data, columnNames);
 		scrollPane.setViewportView(table);
-		System.out.println("ddd");
 
 		
 		

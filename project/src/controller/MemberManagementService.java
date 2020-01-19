@@ -92,8 +92,8 @@ public class MemberManagementService {
 		}
 	}
 	
-	public ArrayList<Payment> memberLookup(String id) {
-		return dao.selectAll(id);
+	public ArrayList<Payment> memberLookup(String id, String  shop ) {
+		return dao.selectAll(id, shop);
 	}
 
 	public ArrayList <ShopkeeperModel> getShop (int n ) {
@@ -159,6 +159,12 @@ public class MemberManagementService {
 			return  dao.selectMenu(id, food);
 		
 		
+	}
+
+
+	public int selectPrice(String id, String food) {
+	
+		return dao.selectPrice(id, food);
 	}
 	
 	
