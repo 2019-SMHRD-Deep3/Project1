@@ -549,6 +549,46 @@ public class MemberDAO {
 		return price;
 	}
 
+	public int next(String id ) {
+		int sum =0;
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 테이블 확인
+			String sql = "SELECT DISTINCT SHOPKEEPER_ID FROM ORDER2 WHERE USER_ID = ? ";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery(); // 실행
+
+			while (rs.next()) {
+			 sum++; 
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return sum;
+	}
 
 
 
@@ -570,11 +610,14 @@ public class MemberDAO {
 
 			while (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
 				// 해당 ID와 PW를 가진 사람이 존재
+				String id = rs.getString("SHOPKEEPER_ID");
+				String pw = rs.getString("PW");
+						
 				String shopName = rs.getString("SHOPNAME");
 				String address = rs.getString("SHOP_ADDRESS");
 //				Integer.parseInt(AGE.getText());
 				String tel =rs.getString("SHOP_TEL");
-				ShopkeeperModel m = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
+				ShopkeeperModel m = new ShopkeeperModel(id, pw,shopName, address, tel); // 객체를 생성해주기
 				list.add(m);
 				System.out.println( "사이즈는" +list.size());
 				System.out.println(shopName);
@@ -608,7 +651,62 @@ public class MemberDAO {
 	
 	}
 
+	//한 아이디가 시킨 메뉴 모아놓기
+	public ArrayList <String> selecthan(String id) {
+		ArrayList <String> list = new ArrayList<String>();
 
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 로그인
+			String sql = "SELECT m.FOOD  FROM ORDER2 o , MENU m WHERE o.MENU_SEQ = m.MENU_SEQ  AND USER_ID  ='1'";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery(); // 실행
+
+			while (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+				// 해당 ID와 PW를 가진 사람이 존재
+//				String shopName = rs.getString("SHOPNAME");
+//				String address = rs.getString("SHOP_ADDRESS");
+////				Integer.parseInt(AGE.getText());
+//				String tel =rs.getString("SHOP_TEL");
+//				ShopkeeperModel m = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
+				
+				String menu = rs.getString("FOOD");
+				list.add(menu);
+
+				}
+			}
+			
+		
+		 catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return list;
+	
+	}
 
 
 

@@ -102,11 +102,25 @@ public class MemberManagementService {
 		
 	}
 	
+	public ArrayList <String> getShop (String id ) {
+		
+		ArrayList <String> shop = dao.selecthan(id);
+		return shop;
+		
+		
+	}
+	
 
 	public int nextline(int m) {
 		return dao.next(m);
 	}
 
+
+	public int nextline(String id) {
+		return dao.next(id);
+	}
+
+	
 
 	public void onoff(String id, int n) {
 		dao.onoff(id,n);

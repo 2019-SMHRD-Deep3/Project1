@@ -2,11 +2,16 @@ package View;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
+import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
 
@@ -24,22 +30,23 @@ public class orderListCheck {
 	private JFrame frame;
 	private UserModel loginUser2;
 	private String id;
+	private ArrayList<String>menu;
+	private int cnt;
 	
-
+	
 	
 	
 
 	public orderListCheck(String id) {
+		this.id = id;
 		initialize();
 		frame.setVisible(true);
-		this.id = id;
+	
 	}
-	
-	
 
 
 	private void initialize() {
-		
+	
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(400, 150, 367, 588);
@@ -70,71 +77,7 @@ public class orderListCheck {
 		panel_1.setBackground(Color.WHITE);
 		scrollPane.setViewportView(panel_1);
 		panel_1.setPreferredSize(new Dimension(280, 700));
-		panel_1.setLayout(null);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(12, 10, 263, 161);
-		panel_1.add(panel_2);
-		panel_2.setLayout(null);
-		
-		JLabel shopName = new JLabel("");
-		shopName.setBounds(12, 44, 200, 24);
-		panel_2.add(shopName);
-		
-		JButton btnNewButton_1 = new JButton("\uB9AC\uBDF0 \uC4F0\uAE30");
-		btnNewButton_1.setBounds(142, 127, 109, 24);
-		panel_2.add(btnNewButton_1);
-		
-		JLabel day = new JLabel("");
-		day.setBounds(12, 10, 133, 24);
-		panel_2.add(day);
-		day.setText(date.getYear()-100+"/"+(date.getMonth()+1)+"/"+date.getDate());
-		
-		JLabel menu = new JLabel("");
-		menu.setBounds(12, 78, 219, 39);
-		panel_2.add(menu);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setLayout(null);
-		panel_3.setBounds(12, 181, 263, 161);
-		panel_1.add(panel_3);
-		
-		JLabel label = new JLabel("");
-		label.setBounds(12, 44, 200, 24);
-		panel_3.add(label);
-		
-		JButton button_1 = new JButton("\uB9AC\uBDF0 \uC4F0\uAE30");
-		button_1.setBounds(142, 127, 109, 24);
-		panel_3.add(button_1);
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setBounds(12, 10, 133, 24);
-		panel_3.add(label_1);
-		
-		JLabel label_3 = new JLabel("");
-		label_3.setBounds(12, 78, 219, 39);
-		panel_3.add(label_3);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(12, 352, 263, 161);
-		panel_1.add(panel_4);
-		panel_4.setLayout(null);
-		
-		JLabel label_2 = new JLabel("");
-		label_2.setBounds(12, 44, 200, 24);
-		panel_4.add(label_2);
-		
-		JButton button_2 = new JButton("\uB9AC\uBDF0 \uC4F0\uAE30");
-		button_2.setBounds(142, 127, 109, 24);
-		panel_4.add(button_2);
-		
-		JLabel label_4 = new JLabel("");
-		label_4.setBounds(12, 10, 133, 24);
-		panel_4.add(label_4);
-		
-		JLabel label_5 = new JLabel("");
-		label_5.setBounds(12, 78, 219, 39);
-		panel_4.add(label_5);
+		panel_1.setLayout(new GridLayout(4, 1, 30, 0));
 		
 		JButton button_4 = new JButton("\uCDE8\uC18C");
 		button_4.addMouseListener(new MouseAdapter() {
@@ -146,15 +89,64 @@ public class orderListCheck {
 		button_4.setBounds(196, 484, 116, 41);
 		frame.getContentPane().add(button_4);
 		
+		String id = "1";
 		
-	
-	
-	
-	
-	
-	
-	
-	
-	
+//		for(int n =0; n<service.nextline(id); n++) {
+//			String sum= "";
+//			menu = service.getShop(id);
+//			cnt++;
+//			if(cnt==4) {
+//				panel_1.setLayout(new GridLayout(-1, 1, 30, 0));
+//			}
+//			JPanel cardPanel = new JPanel();  //리뷰한개
+//			cardPanel.setBackground(Color.WHITE);
+//
+//			cardPanel.setLayout(new GridLayout(3, 1, 0, 0));
+//			
+//			JPanel cardPane2 = new JPanel();
+//			JLabel two = new JLabel("");
+//			for(int m =0; m<menu.size(); m++) {
+//				sum = sum +  menu.get(m);
+//			}
+//			two.setText(sum);
+//			JPanel cardPane3 = new JPanel();
+//			JLabel three = new JLabel("");
+//			three.setText(date.getYear()-100+"/"+(date.getMonth()+1)+"/"+date.getDate());
+////			JPanel cardPane2 = new JPanel();   //가게 이름
+////			JLabel two = new JLabel("");
+////			two.setText(shop.get(n).getSHOPNAME());
+////			JPanel cardPane3 = new JPanel();   //가게 주소
+////			JLabel three = new JLabel("");
+////			three.setText(shop.get(n).getSHOP_ADDRESS());
+//////			three.setText(service.selectone());
+////			JPanel cardPane4 = new JPanel();   //가게 전화번호
+////			JLabel four = new JLabel("");
+////			four.setText(""+shop.get(n).getSHOP_TEL());
+//
+//			cardPanel.setPreferredSize(new Dimension(280, 150));
+//			
+//		
+////			cardPanel.add(one);
+////			cardPane1.add(cardPane2);
+////			cardPane1.add(cardPane3);
+////			cardPane1.add(cardPane4);
+////			cardPane2.add(two);
+////			cardPane3.add(three);
+////			cardPane4.add(four);
+////			panel_5.add(cardPanel);
+//			
+//			
+//			
+//			panel_1.repaint();
+//			panel_1.revalidate();
+//			System.out.println(n);
+//			
+//		}
+		
+		
+		
+		
 	}
 }
+	
+
