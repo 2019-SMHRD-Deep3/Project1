@@ -19,6 +19,7 @@ import controller.MemberManagementService;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import java.awt.GridLayout;
 
 public class reviewShop2 {
 
@@ -29,7 +30,7 @@ public class reviewShop2 {
 	
 
 
-	public reviewShop2(String id) {
+	public reviewShop2() {
 		initialize();
 		frame.setVisible(true);
 		this.id = id;
@@ -70,57 +71,7 @@ public class reviewShop2 {
 		panel_1.setBackground(Color.WHITE);
 		scrollPane.setViewportView(panel_1);
 		panel_1.setPreferredSize(new Dimension(280, 700));
-		panel_1.setLayout(null);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(12, 10, 263, 246);
-		panel_1.add(panel_2);
-		panel_2.setLayout(null);
-		
-		JLabel day = new JLabel("");
-		day.setBounds(12, 10, 133, 24);
-		panel_2.add(day);
-		
-		JLabel shopName = new JLabel("");
-		shopName.setBounds(12, 78, 200, 24);
-		panel_2.add(shopName);
-		
-		JButton btnNewButton_1 = new JButton("\uB9AC\uD50C \uC4F0\uAE30");
-		btnNewButton_1.setBounds(142, 212, 109, 24);
-		panel_2.add(btnNewButton_1);
-		
-		JLabel 府轰 = new JLabel("");
-		府轰.setBounds(12, 112, 219, 73);
-		panel_2.add(府轰);
-		
-		JLabel 累己磊ID = new JLabel("");
-		累己磊ID.setBounds(12, 44, 86, 24);
-		panel_2.add(累己磊ID);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setLayout(null);
-		panel_3.setBounds(12, 264, 263, 246);
-		panel_1.add(panel_3);
-		
-		JLabel label = new JLabel("");
-		label.setBounds(12, 10, 133, 24);
-		panel_3.add(label);
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setBounds(12, 78, 200, 24);
-		panel_3.add(label_1);
-		
-		JButton button = new JButton("\uB9AC\uD50C \uC4F0\uAE30");
-		button.setBounds(142, 212, 109, 24);
-		panel_3.add(button);
-		
-		JLabel label_2 = new JLabel("");
-		label_2.setBounds(12, 112, 219, 73);
-		panel_3.add(label_2);
-		
-		JLabel label_3 = new JLabel("");
-		label_3.setBounds(12, 44, 86, 24);
-		panel_3.add(label_3);
+		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton button_4 = new JButton("\uCDE8\uC18C");
 		button_4.addMouseListener(new MouseAdapter() {

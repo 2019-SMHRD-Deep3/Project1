@@ -19,6 +19,7 @@ import controller.MemberManagementService;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import java.awt.GridLayout;
 
 public class reviewShop {
 
@@ -26,7 +27,6 @@ public class reviewShop {
 	private JFrame frame;
 	private UserModel loginUser2;
 	private String id;
-	private JTextField 리플작성란;
 	
 
 
@@ -71,21 +71,7 @@ public class reviewShop {
 		panel_1.setBackground(Color.WHITE);
 		scrollPane.setViewportView(panel_1);
 		panel_1.setPreferredSize(new Dimension(280, 700));
-		panel_1.setLayout(null);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(12, 10, 263, 326);
-		panel_1.add(panel_2);
-		panel_2.setLayout(null);
-		
-		JButton btnNewButton_1 = new JButton("\uB9AC\uD50C \uC4F0\uAE30");
-		btnNewButton_1.setBounds(142, 292, 109, 24);
-		panel_2.add(btnNewButton_1);
-		
-		리플작성란 = new JTextField();
-		리플작성란.setBounds(12, 26, 239, 238);
-		panel_2.add(리플작성란);
-		리플작성란.setColumns(10);
+		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton button_4 = new JButton("\uCDE8\uC18C");
 		button_4.addMouseListener(new MouseAdapter() {
