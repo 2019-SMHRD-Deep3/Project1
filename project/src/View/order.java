@@ -462,10 +462,15 @@ public class order {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 
-							rightView.removeAll();
-							rightView.add(ÇÑ¼Ü);
-							rightView.repaint();
-							rightView.revalidate();
+//							rightView.removeAll();
+//							rightView.add(ÇÑ¼Ü);
+//							rightView.repaint();
+//							rightView.revalidate();
+
+							leftView.removeAll();
+							leftView.add(order);
+							leftView.repaint();
+							leftView.revalidate();
 
 							ShopkeeperModel m = shop.get(a);
 
