@@ -8,18 +8,15 @@ public class RiderModel extends Model {
 	private int RATING;
 	private String TRANSPORTATION;
 	private String LOC;
-	private String COMPANY;
 	private int PHONE;
 	
 
 	// 회원가입
-	public RiderModel(String ID, String PW, String RIDERNAME, String TRANSPORTATION, String LOC,
-			String COMPANY, int PHONE) {
+	public RiderModel(String ID, String PW, String RIDERNAME, String TRANSPORTATION, String LOC, int PHONE) {
 		super(ID, PW);
 		this.RIDERNAME = RIDERNAME;
 		this.TRANSPORTATION = TRANSPORTATION;
 		this.LOC = LOC;
-		this.COMPANY = COMPANY;
 		this.PHONE = PHONE;
 	}
 	
@@ -52,9 +49,6 @@ public class RiderModel extends Model {
 		return LOC;
 	}
 
-	public String getCOMPANY() {
-		return COMPANY;
-	}
 
 	public int getPHONE() {
 		return PHONE;
@@ -78,10 +72,6 @@ public class RiderModel extends Model {
 
 	public void setLOC(String LOC) {
 		this.LOC = LOC;
-	}
-
-	public void setCOMPANY(String COMPANY) {
-		this.COMPANY = COMPANY;
 	}
 
 	public void setPHONE(int PHONE) {

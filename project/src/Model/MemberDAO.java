@@ -98,16 +98,16 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			String sql = "INSERT INTO RIDER VALUES (?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO RIDER VALUES (?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, m.getID());
 			psmt.setString(2, m.getPW());
 			psmt.setString(3, m.getRIDERNAME());
-			psmt.setInt(4, m.getRATING());
-			psmt.setString(5, m.getTRANSPORTATION());
-			psmt.setString(6, m.getLOC());
-			psmt.setString(7, m.getCOMPANY());
-			psmt.setInt(8, m.getPHONE());
+//			psmt.setInt(4, m.getRATING());
+			psmt.setString(4, m.getTRANSPORTATION());
+			psmt.setString(5, m.getLOC());
+//			psmt.setString(7, m.getCOMPANY());
+			psmt.setInt(6, m.getPHONE());
 			rows = psmt.executeUpdate();
 			if (rows == 0) {
 				System.out.println("sql문이 잘못되었습니다.");
@@ -278,8 +278,8 @@ public class MemberDAO {
 		return loginUser;
 	}
 
-	public Model selectRider(Model m) {
-		Model loginUser = null;
+	public RiderModel selectRider(Model m) {
+		RiderModel loginUser = null;
 
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -298,7 +298,12 @@ public class MemberDAO {
 				// 해당 ID와 PW를 가진 사람이 존재
 				String id = rs.getString("RIDER_ID");
 				String pw = rs.getString("PW");
-				loginUser = new RiderModel(id, pw); // 객체를 생성해주기
+				String name = rs.getString("RIDER_NAME");
+				String transportation = rs.getString("TRANSPORTATION");
+				String loc = rs.getString("LOC");
+				int riderPhone = rs.getInt("RIDER_PHONE");
+				
+				loginUser = new RiderModel(id, pw, name, transportation, loc, riderPhone ); // 객체를 생성해주기
 
 			}
 

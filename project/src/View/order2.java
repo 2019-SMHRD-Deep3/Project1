@@ -77,7 +77,7 @@ public class order2 {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(12, 122, 248, 415);
+		panel.setBounds(12, 114, 248, 415);
 		panel_3.add(panel);
 		
 		JLabel label_60 = new JLabel("\uAC00\uAC8C\uC8FC\uC18C");
@@ -105,6 +105,19 @@ public class order2 {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 145, 224, 2);
 		panel.add(separator);
+		
+		JLabel label_61 = new JLabel("\uD3C9\uC810");
+		label_61.setFont(new Font("HY수평선B", Font.BOLD, 22));
+		label_61.setBounds(12, 181, 203, 26);
+		panel.add(label_61);
+		
+		JLabel label_62 = new JLabel("");
+		label_62.setBounds(12, 217, 218, 34);
+		panel.add(label_62);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(12, 274, 224, 2);
+		panel.add(separator_1);
 		
 		JButton button = new JButton("\uB85C\uADF8\uC544\uC6C3");
 		button.addMouseListener(new MouseAdapter() {
@@ -143,7 +156,7 @@ public class order2 {
 		panel_6.setLayout(null);
 
 		JLabel shopname = new JLabel("\uD55C\uC1A5 \uAD11\uC8FC\uB300\uC810");
-		shopname.setFont(new Font("HY수평선B", Font.BOLD, 24));
+		shopname.setFont(new Font("HY수평선B", Font.BOLD, 29));
 		shopname.setBackground(new Color(255, 255, 255));
 		shopname.setHorizontalAlignment(SwingConstants.CENTER);
 		shopname.setBounds(0, 0, 589, 79);
@@ -882,7 +895,7 @@ public class order2 {
 		scrollPane_2.setBounds(47, 144, 611, 403);
 		pay.add(scrollPane_2);
 		
-		
+//		
 //		String[] columnNames = {"주문한 ID",
 //                "메뉴",
 //                "수량",
@@ -897,9 +910,9 @@ public class order2 {
 //			data[i] = new Object[]{m.getId(), m.getName(), m.getAge()} ;  // 컬럼명을 설정한 순서대로 적기 
 //		}
 //		
-//		
-//		table_1 = new JTable();
-//		scrollPane_2.setViewportView(table_1);
+		
+		table_1 = new JTable();
+		scrollPane_2.setViewportView(table_1);
 		
 		JPanel panel_34 = new JPanel();
 		panel_34.setBounds(51, 100, 282, 34);
