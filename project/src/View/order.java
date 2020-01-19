@@ -3,12 +3,12 @@ package View;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,17 +20,19 @@ import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
+import Model.Menu;
 import Model.Model;
 import Model.ShopkeeperModel;
 import Model.UserModel;
 import controller.MemberManagementService;
-import java.awt.FlowLayout;
 
 public class order {
 
 	MemberManagementService service = new MemberManagementService();
 	ArrayList<ShopkeeperModel> shop = new ArrayList<ShopkeeperModel>();
 	ArrayList<JPanel> list = new ArrayList<JPanel>();
+	ArrayList<JPanel> listmenu = new ArrayList<JPanel>();
+	ArrayList<Menu> menu1 = new ArrayList<Menu>();
 	private JFrame frame;
 	private Model loginUser;
 	private ArrayList<String> menuName = new ArrayList<String>();
@@ -356,8 +358,7 @@ public class order {
 		rightView.add(한솥, "name_191008403446000");
 		한솥.setBackground(Color.WHITE);
 		한솥.setLayout(null);
-		
-		
+
 		JPanel panel_6 = new JPanel();
 		panel_6.setBounds(35, 267, 600, 283);
 		한솥.add(panel_6);
@@ -365,38 +366,16 @@ public class order {
 
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(0, 0, 600, 281);
-		scrollPane_1.setPreferredSize(new Dimension(600,281));
+		scrollPane_1.setPreferredSize(new Dimension(600, 281));
 		panel_6.add(scrollPane_2);
-		
+
 		JPanel menu = new JPanel();
 		scrollPane_2.setViewportView(menu);
 		menu.setLayout(new GridLayout(15, 2, 20, 0));
-		
+
 		// 한솥에서 취소버튼을 눌렀을 때 가게 카테고리 보여주기
-				JButton btnNewButton = new JButton("\uC774\uC804");
-				btnNewButton.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						rightView.removeAll();
-						rightView.add(shopKategorie);
-						rightView.repaint();
-						rightView.revalidate();
-
-						leftView.removeAll();
-						leftView.add(information);
-						leftView.repaint();
-						leftView.revalidate();
-
-					}
-				});
-	
-		btnNewButton.setBounds(569, 569, 97, 29);
-		한솥.add(btnNewButton);
-		
-
-//		// 메뉴 카테고리에서 한식을 눌렀을 때 한식 메뉴 카테고리 보여주기
-		JLabel kategorie1 = new JLabel("");
-		kategorie1.addMouseListener(new MouseAdapter() {
+		JButton btnNewButton = new JButton("\uC774\uC804");
+		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				rightView.removeAll();
@@ -409,14 +388,34 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 
+			}
+		});
+
+		btnNewButton.setBounds(569, 569, 97, 29);
+		한솥.add(btnNewButton);
+
+//		// 메뉴 카테고리에서 한식을 눌렀을 때 한식 메뉴 카테고리 보여주기
+		JLabel kategorie1 = new JLabel("");
+		kategorie1.addMouseListener(new MouseAdapter() {
+			@Override  //한식 눌렀을 때
+			public void mouseClicked(MouseEvent e) {
+				rightView.removeAll();
+				rightView.add(shopKategorie);
+				rightView.repaint();
+				rightView.revalidate();
+
+				leftView.removeAll();
+				leftView.add(information);
+				leftView.repaint();
+				leftView.revalidate();
+
 				for (int n = 0; n < service.nextline(1); n++) {
-					System.out.println("line 은 " + service.nextline(1));
 					shop = service.getShop(1);
 					cnt++;
 					if (cnt == 4) {
 						panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
 					}
-					JPanel cardPanel = new JPanel();  //가게 패널
+					JPanel cardPanel = new JPanel(); // 가게 패널
 					list.add(cardPanel);
 					System.out.println(list.size());
 					cardPanel.setBackground(Color.WHITE);
@@ -453,81 +452,61 @@ public class order {
 
 					panel_5.repaint();
 					panel_5.revalidate();
-					
 
 				}
-				
-			
-//				//식당 클릭햇을 때
-				for(int m = 0; m<service.nextline(1); m++) {
+
+//				//식당 클릭햇을 때 ->메뉴 나오게
+				for (int m = 0; m < service.nextline(1); m++) {
 					final int a = m;
-				list.get(m).addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-					
-						rightView.removeAll();
-						rightView.add(한솥);
-						rightView.repaint();
-						rightView.revalidate();
-						
-						ShopkeeperModel m =  shop.get(a);
-						
+					list.get(m).addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
 
-						for (int n = 0; n < service.nextmenu(m.getID()); n++) {
-							shop = service.getShop(1);
-							cnt++;
-							if (cnt == 4) {
-								panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
+							rightView.removeAll();
+							rightView.add(한솥);
+							rightView.repaint();
+							rightView.revalidate();
+
+							ShopkeeperModel m = shop.get(a);
+
+							int cn = 0;
+							for (int n = 0; n < service.nextmenu(m.getID()); n++) {
+								menu1 = service.getMenu(m.getID());
+								cn++;
+								if (cn == 16) {
+									menu.setLayout(new GridLayout(-1, 2, 20, 0));
+									// menu.setLayout(new GridLayout(15, 2, 20, 0));
+								}
+								JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
+								listmenu.add(cardPanel);
+
+								cardPanel.setBackground(Color.WHITE);
+
+								JPanel cardPane2 = new JPanel(); // 메뉴이름
+								JLabel two = new JLabel("");
+								two.setText(menu1.get(n).getFood());
+								JPanel cardPane3 = new JPanel(); // 메뉴가격
+								JLabel three = new JLabel("");
+								three.setText("menu1.get(n).getPrice()");
+
+								cardPanel.setPreferredSize(new Dimension(350, 150));
+
+								cardPanel.add(cardPane2);
+								cardPanel.add(cardPane3);
+								cardPane2.add(two);
+								cardPane3.add(three);
+								menu.add(cardPanel);
+
+								menu.repaint();
+								menu.revalidate();
+
 							}
-							JPanel cardPanel = new JPanel();  //가게 패널
-							list.add(cardPanel);
-							System.out.println(list.size());
-							cardPanel.setBackground(Color.WHITE);
-							JLabel img = new JLabel(); // 이미지
-							String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
-							img.setIcon(new ImageIcon(shopImg1));
-							cardPanel.setLayout(new FlowLayout());
-							JPanel cardPane1 = new JPanel();
-							cardPane1.setLayout(new GridLayout(3, 1, 0, 0));
-							JPanel cardPane2 = new JPanel(); // 가게 이름
-							JLabel two = new JLabel("");
-							two.setText(shop.get(n).getSHOPNAME());
-							JPanel cardPane3 = new JPanel(); // 가게 주소
-							JLabel three = new JLabel("");
-							three.setText(shop.get(n).getSHOP_ADDRESS());
-//							three.setText(service.selectone());
-							JPanel cardPane4 = new JPanel(); // 가게 전화번호
-							JLabel four = new JLabel("");
-							four.setText("" + shop.get(n).getSHOP_TEL());
-
-							cardPanel.setPreferredSize(new Dimension(350, 150));
-							img.setPreferredSize(new Dimension(120, 150));
-							cardPane1.setPreferredSize(new Dimension(380, 150));
-
-							cardPanel.add(img);
-							cardPanel.add(cardPane1);
-							cardPane1.add(cardPane2);
-							cardPane1.add(cardPane3);
-							cardPane1.add(cardPane4);
-							cardPane2.add(two);
-							cardPane3.add(three);
-							cardPane4.add(four);
-							panel_5.add(cardPanel);
-
-							panel_5.repaint();
-							panel_5.revalidate();
-							
-
 						}
-						
-						
-					}
-				});};
+					});
+				}
+				;
 			}
 		});
-		
-
-		
 
 		// 메뉴 카테고리 이미지 1 ( 한식 )
 		String mk1 = this.getClass().getResource(".").getPath() + "..//..//img//mk1.png";
@@ -539,7 +518,7 @@ public class order {
 		JLabel kategorie2 = new JLabel("");
 		kategorie2.addMouseListener(new MouseAdapter() {
 
-	@Override
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				rightView.removeAll();
 				rightView.add(shopKategorie);
@@ -552,15 +531,18 @@ public class order {
 				leftView.revalidate();
 
 				for (int n = 0; n < service.nextline(2); n++) {
-
 					shop = service.getShop(2);
 					cnt++;
 					if (cnt == 4) {
 						panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
 					}
-
 					JPanel cardPanel = new JPanel(); // 가게 패널
-
+					list.add(cardPanel);
+					System.out.println(list.size());
+					cardPanel.setBackground(Color.WHITE);
+					JLabel img = new JLabel(); // 이미지
+					String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
+					img.setIcon(new ImageIcon(shopImg1));
 					cardPanel.setLayout(new FlowLayout());
 					JPanel cardPane1 = new JPanel();
 					cardPane1.setLayout(new GridLayout(3, 1, 0, 0));
@@ -570,16 +552,20 @@ public class order {
 					JPanel cardPane3 = new JPanel(); // 가게 주소
 					JLabel three = new JLabel("");
 					three.setText(shop.get(n).getSHOP_ADDRESS());
-//					three.setText(service.selectone());
+//			three.setText(service.selectone());
 					JPanel cardPane4 = new JPanel(); // 가게 전화번호
 					JLabel four = new JLabel("");
 					four.setText("" + shop.get(n).getSHOP_TEL());
 
 					cardPanel.setPreferredSize(new Dimension(350, 150));
+					img.setPreferredSize(new Dimension(120, 150));
+					cardPane1.setPreferredSize(new Dimension(380, 150));
 
-					cardPanel.add(cardPane2);
-					cardPanel.add(cardPane3);
-					cardPanel.add(cardPane4);
+					cardPanel.add(img);
+					cardPanel.add(cardPane1);
+					cardPane1.add(cardPane2);
+					cardPane1.add(cardPane3);
+					cardPane1.add(cardPane4);
 					cardPane2.add(two);
 					cardPane3.add(three);
 					cardPane4.add(four);
@@ -589,26 +575,59 @@ public class order {
 					panel_5.revalidate();
 
 				}
-				
-				//식당 클릭햇을 때
-				for(int m = 0; m<service.nextline(2); m++) {
-					final int n =m;
-				list.get(m).addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-					
-						
-						
-						rightView.removeAll();
-						rightView.add(한솥);
-						rightView.repaint();
-						rightView.revalidate();
-						
-						shop.get(n);
-						
-					}
-				});
-				};
+
+				// 식당 클릭햇을 때 ->메뉴 나오게
+				for (int m = 0; m < service.nextline(2); m++) {
+					final int a = m;
+					list.get(m).addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+
+							rightView.removeAll();
+							rightView.add(한솥);
+							rightView.repaint();
+							rightView.revalidate();
+
+							ShopkeeperModel m = shop.get(a);
+
+							int cn = 0;
+							for (int n = 0; n < service.nextmenu(m.getID()); n++) {
+								menu1 = service.getMenu(m.getID());
+								cn++;
+								if (cn == 16) {
+									menu.setLayout(new GridLayout(-1, 2, 20, 0));
+									// menu.setLayout(new GridLayout(15, 2, 20, 0));
+								}
+								JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
+								listmenu.add(cardPanel);
+
+								cardPanel.setBackground(Color.WHITE);
+
+								JPanel cardPane2 = new JPanel(); // 메뉴이름
+								JLabel two = new JLabel("");
+								two.setText(menu1.get(n).getFood());
+								JPanel cardPane3 = new JPanel(); // 메뉴가격
+								JLabel three = new JLabel("");
+								three.setText("menu1.get(n).getPrice()");
+
+								cardPanel.setPreferredSize(new Dimension(350, 150));
+
+								cardPanel.add(cardPane2);
+								cardPanel.add(cardPane3);
+								cardPane2.add(two);
+								cardPane3.add(three);
+								menu.add(cardPanel);
+
+								menu.repaint();
+								menu.revalidate();
+
+							}
+
+						}
+					});
+				}
+				;
+
 			}
 		});
 		String mk2 = this.getClass().getResource(".").getPath() + "..//..//img//mk2.png";
@@ -630,16 +649,19 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 
-				for (int n = 0; n <= service.nextline(3); n++) {
-
+				for (int n = 0; n < service.nextline(3); n++) {
 					shop = service.getShop(3);
 					cnt++;
 					if (cnt == 4) {
 						panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
 					}
-
 					JPanel cardPanel = new JPanel(); // 가게 패널
-
+					list.add(cardPanel);
+					System.out.println(list.size());
+					cardPanel.setBackground(Color.WHITE);
+					JLabel img = new JLabel(); // 이미지
+					String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
+					img.setIcon(new ImageIcon(shopImg1));
 					cardPanel.setLayout(new FlowLayout());
 					JPanel cardPane1 = new JPanel();
 					cardPane1.setLayout(new GridLayout(3, 1, 0, 0));
@@ -655,10 +677,14 @@ public class order {
 					four.setText("" + shop.get(n).getSHOP_TEL());
 
 					cardPanel.setPreferredSize(new Dimension(350, 150));
+					img.setPreferredSize(new Dimension(120, 150));
+					cardPane1.setPreferredSize(new Dimension(380, 150));
 
-					cardPanel.add(cardPane2);
-					cardPanel.add(cardPane3);
-					cardPanel.add(cardPane4);
+					cardPanel.add(img);
+					cardPanel.add(cardPane1);
+					cardPane1.add(cardPane2);
+					cardPane1.add(cardPane3);
+					cardPane1.add(cardPane4);
 					cardPane2.add(two);
 					cardPane3.add(three);
 					cardPane4.add(four);
@@ -668,24 +694,57 @@ public class order {
 					panel_5.revalidate();
 
 				}
-				//식당 클릭햇을 때
-				for(int m = 0; m<service.nextline(3); m++) {
+				// 식당 클릭햇을 때 ->메뉴 나오게
+				for (int m = 0; m < service.nextline(3); m++) {
 					final int a = m;
-				list.get(m).addMouseListener(new MouseAdapter() {
-				
-					@Override
-				
-					public void mouseClicked(MouseEvent e) {
-					
-						rightView.removeAll();
-						rightView.add(한솥);
-						rightView.repaint();
-						rightView.revalidate();
-					
-						shop.get(a);
-						
-					}
-				});};
+					list.get(m).addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+
+							rightView.removeAll();
+							rightView.add(한솥);
+							rightView.repaint();
+							rightView.revalidate();
+
+							ShopkeeperModel m = shop.get(a);
+
+							int cn = 0;
+							for (int n = 0; n < service.nextmenu(m.getID()); n++) {
+								menu1 = service.getMenu(m.getID());
+								cn++;
+								if (cn == 16) {
+									menu.setLayout(new GridLayout(-1, 2, 20, 0));
+									// menu.setLayout(new GridLayout(15, 2, 20, 0));
+								}
+								JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
+								listmenu.add(cardPanel);
+
+								cardPanel.setBackground(Color.WHITE);
+
+								JPanel cardPane2 = new JPanel(); // 메뉴이름
+								JLabel two = new JLabel("");
+								two.setText(menu1.get(n).getFood());
+								JPanel cardPane3 = new JPanel(); // 메뉴가격
+								JLabel three = new JLabel("");
+								three.setText("menu1.get(n).getPrice()");
+
+								cardPanel.setPreferredSize(new Dimension(350, 150));
+
+								cardPanel.add(cardPane2);
+								cardPanel.add(cardPane3);
+								cardPane2.add(two);
+								cardPane3.add(three);
+								menu.add(cardPanel);
+
+								menu.repaint();
+								menu.revalidate();
+
+							}
+
+						}
+					});
+				}
+				;
 			}
 
 		});
@@ -709,15 +768,18 @@ public class order {
 				leftView.revalidate();
 
 				for (int n = 0; n < service.nextline(4); n++) {
-
 					shop = service.getShop(4);
 					cnt++;
 					if (cnt == 4) {
-						panel_5.setLayout(new GridLayout(-1, 1, 0, 0));
+						panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
 					}
-
 					JPanel cardPanel = new JPanel(); // 가게 패널
-
+					list.add(cardPanel);
+					System.out.println(list.size());
+					cardPanel.setBackground(Color.WHITE);
+					JLabel img = new JLabel(); // 이미지
+					String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
+					img.setIcon(new ImageIcon(shopImg1));
 					cardPanel.setLayout(new FlowLayout());
 					JPanel cardPane1 = new JPanel();
 					cardPane1.setLayout(new GridLayout(3, 1, 0, 0));
@@ -733,10 +795,14 @@ public class order {
 					four.setText("" + shop.get(n).getSHOP_TEL());
 
 					cardPanel.setPreferredSize(new Dimension(350, 150));
+					img.setPreferredSize(new Dimension(120, 150));
+					cardPane1.setPreferredSize(new Dimension(380, 150));
 
-					cardPanel.add(cardPane2);
-					cardPanel.add(cardPane3);
-					cardPanel.add(cardPane4);
+					cardPanel.add(img);
+					cardPanel.add(cardPane1);
+					cardPane1.add(cardPane2);
+					cardPane1.add(cardPane3);
+					cardPane1.add(cardPane4);
 					cardPane2.add(two);
 					cardPane3.add(three);
 					cardPane4.add(four);
@@ -746,23 +812,57 @@ public class order {
 					panel_5.revalidate();
 
 				}
-				//식당 클릭햇을 때
-				for(int m = 0; m<service.nextline(4); m++) {
+				// 식당 클릭햇을 때 ->메뉴 나오게
+				for (int m = 0; m < service.nextline(4); m++) {
 					final int a = m;
-				list.get(m).addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-					
-						rightView.removeAll();
-						rightView.add(한솥);
-						rightView.repaint();
-						rightView.revalidate();
-						
-						shop.get(a);
-						
-					}
-				});};
+					list.get(m).addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
 
+							rightView.removeAll();
+							rightView.add(한솥);
+							rightView.repaint();
+							rightView.revalidate();
+
+							ShopkeeperModel m = shop.get(a);
+
+							int cn = 0;
+							for (int n = 0; n < service.nextmenu(m.getID()); n++) {
+								menu1 = service.getMenu(m.getID());
+								cn++;
+								if (cn == 16) {
+									menu.setLayout(new GridLayout(-1, 2, 20, 0));
+									// menu.setLayout(new GridLayout(15, 2, 20, 0));
+								}
+								JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
+								listmenu.add(cardPanel);
+
+								cardPanel.setBackground(Color.WHITE);
+
+								JPanel cardPane2 = new JPanel(); // 메뉴이름
+								JLabel two = new JLabel("");
+								two.setText(menu1.get(n).getFood());
+								JPanel cardPane3 = new JPanel(); // 메뉴가격
+								JLabel three = new JLabel("");
+								three.setText("menu1.get(n).getPrice()");
+
+								cardPanel.setPreferredSize(new Dimension(350, 150));
+
+								cardPanel.add(cardPane2);
+								cardPanel.add(cardPane3);
+								cardPane2.add(two);
+								cardPane3.add(three);
+								menu.add(cardPanel);
+
+								menu.repaint();
+								menu.revalidate();
+
+							}
+
+						}
+					});
+				}
+				;
 			}
 		});
 		String mk4 = this.getClass().getResource(".").getPath() + "..//..//img//mk4.png";
@@ -784,16 +884,19 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 
-				for (int n = 1; n < service.nextline(5); n++) {
-
+				for (int n = 0; n < service.nextline(5); n++) {
 					shop = service.getShop(5);
 					cnt++;
 					if (cnt == 4) {
-						panel_5.setLayout(new GridLayout(-1, 1, 0, 0));
+						panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
 					}
-
 					JPanel cardPanel = new JPanel(); // 가게 패널
-
+					list.add(cardPanel);
+					System.out.println(list.size());
+					cardPanel.setBackground(Color.WHITE);
+					JLabel img = new JLabel(); // 이미지
+					String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
+					img.setIcon(new ImageIcon(shopImg1));
 					cardPanel.setLayout(new FlowLayout());
 					JPanel cardPane1 = new JPanel();
 					cardPane1.setLayout(new GridLayout(3, 1, 0, 0));
@@ -809,10 +912,14 @@ public class order {
 					four.setText("" + shop.get(n).getSHOP_TEL());
 
 					cardPanel.setPreferredSize(new Dimension(350, 150));
+					img.setPreferredSize(new Dimension(120, 150));
+					cardPane1.setPreferredSize(new Dimension(380, 150));
 
-					cardPanel.add(cardPane2);
-					cardPanel.add(cardPane3);
-					cardPanel.add(cardPane4);
+					cardPanel.add(img);
+					cardPanel.add(cardPane1);
+					cardPane1.add(cardPane2);
+					cardPane1.add(cardPane3);
+					cardPane1.add(cardPane4);
 					cardPane2.add(two);
 					cardPane3.add(three);
 					cardPane4.add(four);
@@ -822,23 +929,57 @@ public class order {
 					panel_5.revalidate();
 
 				}
-				//식당 클릭햇을 때
-				for(int m = 0; m<service.nextline(5); m++) {
-					final int a = m ;
-				list.get(m).addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-					
-						rightView.removeAll();
-						rightView.add(한솥);
-						rightView.repaint();
-						rightView.revalidate();
-						
-						shop.get(a);
-						
-					}
-				});};
+				// 식당 클릭햇을 때 ->메뉴 나오게
+				for (int m = 0; m < service.nextline(5); m++) {
+					final int a = m;
+					list.get(m).addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
 
+							rightView.removeAll();
+							rightView.add(한솥);
+							rightView.repaint();
+							rightView.revalidate();
+
+							ShopkeeperModel m = shop.get(a);
+
+							int cn = 0;
+							for (int n = 0; n < service.nextmenu(m.getID()); n++) {
+								menu1 = service.getMenu(m.getID());
+								cn++;
+								if (cn == 16) {
+									menu.setLayout(new GridLayout(-1, 2, 20, 0));
+									// menu.setLayout(new GridLayout(15, 2, 20, 0));
+								}
+								JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
+								listmenu.add(cardPanel);
+
+								cardPanel.setBackground(Color.WHITE);
+
+								JPanel cardPane2 = new JPanel(); // 메뉴이름
+								JLabel two = new JLabel("");
+								two.setText(menu1.get(n).getFood());
+								JPanel cardPane3 = new JPanel(); // 메뉴가격
+								JLabel three = new JLabel("");
+								three.setText("menu1.get(n).getPrice()");
+
+								cardPanel.setPreferredSize(new Dimension(350, 150));
+
+								cardPanel.add(cardPane2);
+								cardPanel.add(cardPane3);
+								cardPane2.add(two);
+								cardPane3.add(three);
+								menu.add(cardPanel);
+
+								menu.repaint();
+								menu.revalidate();
+
+							}
+
+						}
+					});
+				}
+				;
 			}
 		});
 		String mk5 = this.getClass().getResource(".").getPath() + "..//..//img//mk5.png";
@@ -860,16 +1001,19 @@ public class order {
 				leftView.repaint();
 				leftView.revalidate();
 
-				for (int n = 1; n < service.nextline(6); n++) {
-
+				for (int n = 0; n < service.nextline(6); n++) {
 					shop = service.getShop(6);
 					cnt++;
 					if (cnt == 4) {
-						panel_5.setLayout(new GridLayout(-1, 1, 0, 0));
+						panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
 					}
-
 					JPanel cardPanel = new JPanel(); // 가게 패널
-
+					list.add(cardPanel);
+					System.out.println(list.size());
+					cardPanel.setBackground(Color.WHITE);
+					JLabel img = new JLabel(); // 이미지
+					String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
+					img.setIcon(new ImageIcon(shopImg1));
 					cardPanel.setLayout(new FlowLayout());
 					JPanel cardPane1 = new JPanel();
 					cardPane1.setLayout(new GridLayout(3, 1, 0, 0));
@@ -885,10 +1029,14 @@ public class order {
 					four.setText("" + shop.get(n).getSHOP_TEL());
 
 					cardPanel.setPreferredSize(new Dimension(350, 150));
+					img.setPreferredSize(new Dimension(120, 150));
+					cardPane1.setPreferredSize(new Dimension(380, 150));
 
-					cardPanel.add(cardPane2);
-					cardPanel.add(cardPane3);
-					cardPanel.add(cardPane4);
+					cardPanel.add(img);
+					cardPanel.add(cardPane1);
+					cardPane1.add(cardPane2);
+					cardPane1.add(cardPane3);
+					cardPane1.add(cardPane4);
 					cardPane2.add(two);
 					cardPane3.add(three);
 					cardPane4.add(four);
@@ -898,22 +1046,57 @@ public class order {
 					panel_5.revalidate();
 
 				}
-				//식당 클릭햇을 때
-				for(int m = 0; m<service.nextline(6); m++) {
+				// 식당 클릭햇을 때 ->메뉴 나오게
+				for (int m = 0; m < service.nextline(6); m++) {
 					final int a = m;
-				list.get(m).addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-					
-						rightView.removeAll();
-						rightView.add(한솥);
-						rightView.repaint();
-						rightView.revalidate();
-						
-						shop.get(a);
-						
-					}
-				});};
+					list.get(m).addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+
+							rightView.removeAll();
+							rightView.add(한솥);
+							rightView.repaint();
+							rightView.revalidate();
+
+							ShopkeeperModel m = shop.get(a);
+
+							int cn = 0;
+							for (int n = 0; n < service.nextmenu(m.getID()); n++) {
+								menu1 = service.getMenu(m.getID());
+								cn++;
+								if (cn == 16) {
+									menu.setLayout(new GridLayout(-1, 2, 20, 0));
+									// menu.setLayout(new GridLayout(15, 2, 20, 0));
+								}
+								JPanel cardPanel = new JPanel(); // 가격 메뉴 패널
+								listmenu.add(cardPanel);
+
+								cardPanel.setBackground(Color.WHITE);
+
+								JPanel cardPane2 = new JPanel(); // 메뉴이름
+								JLabel two = new JLabel("");
+								two.setText(menu1.get(n).getFood());
+								JPanel cardPane3 = new JPanel(); // 메뉴가격
+								JLabel three = new JLabel("");
+								three.setText("menu1.get(n).getPrice()");
+
+								cardPanel.setPreferredSize(new Dimension(350, 150));
+
+								cardPanel.add(cardPane2);
+								cardPanel.add(cardPane3);
+								cardPane2.add(two);
+								cardPane3.add(three);
+								menu.add(cardPanel);
+
+								menu.repaint();
+								menu.revalidate();
+
+							}
+
+						}
+					});
+				}
+				;
 			}
 		});
 		String mk6 = this.getClass().getResource(".").getPath() + "..//..//img//mk6.png";
@@ -1042,9 +1225,6 @@ public class order {
 		a4.setIcon(new ImageIcon(imgPath4));
 		a4.setBounds(27, 418, 542, 126);
 		panel_4.add(a4);
-
-
-	
 
 	}
 

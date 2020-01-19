@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import Model.MemberDAO;
+import Model.Menu;
 import Model.Model;
 import Model.Payment;
 import Model.RiderModel;
@@ -131,6 +132,13 @@ public class MemberManagementService {
 	public int nextmenu(String id) {
 	
 		return dao.menu(id);
+	}
+
+
+	public ArrayList <Menu> getMenu (String id) {
+		ArrayList <Menu> menulist = dao.selecmenu(id);
+		return menulist;
+		
 	}
 	
 	

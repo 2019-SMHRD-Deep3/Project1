@@ -58,11 +58,7 @@ public class MemberDAO {
 		return rows;
 	}
 
-	
-	
-	
-
-	//수정
+	// 수정
 	public int sujung(UserModel m, String id) {
 		int rows = 0;
 		try {
@@ -70,15 +66,14 @@ public class MemberDAO {
 			conn = DriverManager.getConnection(url, user, password);
 			String sql = "update USER2 set PW=?, USERNAME=?, USER_ADDRESS=?, USER_PHONE=? where USER_ID=?  ";
 			psmt = conn.prepareStatement(sql);
-			
+
 			psmt.setString(1, m.getPW());
 
 			psmt.setString(2, m.getUSERNAME());
 			psmt.setString(3, m.getUSER_ADDRESS());
 			psmt.setInt(4, m.getUSER_PHONE());
 			psmt.setString(5, id);
-			
-		
+
 			rows = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -86,8 +81,10 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(psmt != null) psmt.close();
-				if(conn != null) conn.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -95,7 +92,6 @@ public class MemberDAO {
 		return rows;
 	}
 
-	
 	// 라이더
 	public int insert1(RiderModel m) {
 		int rows = 0;
@@ -204,7 +200,6 @@ public class MemberDAO {
 
 			}
 
-		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -229,11 +224,6 @@ public class MemberDAO {
 
 		return loginUser;
 	}
-
-
-
-
-
 
 	public ShopkeeperModel selectShopkeeper(Model m) {
 		ShopkeeperModel loginUser = null;
@@ -260,11 +250,10 @@ public class MemberDAO {
 				String tel = rs.getString("SHOP_TEL");
 				loginUser = new ShopkeeperModel(id, pw, name, address, tel); // 객체를 생성해주기
 
-				}
 			}
+		}
 
-		
-		 catch (ClassNotFoundException e) {
+		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -311,10 +300,9 @@ public class MemberDAO {
 				String pw = rs.getString("PW");
 				loginUser = new RiderModel(id, pw); // 객체를 생성해주기
 
-				}
-
 			}
-		catch (ClassNotFoundException e) {
+
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -338,6 +326,7 @@ public class MemberDAO {
 
 		return loginUser;
 	}
+
 	// 중복 확인
 	public Model idCheck(Model m) {
 		Model ID = null;
@@ -463,16 +452,14 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			
-			
+
 			Date date = new Date(System.currentTimeMillis());
-			
-			
-			
-			String sql = "SELECT MENU, PRICE   FROM  ORDERLIST " + "WHERE USER_ID = ? AND to_date(ORDER_DATE, 'YY/MM/DD') = ?";
+
+			String sql = "SELECT MENU, PRICE   FROM  ORDERLIST "
+					+ "WHERE USER_ID = ? AND to_date(ORDER_DATE, 'YY/MM/DD') = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, USER_ID);
-			psmt.setString(2, date.getYear()-100+"/"+(date.getMonth()+1)+"/"+date.getDate());
+			psmt.setString(2, date.getYear() - 100 + "/" + (date.getMonth() + 1) + "/" + date.getDate());
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -504,12 +491,8 @@ public class MemberDAO {
 
 	}
 
-
-
-
-
 	public int next(int m) {
-		int price =0;
+		int price = 0;
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -522,7 +505,7 @@ public class MemberDAO {
 			rs = psmt.executeQuery(); // 실행
 
 			while (rs.next()) {
-			 price++; 
+				price++;
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -549,8 +532,8 @@ public class MemberDAO {
 		return price;
 	}
 
-	public int next(String id ) {
-		int sum =0;
+	public int next(String id) {
+		int sum = 0;
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -563,7 +546,7 @@ public class MemberDAO {
 			rs = psmt.executeQuery(); // 실행
 
 			while (rs.next()) {
-			 sum++; 
+				sum++;
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -590,11 +573,8 @@ public class MemberDAO {
 		return sum;
 	}
 
-
-
-
-	public ArrayList <ShopkeeperModel> selecthan(int n) {
-		ArrayList <ShopkeeperModel> list = new ArrayList<ShopkeeperModel>();
+	public ArrayList<ShopkeeperModel> selecthan(int n) {
+		ArrayList<ShopkeeperModel> list = new ArrayList<ShopkeeperModel>();
 
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -612,20 +592,19 @@ public class MemberDAO {
 				// 해당 ID와 PW를 가진 사람이 존재
 				String id = rs.getString("SHOPKEEPER_ID");
 				String pw = rs.getString("PW");
-						
+
 				String shopName = rs.getString("SHOPNAME");
 				String address = rs.getString("SHOP_ADDRESS");
 //				Integer.parseInt(AGE.getText());
-				String tel =rs.getString("SHOP_TEL");
-				ShopkeeperModel m = new ShopkeeperModel(id, pw,shopName, address, tel); // 객체를 생성해주기
+				String tel = rs.getString("SHOP_TEL");
+				ShopkeeperModel m = new ShopkeeperModel(id, pw, shopName, address, tel); // 객체를 생성해주기
 				list.add(m);
-				System.out.println( "사이즈는" +list.size());
+				System.out.println("사이즈는" + list.size());
 				System.out.println(shopName);
-				}
 			}
-			
-		
-		 catch (ClassNotFoundException e) {
+		}
+
+		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -648,12 +627,12 @@ public class MemberDAO {
 		}
 
 		return list;
-	
+
 	}
 
-	//한 아이디가 시킨 메뉴 모아놓기
-	public ArrayList <String> selecthan(String id) {
-		ArrayList <String> list = new ArrayList<String>();
+	// 한 아이디가 시킨 메뉴 모아놓기
+	public ArrayList<String> selecthan(String id) {
+		ArrayList<String> list = new ArrayList<String>();
 
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -674,15 +653,14 @@ public class MemberDAO {
 ////				Integer.parseInt(AGE.getText());
 //				String tel =rs.getString("SHOP_TEL");
 //				ShopkeeperModel m = new ShopkeeperModel(shopName, address, tel); // 객체를 생성해주기
-				
+
 				String menu = rs.getString("FOOD");
 				list.add(menu);
 
-				}
 			}
-			
-		
-		 catch (ClassNotFoundException e) {
+		}
+
+		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -705,52 +683,46 @@ public class MemberDAO {
 		}
 
 		return list;
-	
+
 	}
-
-
 
 	public void onoff(String id, int n) {
 		int rows = 0;
 		try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url, user, password);
-		String sql = "UPDATE SHOPKEEPER SET ONOFF = ? WHERE SHOPKEEPER_ID =? ";
-		psmt = conn.prepareStatement(sql);
-		
-		psmt.setInt(1, n);
-		psmt.setString(2, id);
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password);
+			String sql = "UPDATE SHOPKEEPER SET ONOFF = ? WHERE SHOPKEEPER_ID =? ";
+			psmt = conn.prepareStatement(sql);
 
-		rows = psmt.executeUpdate();
-		if (rows == 0) {
-			System.out.println("sql문이 잘못되었습니다.");
-		} else {
+			psmt.setInt(1, n);
+			psmt.setString(2, id);
 
-		}
+			rows = psmt.executeUpdate();
+			if (rows == 0) {
+				System.out.println("sql문이 잘못되었습니다.");
+			} else {
 
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace(); // 오류문구 출력
-	} catch (SQLException e) {
-		e.printStackTrace(); // 오류문구 출력
-	} finally {
-		try {
-			if (psmt != null)
-				psmt.close();
-			if (conn != null)
-				conn.close();
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace(); // 오류문구 출력
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace(); // 오류문구 출력
+		} finally {
+			try {
+				if (psmt != null)
+					psmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+
 	}
-	
-}
-
-
-
-
 
 	public int menu(String id) {
-		int sum =0;
+		int sum = 0;
 		try { // try ~ catch 예외처리
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -763,7 +735,7 @@ public class MemberDAO {
 			rs = psmt.executeQuery(); // 실행
 
 			while (rs.next()) {
-			 sum++; 
+				sum++;
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -789,6 +761,59 @@ public class MemberDAO {
 
 		return sum;
 	}
+
+	public ArrayList<Menu> selecmenu(String id) {
+
+		ArrayList<Menu> list = new ArrayList<Menu>();
+
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 로그인
+			String sql = "SELECT * FROM MENU WHERE SHOPKEEPER_ID = ? ";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery(); // 실행
+
+			while (rs.next()) { // rs.next() -> 다음 줄이 있는지 없는지 T/F 로 알려줌
+				// 해당 ID와 PW를 가진 사람이 존재
+				int menuSeq = Integer.parseInt(rs.getString("MENU_SEQ"));
+				String shopkeeperId = rs.getString("SHOPKEEPER_ID");
+				String food = rs.getString("FOOD");
+				int price = Integer.parseInt(rs.getString("PRICE"));
+//					Integer.parseInt(AGE.getText());
+				Menu m = new Menu(menuSeq, shopkeeperId, food, price); // 객체를 생성해주기
+				list.add(m);
+			}
+		}
+
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return list;
+
 	}
-		
-	
+
+}
