@@ -43,7 +43,6 @@ public class 회원가입 {
 	private JTextField rider_pw;
 	private JTextField rider_name;
 	private JTextField rider_loc;
-	private JTextField rider_company;
 	private JTextField shopkeeper_id;
 	private JTextField shopkeeper_pw;
 	private JTextField shopkeeper_name;
@@ -296,18 +295,23 @@ public class 회원가입 {
 			public void actionPerformed(ActionEvent e) {
 				// 로그인 기능
 				// id, pw 를 컴포넌트에서 가져오기
-				String infoId = textField.getText();
-				String infoPw = passwordField.getText();
+				
+				String infoId = textField_2.getText();
+				String infoPw = passwordField_2.getText();
+				
+//				String infoId = textField.getText();
+//				String infoPw = passwordField.getText();
+				
 				// Member 객체 생성
 				Model m = new Model(infoId, infoPw);
 				// 로그인 요청하기
-				Model loginRider = service.RiderLogin(m);
+				RiderModel loginRider = service.RiderLogin(m);
 				if(loginRider==null) {
 					JOptionPane.showMessageDialog(frame, "로그인 실패");
 				}else {
 					JOptionPane.showMessageDialog(frame, "로그인 성공");
 					
-//					RiderView main = new RiderView(loginRider);   // 메인 창 생성
+					RiderView main = new RiderView(loginRider);   // 메인 창 생성
 					frame.dispose();              // 로그인 창 닫기
 					
 				}
@@ -943,10 +947,9 @@ public class 회원가입 {
 						TRANSPORTATION = "기타";
 					}
 					String infoLoc = rider_loc.getText();
-					String infoCompany = rider_company.getText();
 					int infoNumber = Integer.parseInt(PhoneNumber2.getText());  
 					// Member 객체를 생성    --> info 변수에 저장된 내용으로 객체를 생성하기 
-					RiderModel m = new RiderModel(infoId, infoPw, infoName, TRANSPORTATION, infoLoc, infoCompany, infoNumber);
+					RiderModel m = new RiderModel(infoId, infoPw, infoName, TRANSPORTATION, infoLoc,infoNumber);
 					
 					
 					// Controller 에게 회원가입 요청
@@ -969,7 +972,7 @@ public class 회원가입 {
 			}
 		});
 		RiserJoin.setFont(new Font("굴림", Font.BOLD, 15));
-		RiserJoin.setBounds(140, 548, 132, 48);
+		RiserJoin.setBounds(137, 521, 132, 48);
 		RiderJoin.add(RiserJoin);
 		
 		JButton button_4 = new JButton("\uCDE8\uC18C");
@@ -984,7 +987,7 @@ public class 회원가입 {
 			}
 		});
 		button_4.setFont(new Font("굴림", Font.BOLD, 15));
-		button_4.setBounds(346, 548, 132, 48);
+		button_4.setBounds(343, 521, 132, 48);
 		RiderJoin.add(button_4);
 		
 		JPanel panel_15 = new JPanel();
@@ -1116,27 +1119,10 @@ public class 회원가입 {
 		rider_loc.setBounds(120, 1, 269, 41);
 		panel_19.add(rider_loc);
 		
-		JPanel panel_20 = new JPanel();
-		panel_20.setLayout(null);
-		panel_20.setBackground(new Color(204, 255, 255));
-		panel_20.setBounds(107, 447, 389, 39);
-		RiderJoin.add(panel_20);
-		
-		JLabel label_12 = new JLabel("\uC18C\uC18D\uD68C\uC0AC");
-		label_12.setHorizontalAlignment(SwingConstants.CENTER);
-		label_12.setFont(new Font("굴림", Font.BOLD, 16));
-		label_12.setBounds(0, -1, 119, 42);
-		panel_20.add(label_12);
-		
-		rider_company = new JTextField();
-		rider_company.setColumns(10);
-		rider_company.setBounds(120, 1, 269, 41);
-		panel_20.add(rider_company);
-		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
 		panel_5.setBackground(new Color(204, 255, 255));
-		panel_5.setBounds(107, 499, 389, 39);
+		panel_5.setBounds(107, 452, 389, 39);
 		RiderJoin.add(panel_5);
 		
 		JLabel PhoneNumber = new JLabel("\uC804\uD654\uBC88\uD638");

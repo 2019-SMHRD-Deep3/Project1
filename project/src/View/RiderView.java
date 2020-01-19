@@ -3,46 +3,53 @@ package View;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import Model.RiderModel;
+import Model.ShopkeeperModel;
+import controller.MemberManagementService;
 
 public class RiderView {
 
 	private JFrame frame;
+	private RiderModel loginUser;
 	private JPanel orderPanel;
 	private int cnt;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RiderView window = new RiderView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public RiderView() {
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					RiderView window = new RiderView();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+//
+//	/**
+//	 * Create the application.
+//	 */
+	
+	MemberManagementService service = new MemberManagementService();
+	
+	public RiderView(RiderModel loginUser) {
 		initialize();
 		frame.setBounds(400, 150, 1011, 661);
+		frame.setVisible(true);
+		
+		this.loginUser = loginUser;
 		
 		JPanel panel_1 =new JPanel();
 		panel_1.setBounds(371, 0, 634, 632);
@@ -60,14 +67,6 @@ public class RiderView {
 		leftView.setLayout(null);
 		
 		main.add(leftView);
-		
-
-		
-		
-		JPanel name = new JPanel();
-		name.setBackground(new Color(255, 255, 255));
-		name.setBounds(12, 25, 196, 40);
-		leftView.add(name);
 		
 		JPanel ranking = new JPanel();
 		ranking.setBounds(22, 229, 215, 76);

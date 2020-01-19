@@ -77,8 +77,9 @@ public class MemberManagementService {
 		return loginShopkepper;
 	}
 	
-	public Model RiderLogin(Model m) {
-		Model loginRider = dao.selectRider(m);
+	public RiderModel RiderLogin(Model m) {
+		RiderModel loginRider = dao.selectRider(m);
+//		Model loginRider = dao.selectRider(m);
 		return loginRider;
 	}
 	
