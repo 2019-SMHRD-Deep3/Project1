@@ -356,6 +356,43 @@ public class order {
 		rightView.add(한솥, "name_191008403446000");
 		한솥.setBackground(Color.WHITE);
 		한솥.setLayout(null);
+		
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBounds(35, 267, 600, 283);
+		한솥.add(panel_6);
+		panel_6.setLayout(null);
+
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(0, 0, 600, 281);
+		scrollPane_1.setPreferredSize(new Dimension(600,281));
+		panel_6.add(scrollPane_2);
+		
+		JPanel menu = new JPanel();
+		scrollPane_2.setViewportView(menu);
+		menu.setLayout(new GridLayout(15, 2, 20, 0));
+		
+		// 한솥에서 취소버튼을 눌렀을 때 가게 카테고리 보여주기
+				JButton btnNewButton = new JButton("\uC774\uC804");
+				btnNewButton.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						rightView.removeAll();
+						rightView.add(shopKategorie);
+						rightView.repaint();
+						rightView.revalidate();
+
+						leftView.removeAll();
+						leftView.add(information);
+						leftView.repaint();
+						leftView.revalidate();
+
+					}
+				});
+	
+		btnNewButton.setBounds(569, 569, 97, 29);
+		한솥.add(btnNewButton);
+		
 
 //		// 메뉴 카테고리에서 한식을 눌렀을 때 한식 메뉴 카테고리 보여주기
 		JLabel kategorie1 = new JLabel("");
@@ -435,47 +472,61 @@ public class order {
 						
 						ShopkeeperModel m =  shop.get(a);
 						
+
+						for (int n = 0; n < service.nextmenu(m.getID()); n++) {
+							shop = service.getShop(1);
+							cnt++;
+							if (cnt == 4) {
+								panel_5.setLayout(new GridLayout(-1, 1, 30, 0));
+							}
+							JPanel cardPanel = new JPanel();  //가게 패널
+							list.add(cardPanel);
+							System.out.println(list.size());
+							cardPanel.setBackground(Color.WHITE);
+							JLabel img = new JLabel(); // 이미지
+							String shopImg1 = this.getClass().getResource(".").getPath() + "..//..//img//shop.png";
+							img.setIcon(new ImageIcon(shopImg1));
+							cardPanel.setLayout(new FlowLayout());
+							JPanel cardPane1 = new JPanel();
+							cardPane1.setLayout(new GridLayout(3, 1, 0, 0));
+							JPanel cardPane2 = new JPanel(); // 가게 이름
+							JLabel two = new JLabel("");
+							two.setText(shop.get(n).getSHOPNAME());
+							JPanel cardPane3 = new JPanel(); // 가게 주소
+							JLabel three = new JLabel("");
+							three.setText(shop.get(n).getSHOP_ADDRESS());
+//							three.setText(service.selectone());
+							JPanel cardPane4 = new JPanel(); // 가게 전화번호
+							JLabel four = new JLabel("");
+							four.setText("" + shop.get(n).getSHOP_TEL());
+
+							cardPanel.setPreferredSize(new Dimension(350, 150));
+							img.setPreferredSize(new Dimension(120, 150));
+							cardPane1.setPreferredSize(new Dimension(380, 150));
+
+							cardPanel.add(img);
+							cardPanel.add(cardPane1);
+							cardPane1.add(cardPane2);
+							cardPane1.add(cardPane3);
+							cardPane1.add(cardPane4);
+							cardPane2.add(two);
+							cardPane3.add(three);
+							cardPane4.add(four);
+							panel_5.add(cardPanel);
+
+							panel_5.repaint();
+							panel_5.revalidate();
+							
+
+						}
+						
+						
 					}
 				});};
 			}
 		});
-		// 한솥에서 취소버튼을 눌렀을 때 가게 카테고리 보여주기
-		JButton btnNewButton = new JButton("\uC774\uC804");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				rightView.removeAll();
-				rightView.add(shopKategorie);
-				rightView.repaint();
-				rightView.revalidate();
-
-				leftView.removeAll();
-				leftView.add(information);
-				leftView.repaint();
-				leftView.revalidate();
-
-			}
-		});
-
 		
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBounds(35, 267, 600, 283);
-		한솥.add(panel_6);
-		panel_6.setLayout(null);
 
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(0, 0, 600, 281);
-		scrollPane_1.setPreferredSize(new Dimension(600,281));
-		panel_6.add(scrollPane_2);
-		
-		JPanel menu = new JPanel();
-		scrollPane_2.setViewportView(menu);
-		menu.setLayout(new GridLayout(15, 2, 20, 0));
-		
-	
-		btnNewButton.setBounds(569, 569, 97, 29);
-		한솥.add(btnNewButton);
 		
 
 		// 메뉴 카테고리 이미지 1 ( 한식 )

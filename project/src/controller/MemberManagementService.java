@@ -126,6 +126,12 @@ public class MemberManagementService {
 		dao.onoff(id,n);
 		
 	}
+
+
+	public int nextmenu(String id) {
+	
+		return dao.menu(id);
+	}
 	
 	
 

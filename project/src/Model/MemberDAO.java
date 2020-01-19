@@ -744,9 +744,51 @@ public class MemberDAO {
 	}
 	
 }
-		
+
+
+
+
+
+	public int menu(String id) {
+		int sum =0;
+		try { // try ~ catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, user, password);
+
+			// 일반유저 테이블 확인
+			String sql = "SELECT MENU_SEQ FROM MENU WHERE SHOPKEEPER_ID = ? ";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery(); // 실행
+
+			while (rs.next()) {
+			 sum++; 
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (psmt != null)
+					psmt.close();
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return sum;
 	}
-
-
-
-
+	}
+		
+	
