@@ -882,7 +882,7 @@ public class order2 {
 		scrollPane_2.setBounds(47, 144, 611, 403);
 		pay.add(scrollPane_2);
 		
-		
+//		
 //		String[] columnNames = {"주문한 ID",
 //                "메뉴",
 //                "수량",
@@ -897,9 +897,9 @@ public class order2 {
 //			data[i] = new Object[]{m.getId(), m.getName(), m.getAge()} ;  // 컬럼명을 설정한 순서대로 적기 
 //		}
 //		
-//		
-//		table_1 = new JTable();
-//		scrollPane_2.setViewportView(table_1);
+		
+		table_1 = new JTable();
+		scrollPane_2.setViewportView(table_1);
 		
 		JPanel panel_34 = new JPanel();
 		panel_34.setBounds(51, 100, 282, 34);
